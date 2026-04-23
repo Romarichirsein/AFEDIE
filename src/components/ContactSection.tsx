@@ -43,7 +43,7 @@ export default function ContactSection() {
                 { icon: <User size={24} />, label: "Présidente Fondatrice", val: "Mme Ida Sandrine NGNOTUE FOTSO" },
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", gap: "1.5rem", alignItems: "flex-start" }}>
-                  <div style={{ width: "50px", height: "50px", background: "rgba(201, 168, 76, 0.15)", borderRadius: "12px", border: "1px solid rgba(201, 168, 76, 0.3)", display: "flex", alignItems: "center", justify_content: "center", flexShrink: 0 }}>
+                  <div style={{ width: "50px", height: "50px", background: "rgba(201, 168, 76, 0.15)", borderRadius: "12px", border: "1px solid rgba(201, 168, 76, 0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
