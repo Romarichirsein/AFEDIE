@@ -101,6 +101,12 @@ export default function Plan2026() {
           border-color: var(--or) !important;
           transform: translateY(-5px);
         }
+        @media (max-width: 640px) {
+          .plan-card {
+            padding: 1.5rem !important;
+            border-radius: 16px !important;
+          }
+        }
       `}</style>
     </section>
   );

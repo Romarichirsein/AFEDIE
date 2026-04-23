@@ -20,7 +20,7 @@ export default function LegalSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: "2.5rem",
           }}
           className="legal-grid"
@@ -87,8 +87,10 @@ export default function LegalSection() {
           .legal-grid {
             grid-template-columns: 1fr !important;
           }
-          span[style*="width: 140px"] {
-            width: 100px !important;
+        }
+        @media (max-width: 640px) {
+          .legal-grid > div {
+            padding: 2rem !important;
           }
         }
       `}</style>

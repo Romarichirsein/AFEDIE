@@ -155,6 +155,13 @@ export default function ContactSection() {
         @media (max-width: 1024px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .contact-grid > div {
+            padding: 1.5rem !important;
+            border-radius: 20px !important;
           }
         }
       `}</style>

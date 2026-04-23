@@ -102,7 +102,7 @@ export default function ActivitiesSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: "1.5rem",
           }}
         >
@@ -156,6 +156,12 @@ export default function ActivitiesSection() {
           .activities-intro {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .activity-card {
+            padding: 1.5rem !important;
+            border-radius: 16px !important;
           }
         }
       `}</style>

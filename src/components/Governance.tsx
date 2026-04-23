@@ -93,6 +93,11 @@ export default function Governance() {
           box-shadow: 0 30px 60px rgba(0,0,0,0.08);
           border-color: var(--or);
         }
+        @media (max-width: 640px) {
+          .bureau-card {
+            padding: 2rem 1.5rem !important;
+          }
+        }
       `}</style>
     </section>
   );

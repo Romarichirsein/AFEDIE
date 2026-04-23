@@ -153,6 +153,14 @@ export default function Footer() {
         .footer-link:hover {
           color: var(--or) !important;
         }
+        @media (max-width: 768px) {
+          footer {
+            padding: 40px 0 30px !important;
+          }
+          footer > div > div:first-child {
+            gap: 2rem !important;
+          }
+        }
       `}</style>
     </footer>
   );

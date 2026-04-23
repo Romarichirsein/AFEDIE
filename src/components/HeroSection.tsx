@@ -51,7 +51,7 @@ export default function HeroSection() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          padding: "120px 2rem 4rem",
+          padding: "140px 1.5rem 4rem",
         }}
       >
         <motion.span
@@ -244,12 +244,20 @@ export default function HeroSection() {
         }
         @media (max-width: 768px) {
           .mobile-hide { display: none; }
-          div[style*="gridTemplateColumns"] {
-            grid-template-columns: 1fr 1fr !important;
+          .btn-hero-primary,
+          .btn-hero-outline {
+            padding: 14px 28px !important;
+            font-size: 0.8rem !important;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
           }
-          div[style*="borderRight"] {
-            border-right: none !important;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+        @media (max-width: 480px) {
+          .btn-hero-primary,
+          .btn-hero-outline {
+            padding: 14px 20px !important;
+            font-size: 0.75rem !important;
           }
         }
       `}</style>

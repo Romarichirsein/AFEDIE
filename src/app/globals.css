@@ -76,6 +76,18 @@ img {
   .section-padding {
     padding: 60px 0;
   }
+  .container {
+    padding: 0 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 40px 0;
+  }
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 /* Scrollbar Customization */

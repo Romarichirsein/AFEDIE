@@ -231,7 +231,12 @@ export default function AboutSection() {
         @media (max-width: 1024px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 4rem !important;
+            gap: 3rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .about-grid {
+            gap: 2rem !important;
           }
         }
       `}</style>
