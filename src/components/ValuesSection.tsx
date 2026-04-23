@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Star, Shield, TransparencyGridIcon, Users, Sprout, SearchCheck, Globe } from "lucide-react";
+import { Heart, Star, Shield, Users, Sprout, SearchCheck, Globe } from "lucide-react";
 
 const values = [
   {
