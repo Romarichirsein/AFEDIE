@@ -1,5 +1,7 @@
 "use client";
 
+// Triggering fresh build after justifyContent fix
+
 import { motion } from "framer-motion";
 import { MapPin, Shield, User, Send } from "lucide-react";
 
