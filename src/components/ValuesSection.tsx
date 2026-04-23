@@ -70,7 +70,7 @@ export default function ValuesSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "2rem",
           }}
         >
@@ -104,7 +104,7 @@ export default function ValuesSection() {
                 style={{
                   color: value.color,
                   marginBottom: "1.5rem",
-                  background: `rgba(${value.color.includes('var') ? '0,0,0' : '0,0,0'}, 0.05)`, // Simplified for variables
+                  background: `rgba(0, 0, 0, 0.05)`,
                   width: "64px",
                   height: "64px",
                   borderRadius: "16px",
@@ -133,6 +133,13 @@ export default function ValuesSection() {
           ))}
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .value-card {
+            padding: 2rem 1.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
