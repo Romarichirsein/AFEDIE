@@ -6,7 +6,7 @@ import ActivitiesSection from "@/components/ActivitiesSection";
 import Plan2026 from "@/components/Plan2026";
 import Governance from "@/components/Governance";
 import LegalSection from "@/components/LegalSection";
-import ContactSection from "@/components/ContactSection";
+import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 
