@@ -35,12 +35,12 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
-        scrolled ? "glass-dark shadow-lg py-2" : "bg-transparent py-6"
+        scrolled ? "shadow-md py-2" : "py-4"
       }`}
       style={{ 
-        borderBottom: scrolled ? "1px solid var(--or)" : "1px solid rgba(255,255,255,0.05)",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        background: scrolled ? "rgba(7, 15, 26, 0.95)" : "transparent"
+        background: scrolled ? "rgba(255, 255, 255, 0.98)" : "rgba(255, 255, 255, 0.9)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(0,0,0,0.05)",
       }}
       suppressHydrationWarning
     >
@@ -50,7 +50,7 @@ export default function Navbar() {
           position: "absolute",
           bottom: 0,
           left: 0,
-          height: "3px",
+          height: "2px",
           background: "var(--or)",
           scaleX,
           transformOrigin: "0%",
@@ -61,16 +61,16 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div
             style={{
-              width: "44px",
-              height: "44px",
+              width: "40px",
+              height: "40px",
               background: "linear-gradient(135deg, var(--vert), var(--or))",
-              borderRadius: "50%",
+              borderRadius: "10px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontFamily: "var(--font-playfair)",
               fontWeight: 900,
-              fontSize: "18px",
+              fontSize: "16px",
               color: "white",
             }}
           >
@@ -80,9 +80,9 @@ export default function Navbar() {
             <div
               style={{
                 fontFamily: "var(--font-playfair)",
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "var(--or)",
+                fontSize: "1.1rem",
+                fontWeight: 800,
+                color: "#070F1A",
                 lineHeight: 1.1,
               }}
             >
@@ -90,10 +90,10 @@ export default function Navbar() {
             </div>
             <span
               style={{
-                fontSize: "0.55rem",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.7)",
-                letterSpacing: "2px",
+                fontSize: "0.5rem",
+                fontWeight: 600,
+                color: "rgba(0,0,0,0.5)",
+                letterSpacing: "1.5px",
                 textTransform: "uppercase",
                 display: "block",
               }}
@@ -104,25 +104,24 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <ul style={{ display: "flex", gap: "10px", listStyle: "none" }} className="desktop-menu">
+        <ul style={{ display: "flex", gap: "8px", listStyle: "none", alignItems: "center" }} className="desktop-menu">
           {navLinks.map((link, i) => (
             <motion.li 
               key={link.name}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.1 }}
             >
               <Link
                 href={link.href}
                 style={{
-                  padding: "10px 18px",
-                  fontSize: "0.9rem",
-                  fontWeight: 800,
-                  letterSpacing: "2px",
-                  textTransform: "uppercase",
-                  color: "white",
-                  borderRadius: "4px",
+                  padding: "8px 16px",
+                  fontSize: "0.85rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.5px",
+                  textTransform: "none",
+                  color: "#070F1A",
+                  borderRadius: "8px",
                   transition: "all 0.3s ease"
                 }}
                 className="nav-link"
@@ -131,19 +130,20 @@ export default function Navbar() {
               </Link>
             </motion.li>
           ))}
-          <li>
+          <li style={{ marginLeft: "10px" }}>
             <Link
               href="#contact"
               style={{
-                background: "var(--or)",
-                color: "var(--marine)",
-                padding: "10px 20px",
-                borderRadius: "6px",
-                fontWeight: 700,
+                background: "#070F1A",
+                color: "white",
+                padding: "10px 22px",
+                borderRadius: "50px",
+                fontWeight: 600,
                 fontSize: "0.8rem",
-                textTransform: "uppercase",
-                letterSpacing: "1px",
+                transition: "all 0.3s ease",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
               }}
+              className="btn-join"
             >
               Rejoindre
             </Link>
@@ -157,12 +157,12 @@ export default function Navbar() {
             display: "none",
             background: "none",
             border: "none",
-            color: "white",
+            color: "#070F1A",
             cursor: "pointer",
           }}
           className="mobile-toggle"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -170,20 +170,21 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             style={{
               position: "absolute",
               top: "100%",
               left: 0,
               right: 0,
-              background: "var(--marine)",
-              padding: "2rem",
-              borderBottom: "2px solid var(--or)",
+              background: "white",
+              padding: "1.5rem",
+              borderBottom: "1px solid rgba(0,0,0,0.05)",
+              overflow: "hidden"
             }}
           >
-            <ul style={{ display: "flex", flexDirection: "column", gap: "1.5rem", listStyle: "none" }}>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none" }}>
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
@@ -192,25 +193,26 @@ export default function Navbar() {
                     style={{
                       fontSize: "1rem",
                       fontWeight: 600,
-                      color: "white",
+                      color: "#070F1A",
                       display: "block",
+                      padding: "8px 0"
                     }}
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
-              <li>
+              <li style={{ marginTop: "10px" }}>
                 <Link
                   href="#contact"
                   onClick={() => setIsOpen(false)}
                   style={{
                     display: "block",
                     textAlign: "center",
-                    background: "var(--or)",
-                    color: "var(--marine)",
-                    padding: "12px",
-                    borderRadius: "6px",
+                    background: "#070F1A",
+                    color: "white",
+                    padding: "14px",
+                    borderRadius: "12px",
                     fontWeight: 700,
                   }}
                 >
@@ -223,13 +225,15 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style jsx>{`
-        .nav-link {
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
         .nav-link:hover {
           color: var(--or) !important;
-          background: rgba(201, 168, 76, 0.1);
-          text-shadow: none;
+          background: rgba(0, 0, 0, 0.03);
+        }
+        .btn-join:hover {
+          background: var(--or) !important;
+          color: #070F1A !important;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
         }
         @media (max-width: 900px) {
           .desktop-menu {
