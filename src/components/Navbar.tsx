@@ -20,7 +20,7 @@ export default function Navbar() {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+          return rect.top <= 100 && rect.bottom >= 100;
         }
         return false;
       });
@@ -51,57 +51,54 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 1000,
-          // More space when not scrolled, soft transition
-          padding: isScrolled ? "1.2rem 0" : "2.5rem 0",
-          background: isScrolled ? "var(--glass-dark)" : "rgba(7, 21, 26, 0.2)",
+          padding: isScrolled ? "0.6rem 0" : "1rem 0",
+          background: isScrolled ? "var(--glass-dark)" : "rgba(7, 21, 26, 0.4)",
           backdropFilter: isScrolled ? "blur(20px)" : "blur(5px)",
           borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0.05)",
-          transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           {/* Sophisticated Logo Area */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "15px" }} className="logo-group">
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px" }} className="logo-group">
             <motion.div 
               whileHover={{ rotate: 10, scale: 1.05 }}
+              className="logo-box"
               style={{ 
-                width: "50px", 
-                height: "50px", 
                 background: "linear-gradient(135deg, var(--or), var(--or2))", 
-                borderRadius: "14px", 
+                borderRadius: "10px", 
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
-                fontSize: "1.4rem",
                 fontWeight: 900,
                 color: "white",
-                boxShadow: "0 10px 20px rgba(184, 134, 11, 0.3)"
+                boxShadow: "0 8px 16px rgba(184, 134, 11, 0.3)"
               }}
             >
               A
             </motion.div>
             <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "1.4rem", fontWeight: 900, letterSpacing: "2px", lineHeight: 1 }}>AFEDIE</span>
-              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--or2)", letterSpacing: "3px", textTransform: "uppercase", marginTop: "4px" }}>Dignité & Excellence</span>
+              <span className="logo-text">AFEDIE</span>
+              <span className="logo-subtext">Dignité & Excellence</span>
             </div>
           </Link>
 
           {/* Ultra Professional Desktop Menu */}
-          <div style={{ display: "flex", alignItems: "center", gap: "3.5rem" }} className="desktop-menu">
-            <div style={{ display: "flex", gap: "2.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="desktop-menu">
+            <div style={{ display: "flex", gap: "1.5rem" }}>
               {navLinks.map((link) => (
                 <Link 
                   key={link.id} 
                   href={`#${link.id}`}
                   style={{ 
                     color: activeSection === link.id ? "var(--or2)" : "white", 
-                    fontSize: "0.85rem", 
+                    fontSize: "0.75rem", 
                     fontWeight: 700, 
                     textTransform: "uppercase", 
-                    letterSpacing: "1.5px",
-                    opacity: activeSection === link.id ? 1 : 0.6,
+                    letterSpacing: "1px",
+                    opacity: activeSection === link.id ? 1 : 0.7,
                     position: "relative",
-                    transition: "all 0.4s ease"
+                    transition: "all 0.3s ease"
                   }}
                   className="nav-link"
                 >
@@ -111,7 +108,7 @@ export default function Navbar() {
                       layoutId="nav-underline"
                       style={{ 
                         position: "absolute", 
-                        bottom: "-8px", 
+                        bottom: "-4px", 
                         left: "0", 
                         width: "100%", 
                         height: "2px", 
@@ -124,26 +121,26 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div id="google_translate_element" style={{ overflow: "hidden", borderRadius: "8px" }}></div>
+            <div id="google_translate_element" style={{ overflow: "hidden", borderRadius: "8px", transform: "scale(0.85)" }}></div>
             
             <Link
               href="#contact"
               style={{
                 background: "var(--or)",
                 color: "white",
-                padding: "16px 32px",
-                borderRadius: "14px",
-                fontSize: "0.9rem",
+                padding: "10px 20px",
+                borderRadius: "10px",
+                fontSize: "0.8rem",
                 fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "8px",
                 boxShadow: "var(--shadow-gold)",
-                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+                transition: "all 0.3s ease"
               }}
               className="nav-cta"
             >
-              Nous Rejoindre <ArrowUpRight size={18} />
+              Rejoindre <ArrowUpRight size={14} />
             </Link>
           </div>
 
@@ -154,14 +151,14 @@ export default function Navbar() {
               color: "white", 
               cursor: "pointer",
               background: "rgba(255,255,255,0.05)",
-              padding: "10px",
-              borderRadius: "12px",
+              padding: "8px",
+              borderRadius: "10px",
               border: "1px solid rgba(255,255,255,0.1)"
             }} 
             className="mobile-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.div>
         </div>
       </motion.nav>
@@ -170,10 +167,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ duration: 0.5, ease: "easeOut" as const }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 0.4, ease: "easeOut" as const }}
             style={{
               position: "fixed",
               inset: 0,
@@ -187,22 +184,22 @@ export default function Navbar() {
               padding: "2rem",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", textAlign: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2rem", textAlign: "center" }}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ delay: i * 0.05 }}
                 >
                   <Link
                     href={`#${link.id}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     style={{ 
                       color: activeSection === link.id ? "var(--or2)" : "white", 
-                      fontSize: "2.5rem", 
+                      fontSize: "1.8rem", 
                       fontWeight: 800,
-                      letterSpacing: "-1px"
+                      letterSpacing: "-0.5px"
                     }}
                   >
                     {link.name}
@@ -210,9 +207,10 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.3 }}
+                style={{ marginTop: "1rem" }}
               >
                 <Link
                   href="#contact"
@@ -220,12 +218,11 @@ export default function Navbar() {
                   style={{
                     background: "var(--or)",
                     color: "white",
-                    padding: "20px 50px",
-                    borderRadius: "20px",
-                    fontSize: "1.2rem",
+                    padding: "15px 40px",
+                    borderRadius: "12px",
+                    fontSize: "1rem",
                     fontWeight: 800,
                     display: "inline-block",
-                    marginTop: "2rem",
                     boxShadow: "var(--shadow-gold)"
                   }}
                 >
@@ -238,13 +235,17 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style jsx>{`
+        .logo-box { width: 40px; height: 40px; font-size: 1.2rem; }
+        .logo-text { font-size: 1.2rem; font-weight: 900; letter-spacing: 1.5px; line-height: 1; }
+        .logo-subtext { font-size: 0.55rem; font-weight: 700; color: var(--or2); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+        
         .nav-link:hover {
           opacity: 1 !important;
           color: var(--or2) !important;
         }
         .nav-cta:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 30px rgba(184, 134, 11, 0.4);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(184, 134, 11, 0.4);
           background: var(--or2) !important;
         }
         @media (min-width: 1025px) {
@@ -252,6 +253,11 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) {
           .desktop-menu { display: none; }
+        }
+        @media (max-width: 640px) {
+          .logo-text { font-size: 1rem; }
+          .logo-subtext { font-size: 0.45rem; letter-spacing: 1px; }
+          .logo-box { width: 35px; height: 35px; font-size: 1rem; }
         }
       `}</style>
     </>

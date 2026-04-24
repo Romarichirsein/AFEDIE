@@ -66,7 +66,7 @@ export default function Footer() {
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
           <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>
-            © 2026 AFEDIE. Tous droits réservés. Design by Excellence.
+            © 2026 AFEDIE. Tous droits réservés. Powered by <span style={{ color: "var(--or2)", fontWeight: 700 }}>wellborne</span>.
           </p>
           <div style={{ display: "flex", gap: "3rem" }}>
             <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>Yaoundé, Cameroun</span>
