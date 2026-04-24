@@ -1,111 +1,115 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const planItems = [
-  { num: "01", title: "Assemblée Générale Ordinaire", date: "29 Mai 2026", desc: "AGO annuelle — bilan moral, financier et renouvellement de l'engagement collectif." },
-  { num: "02", title: "Cérémonie de l'Excellence", date: "Septembre 2026", desc: "Célébration des femmes et des jeunes filles exemplaires au sein de l'AFEDIE." },
-  { num: "03", title: "Remise de Prix Scolaires", date: "Fin d'année scolaire", desc: "Valorisation des jeunes filles méritantes à travers des prix d'excellence." },
-  { num: "04", title: "Soutien aux Jeunes Filles", date: "Courant 2026", desc: "Programme d'accompagnement et de mentorat pour les jeunes filles en difficulté." },
-  { num: "05", title: "Accompagnement des Femmes Âgées", date: "Courant 2026", desc: "Orientation et appui pour l'accès aux services de santé via le dispositif LAFTA." },
-  { num: "06", title: "Action de Solidarité Sociale", date: "Courant 2026", desc: "Intervention d'entraide en faveur des membres confrontés à des urgences." },
-  { num: "07", title: "Caravane Humanitaire de Noël", date: "22 Décembre 2026", desc: "Mission rurale au profit des populations vulnérables avec soins gratuits." },
+  { date: "Février 2026", title: "AGO & Élections", desc: "Assemblée Générale Ordinaire et renouvellement des membres du Bureau National." },
+  { date: "Mai 2026", title: "Cérémonie de l'Excellence", desc: "Remise des prix aux meilleures élèves et femmes leaders de la communauté." },
+  { date: "Juin 2026", title: "Séminaire de Formation", desc: "Renforcement des capacités en gestion de projets et leadership féminin." },
+  { date: "Septembre 2026", title: "Rentrée Solidaire", desc: "Distribution de kits scolaires et bourses d'études pour les orphelins." },
+  { date: "Octobre 2026", title: "Caravane Santé", desc: "Campagne de dépistage gratuit et sensibilisation sur l'hygiène maternelle." },
+  { date: "Novembre 2026", title: "Foire de l'Autonomisation", desc: "Exposition-vente des produits artisanaux et agricoles des membres." },
+  { date: "Décembre 2026", title: "Arbre de Noël", desc: "Célébration annuelle et distribution de cadeaux aux enfants démunis." },
 ];
 
 export default function Plan2026() {
-  return (
-    <section id="planaction" className="section-padding" style={{ background: "var(--marine)", color: "white" }}>
-      <div className="container">
-        <motion.span
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or)", display: "block", marginBottom: "1rem" }}
-        >
-          Programmation
-        </motion.span>
-        <motion.h2
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "white", marginBottom: "1.5rem" }}
-        >
-          Plan d&apos;Action <span style={{ color: "var(--or)", fontStyle: "italic" }}>2026</span>
-        </motion.h2>
-        <div style={{ width: "60px", height: "4px", background: "var(--or)", marginBottom: "2.5rem" }} />
-        <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.3rem", color: "rgba(255,255,255,0.75)", maxWidth: "800px", lineHeight: 1.7, marginBottom: "4rem" }}>
-          Sept activités majeures jalonnent notre année 2026, témoignant de la vitalité et de l&apos;ambition renouvelée de l&apos;AFEDIE au service de la communauté.
-        </p>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
 
-        <div
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  return (
+    <section id="plan2026" className="section-padding" style={{ background: "var(--marine)", color: "white", position: "relative", overflow: "hidden" }}>
+      {/* Background decoration */}
+      <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(27, 94, 32, 0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto 5rem" }}>
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or2)", display: "block", marginBottom: "1rem" }}
+          >
+            Prospective
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, marginBottom: "1.5rem" }}
+          >
+            Plan d&apos;Action <span style={{ color: "var(--or2)" }}>2026</span>
+          </motion.h2>
+          <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
+            Une feuille de route ambitieuse pour intensifier notre impact et élargir notre réseau de solidarité au Cameroun.
+          </p>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: "1.5rem",
           }}
         >
           {planItems.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.8, y: 40 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                type: "spring",
-                stiffness: 80,
-                damping: 12,
-                delay: index * 0.1 
-              }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
               style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                border: "1px solid rgba(201, 168, 76, 0.2)",
+                background: "rgba(255, 255, 255, 0.03)",
+                backdropFilter: "blur(10px)",
                 padding: "2.5rem",
                 borderRadius: "24px",
-                transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                position: "relative",
+                transition: "all 0.3s ease",
               }}
               className="plan-card"
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-playfair)",
-                    fontSize: "2.5rem",
-                    fontWeight: 900,
-                    color: "var(--or)",
-                    opacity: 0.5,
-                    lineHeight: 1,
-                  }}
-                >
-                  {item.num}
-                </span>
-                <Calendar size={20} color="var(--or)" />
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem", color: "var(--or2)" }}>
+                <Calendar size={16} />
+                <span style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px" }}>{item.date}</span>
               </div>
-              <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.2rem", fontWeight: 700, color: "white", marginBottom: "0.8rem" }}>
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", color: "white" }}>
                 {item.title}
               </h3>
-              <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "var(--or)", marginBottom: "1rem" }}>
-                📅 {item.date}
-              </p>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>
+              <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: "2rem" }}>
                 {item.desc}
               </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.8rem", color: "var(--or2)", fontWeight: 600 }}>
+                <CheckCircle2 size={16} /> Action Prioritaire
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <style jsx>{`
         .plan-card:hover {
-          background: rgba(255, 255, 255, 0.1) !important;
-          border-color: var(--or) !important;
-          transform: translateY(-5px);
-        }
-        @media (max-width: 640px) {
-          .plan-card {
-            padding: 1.5rem !important;
-            border-radius: 16px !important;
-          }
+          background: rgba(255, 255, 255, 0.06);
+          border-color: var(--or2);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
       `}</style>
     </section>

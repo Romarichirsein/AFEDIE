@@ -1,101 +1,108 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const members = [
-  { name: "Mme Ida Sandrine NGNOTUE FOTSO", role: "Présidente Fondatrice", initials: "IS" },
-  { name: "Mme Aroung Marylène", role: "Vice-Présidente", initials: "AM" },
-  { name: "Mme Anne-Marie Bonna", role: "Secrétaire Générale", initials: "AB" },
-  { name: "M. EPEE LEON MARIE", role: "Membre d'Honneur", initials: "EL", color: "linear-gradient(135deg, var(--or), #8B6914)" },
-  { name: "M. BIGAMBIA BITIMI CHARLES", role: "Invité d'Honneur", initials: "BB", color: "linear-gradient(135deg, var(--marine2), #0A1A30)" },
-  { name: "M. Williams AROUNG", role: "Membre Bienfaiteur", initials: "WA", color: "linear-gradient(135deg, var(--vert3), var(--vert))" },
-];
+import { Users, ShieldCheck, FileText, Scale } from "lucide-react";
 
 export default function Governance() {
-  return (
-    <section id="gouvernance" className="section-padding" style={{ background: "white" }}>
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-          <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--vert2)", display: "block", marginBottom: "1rem" }}>
-            Organisation
-          </span>
-          <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--marine)", marginBottom: "1.5rem" }}>
-            Notre <span style={{ fontStyle: "italic", color: "var(--vert2)" }}>Bureau Exécutif</span> 2026
-          </h2>
-          <div style={{ width: "60px", height: "4px", background: "var(--or)", margin: "0 auto 2rem" }} />
-          <p style={{ maxWidth: "700px", margin: "0 auto", color: "#666", lineHeight: 1.7 }}>
-            L&apos;AFEDIE est gouvernée par un bureau élu, garant du respect des statuts, de la bonne gestion associative et de la réalisation de la mission collective.
-          </p>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2rem",
-          }}
-        >
-          {members.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                type: "spring",
-                stiffness: 80,
-                delay: index * 0.1 
-              }}
-              style={{
-                background: "white",
-                padding: "3rem 2rem",
-                borderRadius: "24px",
-                textAlign: "center",
-                border: "1px solid #f0f0f0",
-                boxShadow: "0 10px 20px rgba(0,0,0,0.02)",
-                transition: "var(--transition-smooth)",
-              }}
-              className="bureau-card"
-            >
-              <div
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  background: member.color || "linear-gradient(135deg, var(--vert), var(--marine))",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "0 auto 2rem",
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "2rem",
-                  fontWeight: 900,
-                  color: "white",
-                  boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
-                }}
-              >
-                {member.initials}
-              </div>
-              <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.25rem", fontWeight: 700, color: "var(--marine)", marginBottom: "0.5rem" }}>
-                {member.name}
-              </h3>
-              <p style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "var(--or)" }}>
-                {member.role}
-              </p>
-            </motion.div>
-          ))}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  return (
+    <section id="gouvernance" className="section-padding" style={{ background: "var(--blanc)" }}>
+      <div className="container">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center" }} className="gov-grid">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
+              <div style={{ width: "40px", height: "2px", background: "var(--vert2)" }} />
+              <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--vert2)" }}>
+                Organisation
+              </span>
+            </div>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1, marginBottom: "2rem" }}>
+              Une gouvernance <span style={{ color: "var(--or)" }}>rigoureuse</span> et transparente
+            </h2>
+            <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.8, marginBottom: "3rem" }}>
+              L&apos;AFEDIE est structurée autour d&apos;un Bureau National engagé et d&apos;une organisation décentralisée pour une efficacité maximale sur le terrain.
+            </p>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+              {[
+                { icon: <Users size={24} />, title: "Bureau National", desc: "Instance de pilotage stratégique." },
+                { icon: <ShieldCheck size={24} />, title: "Commissions", desc: "Groupes de travail spécialisés." },
+              ].map((box, i) => (
+                <div key={i} style={{ padding: "2rem", background: "var(--gris)", borderRadius: "24px" }}>
+                  <div style={{ color: "var(--or)", marginBottom: "1rem" }}>{box.icon}</div>
+                  <h4 style={{ fontWeight: 700, marginBottom: "0.5rem" }}>{box.title}</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#888" }}>{box.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ 
+              background: "var(--marine)", 
+              padding: "4rem", 
+              borderRadius: "32px", 
+              color: "white",
+              boxShadow: "0 40px 80px rgba(0,0,0,0.15)",
+              position: "relative",
+              overflow: "hidden"
+            }}
+          >
+            <div style={{ position: 'absolute', bottom: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)' }} />
+            
+            <h3 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: "2.5rem" }}>Cadre Juridique</h3>
+            
+            <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              {[
+                { icon: <FileText size={20} />, title: "Enregistrement Officiel", desc: "Conformément à la loi N° 90/053 du 19 décembre 1990." },
+                { icon: <Scale size={20} />, title: "Statuts & Règlement", desc: "Des textes clairs définissant les droits et devoirs des membres." },
+                { icon: <ShieldCheck size={20} />, title: "Éthique & Intégrité", desc: "Un code de conduite strict pour tous nos bénévoles." },
+              ].map((item, i) => (
+                <motion.div key={i} variants={itemVariants} style={{ display: "flex", gap: "1.5rem" }}>
+                  <div style={{ width: "48px", height: "48px", background: "rgba(255,255,255,0.05)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--or2)", flexShrink: 0 }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>{item.title}</h4>
+                    <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 
       <style jsx>{`
-        .bureau-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-          border-color: var(--or);
-        }
-        @media (max-width: 640px) {
-          .bureau-card {
-            padding: 2rem 1.5rem !important;
+        @media (max-width: 1024px) {
+          .gov-grid {
+            grid-template-columns: 1fr !important;
+            gap: 4rem !important;
           }
         }
       `}</style>

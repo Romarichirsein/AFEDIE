@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Cormorant_Garamond, Raleway } from "next/font/google";
+import { Poppins, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   weight: ["400", "700", "900"],
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant",
-  weight: ["300", "400", "600"],
   style: ["normal", "italic"],
-});
-
-const raleway = Raleway({
-  subsets: ["latin"],
-  variable: "--font-raleway",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -33,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${playfair.variable} ${cormorant.variable} ${raleway.variable}`} suppressHydrationWarning>
-      <body style={{ fontFamily: "var(--font-raleway), sans-serif" }} suppressHydrationWarning>
+    <html lang="fr" className={`${poppins.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body style={{ fontFamily: "var(--font-poppins), sans-serif" }} suppressHydrationWarning>
         {children}
       </body>
     </html>

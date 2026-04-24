@@ -1,167 +1,163 @@
 "use client";
 
-// Triggering fresh build after justifyContent fix
-
 import { motion } from "framer-motion";
-import { MapPin, Shield, User, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, ExternalLink } from "lucide-react";
 
-export default function ContactSection() {
+export default function Contact() {
+  const revealVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
-    <section id="contact" className="section-padding" style={{ background: "var(--marine)", color: "white" }}>
+    <section id="contact" className="section-padding" style={{ background: "white" }}>
       <div className="container">
-        <div style={{ marginBottom: "4rem" }}>
-          <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or)", display: "block", marginBottom: "1rem" }}>
-            Nous Rejoindre
-          </span>
-          <h2 style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "white", marginBottom: "1.5rem" }}>
-            Contactez <span style={{ color: "var(--or)", fontStyle: "italic" }}>l&apos;AFEDIE</span>
-          </h2>
-          <div style={{ width: "60px", height: "4px", background: "var(--or)" }} />
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "5rem",
-            alignItems: "start",
-          }}
-          className="contact-grid"
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: "6rem" }} className="contact-grid">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, type: "spring" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={revealVariants}
           >
-            <p style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.3rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.8, marginBottom: "3rem" }}>
-              Vous souhaitez rejoindre l&apos;AFEDIE, établir un partenariat, soutenir nos actions ou simplement en savoir davantage sur notre association ? Nous sommes à votre écoute.
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
+              <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
+              <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--or)" }}>
+                Contactez-nous
+              </span>
+            </div>
+            <h2 style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1, marginBottom: "2rem" }}>
+              Prête à rejoindre l&apos;<span style={{ color: "var(--vert2)" }}>excellence</span> ?
+            </h2>
+            <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.8, marginBottom: "3.5rem" }}>
+              Que vous souhaitiez devenir membre, partenaire ou bénévole, notre équipe est à votre écoute pour construire ensemble l&apos;avenir.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
               {[
-                { icon: <MapPin size={24} />, label: "Siège", val: "Yaoundé, Cameroun · Arrondissement Yaoundé 3e" },
-                { icon: <Shield size={24} />, label: "Statut légal", val: "Association à but non lucratif\nN° 00001396/RDA/J06/SAAJP/BAPP" },
-                { icon: <User size={24} />, label: "Présidente Fondatrice", val: "Mme Ida Sandrine NGNOTUE FOTSO" },
+                { icon: <Phone size={20} />, label: "Téléphone", val: "(+237) 6xx xxx xxx", sub: "Lundi - Vendredi, 8h-17h" },
+                { icon: <Mail size={20} />, label: "Email", val: "contact@afedie.org", sub: "Réponse sous 24h" },
+                { icon: <MapPin size={20} />, label: "Siège Social", val: "Yaoundé, Cameroun", sub: "Arrondissement de Yaoundé 3e" },
               ].map((item, i) => (
-                <div key={i} style={{ display: "flex", gap: "1.5rem", alignItems: "flex-start" }}>
-                  <div style={{ width: "50px", height: "50px", background: "rgba(201, 168, 76, 0.15)", borderRadius: "12px", border: "1px solid rgba(201, 168, 76, 0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <div key={i} style={{ display: "flex", gap: "1.5rem" }}>
+                  <div style={{ width: "56px", height: "56px", background: "var(--gris)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--or)", flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
-                    <span style={{ display: "block", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "var(--or)", marginBottom: "0.4rem" }}>{item.label}</span>
-                    <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", lineHeight: 1.5, whiteSpace: "pre-line" }}>{item.val}</p>
+                    <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#aaa", letterSpacing: "1px", marginBottom: "0.3rem" }}>{item.label}</p>
+                    <p style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--marine)", marginBottom: "0.2rem" }}>{item.val}</p>
+                    <p style={{ fontSize: "0.85rem", color: "#888" }}>{item.sub}</p>
                   </div>
                 </div>
               ))}
             </div>
-
-            <div style={{ marginTop: "4rem", padding: "2.5rem", background: "rgba(201, 168, 76, 0.1)", border: "1px solid rgba(201, 168, 76, 0.25)", borderRadius: "20px" }}>
-              <p style={{ fontSize: "0.85rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "var(--or)", marginBottom: "1rem" }}>
-                Partenariats institutionnels
-              </p>
-              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>
-                Nous travaillons avec des partenaires institutionnels (MINAS, MINPROFF, Mairie de Yaoundé 3e) et des partenaires privés engagés dans l&apos;autonomisation des femmes au Cameroun.
-              </p>
-            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, type: "spring", delay: 0.2 }}
-            style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(201, 168, 76, 0.2)",
-              padding: "4rem",
-              borderRadius: "32px",
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ 
+              background: "white", 
+              padding: "4rem", 
+              borderRadius: "40px", 
+              boxShadow: "0 40px 100px rgba(0,0,0,0.06)",
+              border: "1px solid rgba(0,0,0,0.03)"
             }}
           >
-            <h3 style={{ fontFamily: "var(--font-playfair)", fontSize: "1.8rem", fontWeight: 700, color: "white", marginBottom: "2.5rem" }}>Envoyez-nous un message</h3>
-            <form style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }} onSubmit={(e) => { e.preventDefault(); alert('Merci pour votre message. Nous vous contacterons prochainement.'); }}>
-              <div>
-                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "0.8rem" }}>Votre nom complet</label>
-                <input type="text" placeholder="Mme / M. Nom Prénom" className="form-input" suppressHydrationWarning />
+            <form style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }} className="form-row">
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                  <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>Nom Complet</label>
+                  <input 
+                    type="text" 
+                    placeholder="Jane Doe"
+                    style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease" }}
+                  />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                  <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>Email</label>
+                  <input 
+                    type="email" 
+                    placeholder="jane@example.com"
+                    style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease" }}
+                  />
+                </div>
               </div>
-              <div>
-                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "0.8rem" }}>Adresse e-mail</label>
-                <input type="email" placeholder="votre@email.com" className="form-input" suppressHydrationWarning />
-              </div>
-              <div>
-                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "0.8rem" }}>Objet du message</label>
-                <select className="form-input">
-                  <option value="">Sélectionnez un objet…</option>
-                  <option>Demande d&apos;adhésion</option>
-                  <option>Proposition de partenariat</option>
-                  <option>Soutien / Don</option>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>Objet</label>
+                <select style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none" }}>
+                  <option>Devenir membre</option>
+                  <option>Devenir partenaire</option>
+                  <option>Action Humanitaire</option>
+                  <option>Autre</option>
                 </select>
               </div>
-              <div>
-                <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.6)", marginBottom: "0.8rem" }}>Votre message</label>
-                <textarea placeholder="Écrivez votre message ici…" className="form-input" style={{ height: "150px", resize: "none" }}></textarea>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>Message</label>
+                <textarea 
+                  rows={5}
+                  placeholder="Comment pouvons-nous vous aider ?"
+                  style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease", resize: "none" }}
+                />
               </div>
+
               <button
                 type="submit"
+                className="btn-premium"
                 style={{
-                  background: "var(--or)",
-                  color: "var(--marine)",
-                  padding: "18px",
+                  background: "var(--marine)",
+                  color: "white",
+                  padding: "1.5rem",
                   borderRadius: "12px",
-                  fontWeight: 800,
-                  fontSize: "0.9rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  border: "none",
-                  cursor: "pointer",
+                  fontSize: "1rem",
+                  fontWeight: 700,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "1rem",
-                  marginTop: "1rem",
-                  transition: "all 0.3s ease",
+                  gap: "12px",
+                  cursor: "pointer",
+                  border: "none"
                 }}
-                className="btn-submit"
               >
                 Envoyer le message <Send size={20} />
               </button>
             </form>
           </motion.div>
         </div>
+
+        {/* Partners Section */}
+        <div style={{ marginTop: "10rem", textAlign: "center" }}>
+          <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "3rem" }}>En collaboration avec</p>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5rem", flexWrap: "wrap", opacity: 0.5, filter: "grayscale(100%)" }}>
+            {["MINAS", "MINPROFF", "Yaoundé 3e", "UN Women"].map((partner) => (
+              <span key={partner} style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--marine)" }}>{partner}</span>
+            ))}
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
-        .form-input {
-          width: 100%;
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 12px;
-          padding: 16px;
-          color: white;
-          font-family: inherit;
-          transition: all 0.3s;
-        }
-        .form-input:focus {
-          outline: none;
-          border-color: var(--or);
-          background: rgba(255, 255, 255, 0.12);
-        }
-        .btn-submit:hover {
-          background: var(--or2);
-          transform: translateY(-5px);
-          box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
+        input:focus, textarea:focus {
+          border-color: var(--or) !important;
+          background: white !important;
+          box-shadow: 0 10px 20px rgba(184, 134, 11, 0.05);
         }
         @media (max-width: 1024px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 4rem !important;
           }
         }
         @media (max-width: 640px) {
-          .contact-grid > div {
-            padding: 1.5rem !important;
-            border-radius: 20px !important;
+          .form-row {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

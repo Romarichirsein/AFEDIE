@@ -2,184 +2,177 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Quote, Award, CheckCircle2 } from "lucide-react";
 
 export default function AboutSection() {
+  const revealVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    },
+  };
+
   return (
-    <section id="apropos" className="section-padding" style={{ background: "var(--blanc)" }}>
-      <div className="container">
+    <section id="apropos" className="section-padding" style={{ background: "var(--blanc)", position: "relative", overflow: "hidden" }}>
+      {/* Background Pattern */}
+      <div style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '100%', background: 'linear-gradient(135deg, rgba(184, 134, 11, 0.03) 0%, transparent 100%)', zIndex: 0 }} />
+      
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "5rem",
+            gridTemplateColumns: "1.1fr 0.9fr",
+            gap: "6rem",
             alignItems: "center",
           }}
           className="about-grid"
         >
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, type: "spring", bounce: 0.3 }}
+            variants={revealVariants}
           >
-            <span
-              style={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "4px",
-                textTransform: "uppercase",
-                color: "var(--vert2)",
-                display: "block",
-                marginBottom: "1rem",
-              }}
-            >
-              Qui Sommes-Nous
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
+              <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
+              <span
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  letterSpacing: "3px",
+                  textTransform: "uppercase",
+                  color: "var(--or)",
+                }}
+              >
+                Notre Histoire
+              </span>
+            </div>
+            
             <h2
               style={{
-                fontFamily: "var(--font-playfair)",
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 700,
+                fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                fontWeight: 800,
                 color: "var(--marine)",
-                lineHeight: 1.2,
-                marginBottom: "1.5rem",
+                lineHeight: 1.1,
+                marginBottom: "2rem",
               }}
             >
-              Une association au service de la <span style={{ color: "var(--vert2)", fontStyle: "italic" }}>femme camerounaise</span>
+              Une association au service de la <span style={{ color: "var(--vert2)" }}>femme camerounaise</span>
             </h2>
-            <div
-              style={{
-                width: "60px",
-                height: "4px",
-                background: "linear-gradient(90deg, var(--or), var(--or2))",
-                borderRadius: "2px",
-                marginBottom: "2.5rem",
-              }}
-            />
+            
             <p
               style={{
-                fontFamily: "var(--font-cormorant)",
-                fontSize: "1.25rem",
+                fontSize: "1.2rem",
                 color: "#444",
                 lineHeight: 1.8,
-                marginBottom: "1.5rem",
+                marginBottom: "2rem",
+                fontWeight: 400,
               }}
             >
               L&apos;AFEDIE — Association des Femmes de la Dignité et de l&apos;Excellence — est une organisation
-              à but non lucratif légalement enregistrée au Cameroun, fondée en 2020 par
-              Mme Ida Sandrine NGNOTUE FOTSO. Elle œuvre pour l&apos;autonomisation des femmes,
-              la solidarité, l&apos;action humanitaire et le développement communautaire durable.
+              à but non lucratif enregistrée au Cameroun, fondée en 2020 par
+              <strong> Mme Ida Sandrine NGNOTUE FOTSO</strong>.
             </p>
+            
             <p
               style={{
-                fontSize: "1rem",
+                fontSize: "1.05rem",
                 color: "#666",
-                lineHeight: 1.7,
-                marginBottom: "2.5rem",
+                lineHeight: 1.8,
+                marginBottom: "3rem",
               }}
             >
-              Héritière de la vision de <strong>feue Mme Marie Souzane GAMGNE</strong> — &quot;la Visionnaire&quot; —
-              fondatrice de l&apos;AMICA en 1998, l&apos;AFEDIE perpétue un idéal de dignité, d&apos;entraide
-              et d&apos;excellence au bénéfice des femmes et de leurs communautés.
+              Héritière de la vision de feue Mme Marie Souzane GAMGNE — &quot;la Visionnaire&quot; —
+              fondatrice de l&apos;AMICA en 1998, l&apos;AFEDIE perpétue un idéal de dignité et d&apos;excellence 
+              pour l&apos;autonomisation durable des femmes.
             </p>
 
             <div
               style={{
-                padding: "2rem",
+                padding: "2.5rem",
                 background: "var(--gris)",
-                borderRadius: "16px",
-                borderLeft: "5px solid var(--or)",
-                boxShadow: "var(--shadow-premium)",
+                borderRadius: "24px",
+                position: "relative",
+                borderLeft: "6px solid var(--or)",
+                boxShadow: "0 15px 40px rgba(0,0,0,0.03)",
               }}
             >
+              <Quote size={40} style={{ position: "absolute", top: "-20px", right: "20px", color: "var(--or)", opacity: 0.2 }} />
               <p
                 style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: "1.2rem",
+                  fontSize: "1.15rem",
                   fontStyle: "italic",
                   color: "var(--marine)",
                   lineHeight: 1.7,
-                  marginBottom: "1rem",
+                  marginBottom: "1.5rem",
+                  fontWeight: 500,
                 }}
               >
                 « Notre engagement va au-delà des mots : nous agissons pour que chaque femme
-                accède à la dignité qu&apos;elle mérite et à l&apos;excellence qu&apos;elle est capable d&apos;atteindre. »
+                accède à la dignité qu&apos;elle mérite et à l&apos;excellence qu&apos;elle peut atteindre. »
               </p>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: 700,
-                  color: "var(--vert2)",
-                  letterSpacing: "1px",
-                }}
-              >
-                — Mme Ida Sandrine NGNOTUE FOTSO, Présidente Fondatrice
-              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div style={{ width: "30px", height: "1px", background: "var(--or)" }} />
+                <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--or)", textTransform: "uppercase" }}>
+                  Mme Ida Sandrine NGNOTUE FOTSO
+                </span>
+              </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50, rotate: 2 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, delay: 0.2, type: "spring" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             style={{ position: "relative" }}
           >
             <div
               style={{
-                background: "linear-gradient(135deg, var(--marine), var(--marine2))",
-                borderRadius: "24px",
-                padding: "3.5rem",
+                background: "var(--marine)",
+                borderRadius: "32px",
+                padding: "4rem",
                 color: "white",
                 position: "relative",
-                overflow: "hidden",
                 zIndex: 1,
-                boxShadow: "0 30px 60px rgba(13, 43, 78, 0.2)",
+                boxShadow: "0 40px 80px rgba(7, 21, 26, 0.2)",
+                overflow: "hidden",
               }}
             >
-              {/* Decorative circles */}
-              <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(201, 168, 76, 0.1)' }} />
-              <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '150px', height: '150px', borderRadius: '50%', background: 'rgba(76, 175, 80, 0.08)' }} />
-
-              <div
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "4.5rem",
-                  fontWeight: 900,
-                  color: "var(--or)",
-                  lineHeight: 1,
-                  marginBottom: "1.5rem",
-                  opacity: 0.9,
-                }}
-              >
-                AFEDIE
+              <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(184, 134, 11, 0.1)' }} />
+              
+              <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--or2)", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "1rem" }}>
+                Certifications & Statuts
               </div>
-              <p
-                style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: "1.1rem",
-                  lineHeight: 1.7,
-                  color: "rgba(255, 255, 255, 0.85)",
-                  marginBottom: "2rem",
-                }}
-              >
-                Association légalement enregistrée sous le N° <strong style={{ color: "var(--or)" }}>00001396/RDA/J06/SAAJP/BAPP</strong>.
-                Une structure de gouvernance rigoureuse, des valeurs fondatrices solides et un engagement terrain authentique.
-              </p>
+              <h3 style={{ fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "2rem" }}>AFEDIE</h3>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "3rem" }}>
+                {[
+                  { icon: <Award size={18} />, text: "N° 00001396/RDA/J06/SAAJP/BAPP" },
+                  { icon: <CheckCircle2 size={18} />, text: "Association à but non lucratif" },
+                  { icon: <CheckCircle2 size={18} />, text: "Gouvernance Transparente" },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.8)", fontSize: "0.95rem" }}>
+                    <div style={{ color: "var(--or2)" }}>{item.icon}</div>
+                    {item.text}
+                  </div>
+                ))}
+              </div>
 
-              <div style={{ display: "flex", gap: "0.8rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-                {["Solidarité", "Humanitaire", "Excellence", "Dignité"].map((tag) => (
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
+                {["Solidarité", "Humanitaire", "Excellence"].map((tag) => (
                   <span
                     key={tag}
                     style={{
-                      padding: "6px 16px",
-                      border: "1px solid var(--or)",
-                      borderRadius: "20px",
-                      fontSize: "0.7rem",
-                      fontWeight: 700,
-                      letterSpacing: "1px",
-                      textTransform: "uppercase",
-                      color: "var(--or)",
+                      padding: "8px 20px",
+                      background: "rgba(255,255,255,0.05)",
+                      borderRadius: "100px",
+                      fontSize: "0.75rem",
+                      fontWeight: 600,
+                      color: "white",
+                      border: "1px solid rgba(255,255,255,0.1)",
                     }}
                   >
                     {tag}
@@ -187,17 +180,17 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <div style={{ borderTop: "1px solid rgba(201, 168, 76, 0.3)", paddingTop: "2rem" }}>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "2.5rem" }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                  <div style={{ width: '60px', height: '60px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--or)' }}>
-                    <Image src="/images/founder.png" alt="Mme Ida Sandrine NGNOTUE FOTSO" width={60} height={60} style={{ objectFit: 'cover' }} />
+                  <div style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--or)' }}>
+                    <Image src="/images/founder.png" alt="Founder" width={70} height={70} style={{ objectFit: 'cover' }} />
                   </div>
                   <div>
-                    <p style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "rgba(255, 255, 255, 0.5)", marginBottom: "0.3rem" }}>
+                    <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "var(--or2)", marginBottom: "0.3rem" }}>
                       Présidente Fondatrice
                     </p>
-                    <p style={{ fontFamily: "var(--font-playfair)", fontSize: "1.2rem", fontWeight: 700, color: "var(--or)" }}>
-                      Mme Ida Sandrine NGNOTUE FOTSO
+                    <p style={{ fontSize: "1.2rem", fontWeight: 700, color: "white" }}>
+                      Ida Sandrine NGNOTUE FOTSO
                     </p>
                   </div>
                 </div>
@@ -206,22 +199,23 @@ export default function AboutSection() {
 
             {/* Float Badge */}
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               style={{
                 position: "absolute",
-                bottom: "-20px",
+                bottom: "-30px",
                 right: "40px",
                 background: "white",
-                padding: "1.5rem",
-                borderRadius: "16px",
-                boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                padding: "2rem",
+                borderRadius: "24px",
+                boxShadow: "0 25px 50px rgba(0,0,0,0.1)",
                 zIndex: 2,
                 textAlign: "center",
+                border: "1px solid rgba(0,0,0,0.05)",
               }}
             >
-              <span style={{ display: "block", fontSize: "1.8rem", fontWeight: 900, color: "var(--marine)", lineHeight: 1 }}>2020</span>
-              <span style={{ fontSize: "0.6rem", fontWeight: 700, textTransform: "uppercase", color: "#888", letterSpacing: "1px" }}>Depuis</span>
+              <span style={{ display: "block", fontSize: "2.2rem", fontWeight: 900, color: "var(--marine)", lineHeight: 1 }}>2020</span>
+              <span style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", color: "#888", letterSpacing: "2px" }}>Depuis</span>
             </motion.div>
           </motion.div>
         </div>
@@ -231,12 +225,7 @@ export default function AboutSection() {
         @media (max-width: 1024px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-        }
-        @media (max-width: 768px) {
-          .about-grid {
-            gap: 2rem !important;
+            gap: 4rem !important;
           }
         }
       `}</style>

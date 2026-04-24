@@ -1,266 +1,232 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    },
+  };
+
   return (
     <section
       id="accueil"
       style={{
-        minHeight: "100vh",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
         position: "relative",
         overflow: "hidden",
+        background: "var(--marine)",
       }}
     >
-      {/* Background with Overlay */}
+      {/* Parallax Background */}
       <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "linear-gradient(180deg, rgba(7, 15, 26, 0.8) 0%, rgba(13, 43, 78, 0.6) 40%, rgba(13, 43, 78, 0.95) 100%), url('/images/hero.png')",
+          backgroundImage: "linear-gradient(to bottom, rgba(7, 21, 26, 0.7), rgba(7, 21, 26, 0.9)), url('/images/hero.png')",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
+          y: y1,
         }}
       />
       
-      {/* Animated Patterns */}
+      {/* Dynamic Glows */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `radial-gradient(circle at 20% 80%, rgba(201, 168, 76, 0.15) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.12) 0%, transparent 50%)`,
+          background: `radial-gradient(circle at 20% 30%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
+                       radial-gradient(circle at 80% 70%, rgba(27, 94, 32, 0.1) 0%, transparent 50%)`,
+          filter: "blur(60px)",
         }}
       />
 
-      <div
+      <motion.div
         className="container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
         style={{
           position: "relative",
-          zIndex: 2,
+          zIndex: 10,
           flex: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          padding: "140px 1.5rem 4rem",
+          opacity,
         }}
       >
-        <motion.span
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <motion.div
+          variants={itemVariants}
           style={{
-            display: "inline-block",
-            border: "1px solid var(--or)",
-            color: "var(--or)",
-            fontSize: "0.65rem",
-            fontWeight: 700,
-            letterSpacing: "4px",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "8px 20px",
+            borderRadius: "100px",
+            background: "rgba(184, 134, 11, 0.1)",
+            border: "1px solid rgba(184, 134, 11, 0.2)",
+            color: "var(--or2)",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            letterSpacing: "2px",
             textTransform: "uppercase",
-            padding: "8px 24px",
-            borderRadius: "20px",
-            marginBottom: "2.5rem",
-            background: "rgba(201, 168, 76, 0.05)",
+            marginBottom: "2rem",
           }}
         >
+          <Sparkles size={14} />
           Fondée en 2020 · Yaoundé, Cameroun
-        </motion.span>
+        </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 1, 
-            type: "spring",
-            stiffness: 50,
-            delay: 0.2 
-          }}
+          variants={itemVariants}
           style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(2.5rem, 8vw, 5.5rem)",
-            fontWeight: 900,
+            fontSize: "clamp(2.5rem, 8vw, 6rem)",
+            fontWeight: 800,
             color: "white",
             lineHeight: 1,
-            marginBottom: "2rem",
-            textShadow: "0 10px 30px rgba(0,0,0,0.5)"
+            marginBottom: "1.5rem",
+            maxWidth: "1000px",
           }}
         >
           Association des Femmes <br />
           <span style={{ 
-            color: "var(--or)", 
-            fontStyle: "italic",
+            color: "var(--or2)", 
             display: "inline-block",
             position: "relative"
           }}>
             de la Dignité
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ delay: 1, duration: 0.8 }}
-              style={{ position: 'absolute', bottom: '10px', left: 0, height: '4px', background: 'var(--or)', opacity: 0.5 }}
-            />
-          </span> <br className="mobile-hide" />
-          et de l&apos;<span style={{ color: "var(--or)", fontStyle: "italic" }}>Excellence</span>
+          </span> <br />
+          et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          variants={itemVariants}
           style={{
-            fontFamily: "var(--font-cormorant)",
-            fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)",
-            color: "rgba(255, 255, 255, 0.85)",
-            fontWeight: 300,
-            letterSpacing: "1px",
-            marginBottom: "3.5rem",
-            maxWidth: "800px",
+            fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+            color: "rgba(255, 255, 255, 0.7)",
+            fontWeight: 400,
+            marginBottom: "3rem",
+            maxWidth: "750px",
+            lineHeight: 1.6,
           }}
         >
           Unir, élever et autonomiser les femmes à travers la solidarité, l&apos;engagement humanitaire et le développement communautaire.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          variants={itemVariants}
           style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}
         >
           <Link
             href="#activites"
-            className="btn-hero-primary hover-float"
+            className="btn-premium"
             style={{
               background: "var(--or)",
-              color: "var(--marine)",
-              padding: "20px 50px",
-              fontSize: "0.95rem",
-              fontWeight: 800,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              borderRadius: "50px",
-              boxShadow: "0 15px 35px rgba(201, 168, 76, 0.4)",
-              transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+              color: "white",
+              padding: "20px 45px",
+              fontSize: "0.9rem",
+              fontWeight: 700,
+              borderRadius: "12px",
+              boxShadow: "var(--shadow-gold)",
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
             }}
           >
-            Nos Actions
+            Découvrir nos Actions <ArrowRight size={20} />
           </Link>
           <Link
             href="#contact"
-            className="btn-hero-outline hover-float"
+            className="btn-premium"
             style={{
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(10px)",
               color: "white",
-              padding: "20px 50px",
-              fontSize: "0.95rem",
-              fontWeight: 700,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              borderRadius: "50px",
-              border: "2px solid rgba(255, 255, 255, 0.3)",
-              transition: "all 0.4s ease"
+              padding: "20px 45px",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              borderRadius: "12px",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
             Rejoindre l&apos;AFEDIE
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
-      <div
+      {/* Stats Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
         style={{
           position: "relative",
-          zIndex: 2,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-          background: "rgba(255, 255, 255, 0.03)",
-          backdropFilter: "blur(5px)",
-          borderTop: "1px solid rgba(201, 168, 76, 0.2)",
-          padding: "2rem",
+          zIndex: 20,
+          background: "rgba(255, 255, 255, 0.02)",
+          backdropFilter: "blur(20px)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+          padding: "2rem 0",
         }}
       >
-        {[
-          { num: "2020", label: "Année de fondation" },
-          { num: "7", label: "Actions prévues 2026" },
-          { num: "6 ans", label: "Au service des femmes" },
-          { num: "Ydé", label: "Basée à Yaoundé" },
-        ].map((stat, i) => (
-          <div
-            key={i}
-            style={{
-              textAlign: "center",
-              padding: "1rem",
-              borderRight: i < 3 ? "1px solid rgba(201, 168, 76, 0.1)" : "none",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontSize: "2.4rem",
-                fontWeight: 900,
-                color: "var(--or)",
-                display: "block",
-              }}
-            >
-              {stat.num}
-            </span>
-            <span
-              style={{
-                fontSize: "0.65rem",
-                fontWeight: 600,
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-                color: "rgba(255, 255, 255, 0.6)",
-              }}
-            >
-              {stat.label}
-            </span>
-          </div>
-        ))}
-      </div>
+        <div className="container" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
+          {[
+            { num: "2020", label: "Année de fondation", icon: <Sparkles size={20} /> },
+            { num: "7", label: "Actions prévues 2026", icon: <Shield size={20} /> },
+            { num: "Ydé", label: "Basée à Yaoundé", icon: <Heart size={20} /> },
+          ].map((stat, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ color: "var(--or2)", marginBottom: "0.5rem", display: "flex", justifyContent: "center" }}>{stat.icon}</div>
+              <div style={{ fontSize: "2rem", fontWeight: 800, color: "white" }}>{stat.num}</div>
+              <div style={{ fontSize: "0.75rem", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", letterSpacing: "1px" }}>{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
-      <style jsx>{`
-        .btn-hero-primary:hover {
-          background: var(--or2) !important;
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(201, 168, 76, 0.5);
-        }
-        .btn-hero-outline:hover {
-          border-color: white !important;
-          background: rgba(255, 255, 255, 0.15) !important;
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        }
-        .hover-float:hover {
-          transform: translateY(-10px) !important;
-        }
-        @media (max-width: 768px) {
-          .mobile-hide { display: none; }
-          .btn-hero-primary,
-          .btn-hero-outline {
-            padding: 14px 28px !important;
-            font-size: 0.8rem !important;
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-          }
-        }
-        @media (max-width: 480px) {
-          .btn-hero-primary,
-          .btn-hero-outline {
-            padding: 14px 20px !important;
-            font-size: 0.75rem !important;
-          }
-        }
-      `}</style>
+      {/* Decorative Floating Elements */}
+      <motion.div
+        animate={{ 
+          y: [0, -30, 0],
+          rotate: [0, 5, 0]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          top: "15%",
+          left: "5%",
+          width: "150px",
+          height: "150px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%)",
+          zIndex: 5,
+        }}
+      />
     </section>
   );
 }

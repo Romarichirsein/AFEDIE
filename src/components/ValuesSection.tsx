@@ -1,143 +1,172 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Star, Shield, Users, Sprout, SearchCheck, Globe } from "lucide-react";
+import { Shield, Target, Users, Zap, Heart, Star } from "lucide-react";
 
 const values = [
-  {
-    icon: <Sprout size={32} />,
-    title: "Dignité",
-    desc: "Chaque femme mérite d'être traitée avec respect et considération. Nous défendons la dignité humaine comme socle de toute action.",
-    color: "var(--vert2)",
+  { 
+    icon: <Shield size={32} />, 
+    title: "Dignité", 
+    desc: "Restaurer l'estime de soi et le respect de chaque femme dans son environnement.",
+    color: "var(--or)"
   },
-  {
-    icon: <Star size={32} />,
-    title: "Excellence",
-    desc: "Nous aspirons à l'excellence dans nos projets, nos partenariats et notre gouvernance, faisant de chaque initiative un modèle.",
-    color: "var(--or)",
+  { 
+    icon: <Star size={32} />, 
+    title: "Excellence", 
+    desc: "Viser la qualité et la performance dans toutes nos initiatives et réalisations.",
+    color: "var(--vert2)"
   },
-  {
-    icon: <Users size={32} />,
-    title: "Solidarité",
-    desc: "La force de notre association repose sur l'entraide mutuelle, la cohésion entre membres et la mobilisation collective.",
-    color: "var(--marine)",
+  { 
+    icon: <Users size={32} />, 
+    title: "Solidarité", 
+    desc: "Développer une entraide authentique et durable entre les membres de la communauté.",
+    color: "var(--marine2)"
   },
-  {
-    icon: <Heart size={32} />,
-    title: "Bienveillance",
-    desc: "Nous intervenons avec empathie et respect dans chacune de nos missions auprès des femmes et des familles vulnérables.",
-    color: "var(--vert3)",
+  { 
+    icon: <Target size={32} />, 
+    title: "Engagement", 
+    desc: "Agir avec détermination pour l'amélioration concrète des conditions de vie.",
+    color: "var(--or)"
   },
-  {
-    icon: <SearchCheck size={32} />,
-    title: "Transparence",
-    desc: "Rigueur dans la gestion, clarté dans les rapports et honnêteté dans les partenariats sont au cœur de notre éthique.",
-    color: "#666",
+  { 
+    icon: <Heart size={32} />, 
+    title: "Humanité", 
+    desc: "Placer l'empathie et le soutien aux plus vulnérables au cœur de nos actions.",
+    color: "var(--vert2)"
   },
-  {
-    icon: <Globe size={32} />,
-    title: "Engagement",
-    desc: "Nous agissons au plus près des réalités locales pour produire un impact durable et mesurable dans les communautés.",
-    color: "var(--marine2)",
+  { 
+    icon: <Zap size={32} />, 
+    title: "Innovation", 
+    desc: "Adapter nos méthodes pour répondre efficacement aux défis communautaires.",
+    color: "var(--marine2)"
   },
 ];
 
 export default function ValuesSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+    },
+  };
+
   return (
-    <section id="valeurs" className="section-padding" style={{ background: "var(--gris)" }}>
+    <section id="valeurs" className="section-padding" style={{ background: "var(--gris)", position: "relative" }}>
       <div className="container">
-        <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 4rem" }}>
+        <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto 5rem" }}>
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--marine)", display: "block", marginBottom: "1rem" }}
+            style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or)", display: "block", marginBottom: "1rem" }}
           >
-            Nos Fondements
+            Nos Piliers
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            style={{ fontFamily: "var(--font-playfair)", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "var(--marine)" }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", marginBottom: "1.5rem" }}
           >
-            Les valeurs qui guident chacune de nos <span style={{ fontStyle: "italic", color: "var(--or)" }}>actions</span>
+            Les valeurs qui guident <span style={{ color: "var(--or)" }}>notre mission</span>
           </motion.h2>
-          <div style={{ width: "60px", height: "4px", background: "var(--or)", margin: "1.5rem auto" }} />
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: "80px" }}
+            viewport={{ once: true }}
+            style={{ height: "4px", background: "var(--or)", margin: "0 auto 2rem" }} 
+          />
+          <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.7 }}>
+            L&apos;AFEDIE s&apos;appuie sur des principes fondamentaux qui assurent la cohérence et l&apos;impact de ses interventions sociales et humanitaires.
+          </p>
         </div>
 
-        <div
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: "2rem",
           }}
         >
-          {values.map((value, index) => (
+          {values.map((val, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.7, 
-                delay: index * 0.1,
-                ease: [0.215, 0.61, 0.355, 1] 
-              }}
+              variants={itemVariants}
               whileHover={{ 
-                y: -15,
-                scale: 1.02,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.1)"
+                y: -10,
+                transition: { duration: 0.3 }
               }}
               style={{
                 background: "white",
-                padding: "3rem 2.5rem",
-                borderRadius: "24px",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
-                borderTop: `4px solid ${value.color}`,
-                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                padding: "3rem",
+                borderRadius: "32px",
+                boxShadow: "0 10px 40px rgba(0,0,0,0.03)",
+                border: "1px solid rgba(0,0,0,0.02)",
+                transition: "all 0.4s ease",
+                position: "relative",
+                overflow: "hidden",
               }}
               className="value-card"
             >
-              <div
-                style={{
-                  color: value.color,
-                  marginBottom: "1.5rem",
-                  background: `rgba(0, 0, 0, 0.05)`,
-                  width: "64px",
-                  height: "64px",
-                  borderRadius: "16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {value.icon}
+              {/* Decorative background number */}
+              <span style={{ 
+                position: 'absolute', 
+                top: '20px', 
+                right: '30px', 
+                fontSize: '4rem', 
+                fontWeight: 900, 
+                color: 'rgba(0,0,0,0.03)',
+                zIndex: 0
+              }}>
+                0{index + 1}
+              </span>
+
+              <div style={{ 
+                width: "70px", 
+                height: "70px", 
+                background: `${val.color}10`, 
+                borderRadius: "20px", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                color: val.color,
+                marginBottom: "2rem",
+                position: "relative",
+                zIndex: 1
+              }}>
+                {val.icon}
               </div>
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair)",
-                  fontSize: "1.4rem",
-                  fontWeight: 700,
-                  color: "var(--marine)",
-                  marginBottom: "1rem",
-                }}
-              >
-                {value.title}
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1rem", position: "relative", zIndex: 1 }}>
+                {val.title}
               </h3>
-              <p style={{ fontSize: "0.95rem", color: "#666", lineHeight: 1.7 }}>
-                {value.desc}
+              <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.6, position: "relative", zIndex: 1 }}>
+                {val.desc}
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
+
       <style jsx>{`
-        @media (max-width: 640px) {
-          .value-card {
-            padding: 2rem 1.5rem !important;
-          }
+        .value-card:hover {
+          box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+          border-color: var(--or);
         }
       `}</style>
     </section>

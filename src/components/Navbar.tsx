@@ -1,249 +1,182 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-
-const navLinks = [
-  { name: "À Propos", href: "#apropos" },
-  { name: "Valeurs", href: "#valeurs" },
-  { name: "Activités", href: "#activites" },
-  { name: "Plan 2026", href: "#planaction" },
-  { name: "Gouvernance", href: "#gouvernance" },
-];
+import { Menu, X, Globe, ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
-        scrolled ? "shadow-md py-2" : "py-4"
-      }`}
-      style={{ 
-        background: scrolled ? "rgba(255, 255, 255, 0.98)" : "rgba(255, 255, 255, 0.9)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(0,0,0,0.05)",
-      }}
-      suppressHydrationWarning
-    >
-      <motion.div
-        className="scroll-progress"
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          height: "2px",
-          background: "var(--or)",
-          scaleX,
-          transformOrigin: "0%",
-          zIndex: 1001,
-        }}
-      />
-      <div className="container flex items-center justify-between" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/" className="flex items-center gap-3" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div
-            style={{
-              width: "40px",
-              height: "40px",
-              background: "linear-gradient(135deg, var(--vert), var(--or))",
-              borderRadius: "10px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontFamily: "var(--font-playfair)",
-              fontWeight: 900,
-              fontSize: "16px",
-              color: "white",
-            }}
-          >
-            AF
-          </div>
-          <div>
-            <div
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontSize: "1.1rem",
-                fontWeight: 800,
-                color: "#070F1A",
-                lineHeight: 1.1,
-              }}
-            >
-              AFEDIE
-            </div>
-            <span
-              style={{
-                fontSize: "0.5rem",
-                fontWeight: 600,
-                color: "rgba(0,0,0,0.5)",
-                letterSpacing: "1.5px",
-                textTransform: "uppercase",
-                display: "block",
-              }}
-            >
-              Dignité · Excellence
-            </span>
-          </div>
-        </Link>
+  const navLinks = [
+    { name: "Accueil", href: "#accueil" },
+    { name: "À Propos", href: "#apropos" },
+    { name: "Valeurs", href: "#valeurs" },
+    { name: "Activités", href: "#activites" },
+    { name: "Plan 2026", href: "#plan2026" },
+  ];
 
-        {/* Desktop Menu */}
-        <ul style={{ display: "flex", gap: "8px", listStyle: "none", alignItems: "center" }} className="desktop-menu">
-          {navLinks.map((link, i) => (
-            <motion.li 
-              key={link.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Link
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          padding: isScrolled ? "15px 0" : "30px 0",
+          background: isScrolled ? "var(--glass-dark)" : "transparent",
+          backdropFilter: isScrolled ? "blur(20px)" : "none",
+          borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.05)" : "none",
+          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div style={{ 
+              width: "45px", 
+              height: "45px", 
+              background: "var(--or)", 
+              borderRadius: "12px", 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              fontSize: "1.2rem",
+              fontWeight: 900,
+              color: "white"
+            }}>
+              A
+            </div>
+            <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: "1.2rem", fontWeight: 800, letterSpacing: "1px", lineHeight: 1 }}>AFEDIE</span>
+              <span style={{ fontSize: "0.6rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", letterSpacing: "2px", textTransform: "uppercase" }}>Dignité & Excellence</span>
+            </div>
+          </Link>
+
+          {/* Desktop Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: "3rem" }} className="desktop-menu">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
                 href={link.href}
-                style={{
-                  padding: "8px 16px",
-                  fontSize: "0.85rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.5px",
-                  textTransform: "none",
-                  color: "#070F1A",
-                  borderRadius: "8px",
-                  transition: "all 0.3s ease"
+                style={{ 
+                  color: "white", 
+                  fontSize: "0.85rem", 
+                  fontWeight: 600, 
+                  textTransform: "uppercase", 
+                  letterSpacing: "1px",
+                  opacity: 0.8,
+                  transition: "var(--transition-ultra)"
                 }}
                 className="nav-link"
               >
                 {link.name}
               </Link>
-            </motion.li>
-          ))}
-          <li style={{ marginLeft: "10px" }}>
+            ))}
             <Link
               href="#contact"
               style={{
-                background: "#070F1A",
+                background: "var(--or)",
                 color: "white",
-                padding: "10px 22px",
-                borderRadius: "50px",
-                fontWeight: 600,
-                fontSize: "0.8rem",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                padding: "12px 28px",
+                borderRadius: "10px",
+                fontSize: "0.85rem",
+                fontWeight: 700,
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                boxShadow: "var(--shadow-gold)"
               }}
-              className="btn-join"
             >
-              Rejoindre
+              Rejoindre <ArrowUpRight size={16} />
             </Link>
-          </li>
-        </ul>
+          </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          style={{
-            display: "none",
-            background: "none",
-            border: "none",
-            color: "#070F1A",
-            cursor: "pointer",
-          }}
-          className="mobile-toggle"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
+          {/* Mobile Toggle */}
+          <div 
+            style={{ color: "white", cursor: "pointer" }} 
+            className="mobile-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          </div>
+        </div>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {isOpen && (
+        {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              position: "absolute",
-              top: "100%",
-              left: 0,
-              right: 0,
-              background: "white",
-              padding: "1.5rem",
-              borderBottom: "1px solid rgba(0,0,0,0.05)",
-              overflow: "hidden"
+              position: "fixed",
+              inset: 0,
+              background: "var(--marine)",
+              zIndex: 999,
+              display: "flex",
+              flexDirection: "column",
+              padding: "100px 2rem 2rem",
             }}
           >
-            <ul style={{ display: "flex", flexDirection: "column", gap: "1rem", listStyle: "none" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
               {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                      fontSize: "1rem",
-                      fontWeight: 600,
-                      color: "#070F1A",
-                      display: "block",
-                      padding: "8px 0"
-                    }}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-              <li style={{ marginTop: "10px" }}>
                 <Link
-                  href="#contact"
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    display: "block",
-                    textAlign: "center",
-                    background: "#070F1A",
-                    color: "white",
-                    padding: "14px",
-                    borderRadius: "12px",
-                    fontWeight: 700,
-                  }}
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{ color: "white", fontSize: "2rem", fontWeight: 800 }}
                 >
-                  Nous Rejoindre
+                  {link.name}
                 </Link>
-              </li>
-            </ul>
+              ))}
+              <Link
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  background: "var(--or)",
+                  color: "white",
+                  padding: "20px",
+                  borderRadius: "16px",
+                  fontSize: "1.2rem",
+                  fontWeight: 800,
+                  textAlign: "center"
+                }}
+              >
+                Nous contacter
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style jsx>{`
         .nav-link:hover {
+          opacity: 1 !important;
           color: var(--or) !important;
-          background: rgba(0, 0, 0, 0.03);
         }
-        .btn-join:hover {
-          background: var(--or) !important;
-          color: #070F1A !important;
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+        @media (min-width: 1025px) {
+          .mobile-toggle { display: none; }
         }
-        @media (max-width: 900px) {
-          .desktop-menu {
-            display: none !important;
-          }
-          .mobile-toggle {
-            display: block !important;
-          }
+        @media (max-width: 1024px) {
+          .desktop-menu { display: none; }
         }
       `}</style>
-    </nav>
+    </>
   );
 }
