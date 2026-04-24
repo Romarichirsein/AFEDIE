@@ -87,7 +87,7 @@ export default function BackToTop() {
                 strokeWidth="2"
                 fill="none"
               />
-            </motion.div>
+            </svg>
             <ArrowUp size={24} />
           </motion.div>
         )}

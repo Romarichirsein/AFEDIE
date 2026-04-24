@@ -17,7 +17,7 @@ export default function Governance() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     }
   };
 
@@ -29,7 +29,7 @@ export default function Governance() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: "easeOut" as const }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
               <div style={{ width: "40px", height: "2px", background: "var(--vert2)" }} />
@@ -44,7 +44,7 @@ export default function Governance() {
               L&apos;AFEDIE est structurée autour d&apos;un Bureau National engagé et d&apos;une organisation décentralisée pour une efficacité maximale sur le terrain.
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div className="gov-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
               {[
                 { icon: <Users size={24} />, title: "Bureau National", desc: "Instance de pilotage stratégique." },
                 { icon: <ShieldCheck size={24} />, title: "Commissions", desc: "Groupes de travail spécialisés." },
@@ -59,6 +59,7 @@ export default function Governance() {
           </motion.div>
 
           <motion.div
+            className="gov-box"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -103,6 +104,14 @@ export default function Governance() {
           .gov-grid {
             grid-template-columns: 1fr !important;
             gap: 4rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .gov-cards {
+            grid-template-columns: 1fr !important;
+          }
+          .gov-box {
+            padding: 2.5rem !important;
           }
         }
       `}</style>

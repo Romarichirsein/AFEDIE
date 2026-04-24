@@ -10,7 +10,7 @@ export default function AboutSection() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     },
   };
 
@@ -126,7 +126,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: "easeOut" as const }}
             style={{ position: "relative" }}
           >
             <div
@@ -199,6 +199,7 @@ export default function AboutSection() {
 
             {/* Float Badge */}
             <motion.div
+              className="floating-badge"
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               style={{
@@ -226,6 +227,13 @@ export default function AboutSection() {
           .about-grid {
             grid-template-columns: 1fr !important;
             gap: 4rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .floating-badge {
+            bottom: -20px !important;
+            right: 20px !important;
+            padding: 1.5rem !important;
           }
         }
       `}</style>

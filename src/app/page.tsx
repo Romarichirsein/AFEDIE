@@ -9,6 +9,7 @@ import LegalSection from "@/components/LegalSection";
 import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <LegalSection />
       <ContactSection />
       <Footer />
+      <WhatsAppButton />
       <BackToTop />
     </main>
   );

@@ -77,10 +77,18 @@ img {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 80px 0;
+    padding: 60px 0;
   }
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
+  }
+}
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 50px 0;
+  }
+  .container {
+    padding: 0 1rem;
   }
 }
 
@@ -154,3 +162,35 @@ img {
 .btn-premium:hover::after {
   left: 100%;
 }
+
+/* ==========================================================================
+   GOOGLE TRANSLATE OVERRIDES
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+.goog-te-gadget {
+  font-family: var(--font-poppins) !important;
+  color: transparent !important;
+  font-size: 0px !important;
+}
+.goog-te-gadget .goog-te-combo {
+  font-family: var(--font-poppins) !important;
+  color: var(--marine) !important;
+  background-color: white !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+.goog-logo-link {
+  display: none !important;
+}
+

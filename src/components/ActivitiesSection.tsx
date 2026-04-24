@@ -58,7 +58,7 @@ export default function ActivitiesSection() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.7, ease: "easeOut" as const }
     },
   };
 
@@ -70,7 +70,7 @@ export default function ActivitiesSection() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: "easeOut" as const }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
               <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
@@ -86,7 +86,7 @@ export default function ActivitiesSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
           >
             <p style={{ fontSize: "1.15rem", color: "#666", lineHeight: 1.8 }}>
               L&apos;AFEDIE déploie ses actions dans des domaines complémentaires qui visent l&apos;autonomisation globale de la femme : de la formation à l&apos;aide humanitaire d&apos;urgence.

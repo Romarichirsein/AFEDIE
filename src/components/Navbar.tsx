@@ -44,7 +44,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, ease: "easeOut" as const }}
         style={{
           position: "fixed",
           top: 0,
@@ -124,6 +124,8 @@ export default function Navbar() {
               ))}
             </div>
 
+            <div id="google_translate_element" style={{ overflow: "hidden", borderRadius: "8px" }}></div>
+            
             <Link
               href="#contact"
               style={{
@@ -171,7 +173,7 @@ export default function Navbar() {
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" as const }}
             style={{
               position: "fixed",
               inset: 0,
