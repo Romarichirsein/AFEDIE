@@ -166,17 +166,36 @@ img {
 /* ==========================================================================
    GOOGLE TRANSLATE OVERRIDES
    ========================================================================== */
-.goog-te-banner-frame.skiptranslate {
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.translation-icons {
   display: none !important;
+  visibility: hidden !important;
 }
-body {
+
+html, body {
   top: 0px !important;
 }
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .goog-te-gadget {
   font-family: var(--font-poppins) !important;
   color: transparent !important;
   font-size: 0px !important;
 }
+
 .goog-te-gadget .goog-te-combo {
   font-family: var(--font-poppins) !important;
   color: var(--marine) !important;
