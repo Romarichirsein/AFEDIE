@@ -3,163 +3,233 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, Globe, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("accueil");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
+      
+      // Update active section based on scroll
+      const sections = ["accueil", "apropos", "valeurs", "activites", "plan2026", "contact"];
+      const current = sections.find(section => {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Accueil", href: "#accueil" },
-    { name: "À Propos", href: "#apropos" },
-    { name: "Valeurs", href: "#valeurs" },
-    { name: "Activités", href: "#activites" },
-    { name: "Plan 2026", href: "#plan2026" },
+    { name: "Accueil", id: "accueil" },
+    { name: "À Propos", id: "apropos" },
+    { name: "Valeurs", id: "valeurs" },
+    { name: "Activités", id: "activites" },
+    { name: "Plan 2026", id: "plan2026" },
   ];
 
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: isScrolled ? "15px 0" : "30px 0",
-          background: isScrolled ? "var(--glass-dark)" : "transparent",
-          backdropFilter: isScrolled ? "blur(20px)" : "none",
-          borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.05)" : "none",
-          transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+          // More space when not scrolled, soft transition
+          padding: isScrolled ? "1.2rem 0" : "2.5rem 0",
+          background: isScrolled ? "var(--glass-dark)" : "rgba(7, 21, 26, 0.2)",
+          backdropFilter: isScrolled ? "blur(20px)" : "blur(5px)",
+          borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0.05)",
+          transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <div style={{ 
-              width: "45px", 
-              height: "45px", 
-              background: "var(--or)", 
-              borderRadius: "12px", 
-              display: "flex", 
-              alignItems: "center", 
-              justifyContent: "center",
-              fontSize: "1.2rem",
-              fontWeight: 900,
-              color: "white"
-            }}>
+          {/* Sophisticated Logo Area */}
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "15px" }} className="logo-group">
+            <motion.div 
+              whileHover={{ rotate: 10, scale: 1.05 }}
+              style={{ 
+                width: "50px", 
+                height: "50px", 
+                background: "linear-gradient(135deg, var(--or), var(--or2))", 
+                borderRadius: "14px", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                fontSize: "1.4rem",
+                fontWeight: 900,
+                color: "white",
+                boxShadow: "0 10px 20px rgba(184, 134, 11, 0.3)"
+              }}
+            >
               A
-            </div>
+            </motion.div>
             <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: "1.2rem", fontWeight: 800, letterSpacing: "1px", lineHeight: 1 }}>AFEDIE</span>
-              <span style={{ fontSize: "0.6rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", letterSpacing: "2px", textTransform: "uppercase" }}>Dignité & Excellence</span>
+              <span style={{ fontSize: "1.4rem", fontWeight: 900, letterSpacing: "2px", lineHeight: 1 }}>AFEDIE</span>
+              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--or2)", letterSpacing: "3px", textTransform: "uppercase", marginTop: "4px" }}>Dignité & Excellence</span>
             </div>
           </Link>
 
-          {/* Desktop Menu */}
-          <div style={{ display: "flex", alignItems: "center", gap: "3rem" }} className="desktop-menu">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                style={{ 
-                  color: "white", 
-                  fontSize: "0.85rem", 
-                  fontWeight: 600, 
-                  textTransform: "uppercase", 
-                  letterSpacing: "1px",
-                  opacity: 0.8,
-                  transition: "var(--transition-ultra)"
-                }}
-                className="nav-link"
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Ultra Professional Desktop Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: "3.5rem" }} className="desktop-menu">
+            <div style={{ display: "flex", gap: "2.5rem" }}>
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.id} 
+                  href={`#${link.id}`}
+                  style={{ 
+                    color: activeSection === link.id ? "var(--or2)" : "white", 
+                    fontSize: "0.85rem", 
+                    fontWeight: 700, 
+                    textTransform: "uppercase", 
+                    letterSpacing: "1.5px",
+                    opacity: activeSection === link.id ? 1 : 0.6,
+                    position: "relative",
+                    transition: "all 0.4s ease"
+                  }}
+                  className="nav-link"
+                >
+                  {link.name}
+                  {activeSection === link.id && (
+                    <motion.div 
+                      layoutId="nav-underline"
+                      style={{ 
+                        position: "absolute", 
+                        bottom: "-8px", 
+                        left: "0", 
+                        width: "100%", 
+                        height: "2px", 
+                        background: "var(--or2)",
+                        borderRadius: "2px"
+                      }} 
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
+
             <Link
               href="#contact"
               style={{
                 background: "var(--or)",
                 color: "white",
-                padding: "12px 28px",
-                borderRadius: "10px",
-                fontSize: "0.85rem",
-                fontWeight: 700,
+                padding: "16px 32px",
+                borderRadius: "14px",
+                fontSize: "0.9rem",
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
-                gap: "8px",
-                boxShadow: "var(--shadow-gold)"
+                gap: "10px",
+                boxShadow: "var(--shadow-gold)",
+                transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
               }}
+              className="nav-cta"
             >
-              Rejoindre <ArrowUpRight size={16} />
+              Nous Rejoindre <ArrowUpRight size={18} />
             </Link>
           </div>
 
           {/* Mobile Toggle */}
-          <div 
-            style={{ color: "white", cursor: "pointer" }} 
+          <motion.div 
+            whileTap={{ scale: 0.9 }}
+            style={{ 
+              color: "white", 
+              cursor: "pointer",
+              background: "rgba(255,255,255,0.05)",
+              padding: "10px",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.1)"
+            }} 
             className="mobile-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={30} /> : <Menu size={30} />}
-          </div>
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </motion.div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Ultra Sleek Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: "fixed",
               inset: 0,
-              background: "var(--marine)",
+              background: "var(--glass-dark)",
+              backdropFilter: "blur(40px)",
               zIndex: 999,
               display: "flex",
               flexDirection: "column",
-              padding: "100px 2rem 2rem",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "2rem",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  style={{ color: "white", fontSize: "2rem", fontWeight: 800 }}
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem", textAlign: "center" }}>
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    href={`#${link.id}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    style={{ 
+                      color: activeSection === link.id ? "var(--or2)" : "white", 
+                      fontSize: "2.5rem", 
+                      fontWeight: 800,
+                      letterSpacing: "-1px"
+                    }}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
-              <Link
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                style={{
-                  background: "var(--or)",
-                  color: "white",
-                  padding: "20px",
-                  borderRadius: "16px",
-                  fontSize: "1.2rem",
-                  fontWeight: 800,
-                  textAlign: "center"
-                }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
               >
-                Nous contacter
-              </Link>
+                <Link
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    background: "var(--or)",
+                    color: "white",
+                    padding: "20px 50px",
+                    borderRadius: "20px",
+                    fontSize: "1.2rem",
+                    fontWeight: 800,
+                    display: "inline-block",
+                    marginTop: "2rem",
+                    boxShadow: "var(--shadow-gold)"
+                  }}
+                >
+                  Contactez-nous
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -168,7 +238,12 @@ export default function Navbar() {
       <style jsx>{`
         .nav-link:hover {
           opacity: 1 !important;
-          color: var(--or) !important;
+          color: var(--or2) !important;
+        }
+        .nav-cta:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(184, 134, 11, 0.4);
+          background: var(--or2) !important;
         }
         @media (min-width: 1025px) {
           .mobile-toggle { display: none; }
