@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -22,9 +22,9 @@ export default function Footer() {
               Unir, élever et autonomiser les femmes à travers la solidarité et l&apos;engagement humanitaire au Cameroun.
             </p>
             <div style={{ display: "flex", gap: "1.5rem" }}>
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <Link key={i} href="#" style={{ width: "45px", height: "45px", borderRadius: "50%", background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.3s ease" }} className="social-icon">
-                  <Icon size={18} />
+              {["Facebook", "Twitter", "Instagram", "LinkedIn"].map((platform, i) => (
+                <Link key={i} href="#" style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", transition: "color 0.3s ease" }} className="social-text-link">
+                  {platform}
                 </Link>
               ))}
             </div>
