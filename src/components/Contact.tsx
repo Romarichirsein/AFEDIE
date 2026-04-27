@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {

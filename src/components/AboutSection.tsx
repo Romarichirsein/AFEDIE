@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Quote, Award, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutSection() {

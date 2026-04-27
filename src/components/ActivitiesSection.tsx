@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { GraduationCap, Stethoscope, BookOpen, UserPlus, HeartHandshake, Award, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Calendar, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Plan2026() {

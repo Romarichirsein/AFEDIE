@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Shield, Star, Users, Target, Heart, Zap } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const icons = [
