@@ -53,7 +53,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: isScrolled ? "0.6rem 0" : "1rem 0",
+          padding: isScrolled ? "0.4rem 0" : "0.6rem 0",
           background: isScrolled ? "var(--glass-dark)" : "rgba(7, 21, 26, 0.4)",
           backdropFilter: isScrolled ? "blur(20px)" : "blur(5px)",
           borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0.05)",
@@ -62,12 +62,11 @@ export default function Navbar() {
       >
         <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           {/* Sophisticated Logo Area */}
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px" }} className="logo-group">
+          <Link href="/" style={{ display: "flex", alignItems: "center" }} className="logo-group">
             <motion.div 
-              whileHover={{ rotate: 10, scale: 1.05 }}
+              whileHover={{ scale: 1.05 }}
               className="logo-box"
               style={{ 
-                borderRadius: "10px", 
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
@@ -76,10 +75,6 @@ export default function Navbar() {
             >
               <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </motion.div>
-            <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
-              <span className="logo-text">AFEDIE</span>
-              <span className="logo-subtext">Dignité & Excellence</span>
-            </div>
           </Link>
 
           {/* Ultra Professional Desktop Menu */}
@@ -314,9 +309,7 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style jsx>{`
-        .logo-box { width: 40px; height: 40px; font-size: 1.2rem; }
-        .logo-text { font-size: 1.2rem; font-weight: 900; letter-spacing: 1.5px; line-height: 1; }
-        .logo-subtext { font-size: 0.55rem; font-weight: 700; color: var(--or2); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+        .logo-box { width: 45px; height: 45px; }
         
         .nav-link:hover {
           opacity: 1 !important;
@@ -334,9 +327,7 @@ export default function Navbar() {
           .desktop-menu { display: none; }
         }
         @media (max-width: 640px) {
-          .logo-text { font-size: 1rem; }
-          .logo-subtext { font-size: 0.45rem; letter-spacing: 1px; }
-          .logo-box { width: 35px; height: 35px; font-size: 1rem; }
+          .logo-box { width: 38px; height: 38px; }
         }
       `}</style>
     </>
