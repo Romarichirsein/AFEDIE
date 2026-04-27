@@ -1,19 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, ChevronRight, CheckCircle2 } from "lucide-react";
-
-const planItems = [
-  { date: "Février 2026", title: "AGO & Élections", desc: "Assemblée Générale Ordinaire et renouvellement des membres du Bureau National." },
-  { date: "Mai 2026", title: "Cérémonie de l'Excellence", desc: "Remise des prix aux meilleures élèves et femmes leaders de la communauté." },
-  { date: "Juin 2026", title: "Séminaire de Formation", desc: "Renforcement des capacités en gestion de projets et leadership féminin." },
-  { date: "Septembre 2026", title: "Rentrée Solidaire", desc: "Distribution de kits scolaires et bourses d'études pour les orphelins." },
-  { date: "Octobre 2026", title: "Caravane Santé", desc: "Campagne de dépistage gratuit et sensibilisation sur l'hygiène maternelle." },
-  { date: "Novembre 2026", title: "Foire de l'Autonomisation", desc: "Exposition-vente des produits artisanaux et agricoles des membres." },
-  { date: "Décembre 2026", title: "Arbre de Noël", desc: "Célébration annuelle et distribution de cadeaux aux enfants démunis." },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Plan2026() {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,7 +36,7 @@ export default function Plan2026() {
             viewport={{ once: true }}
             style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or2)", display: "block", marginBottom: "1rem" }}
           >
-            Prospective
+            {t("plan2026.badge")}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -53,10 +44,12 @@ export default function Plan2026() {
             viewport={{ once: true }}
             style={{ fontSize: "clamp(2.5rem, 4vw, 3.5rem)", fontWeight: 800, marginBottom: "1.5rem" }}
           >
-            Plan d&apos;Action <span style={{ color: "var(--or2)" }}>2026</span>
+            {t("plan2026.title").includes("2026") ? (
+              <>{t("plan2026.title").split("2026")[0]}<span style={{ color: "var(--or2)" }}>2026</span></>
+            ) : t("plan2026.title")}
           </motion.h2>
           <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
-            Une feuille de route ambitieuse pour intensifier notre impact et élargir notre réseau de solidarité au Cameroun.
+            {t("plan2026.subtitle")}
           </p>
         </div>
 
@@ -71,7 +64,7 @@ export default function Plan2026() {
             gap: "1.5rem",
           }}
         >
-          {planItems.map((item, index) => (
+          {t("plan2026.items").map((item: { date: string; title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -98,7 +91,7 @@ export default function Plan2026() {
                 {item.desc}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.8rem", color: "var(--or2)", fontWeight: 600 }}>
-                <CheckCircle2 size={16} /> Action Prioritaire
+                <CheckCircle2 size={16} /> {t("plan2026.priorityAction")}
               </div>
             </motion.div>
           ))}

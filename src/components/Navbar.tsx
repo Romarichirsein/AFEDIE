@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
+  const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("accueil");
@@ -32,11 +34,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Accueil", id: "accueil" },
-    { name: "À Propos", id: "apropos" },
-    { name: "Valeurs", id: "valeurs" },
-    { name: "Activités", id: "activites" },
-    { name: "Plan 2026", id: "plan2026" },
+    { name: t("nav.home"), id: "accueil" },
+    { name: t("nav.about"), id: "apropos" },
+    { name: t("nav.values"), id: "valeurs" },
+    { name: t("nav.activities"), id: "activites" },
+    { name: t("nav.plan"), id: "plan2026" },
   ];
 
   return (
@@ -65,17 +67,14 @@ export default function Navbar() {
               whileHover={{ rotate: 10, scale: 1.05 }}
               className="logo-box"
               style={{ 
-                background: "linear-gradient(135deg, var(--or), var(--or2))", 
                 borderRadius: "10px", 
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
-                fontWeight: 900,
-                color: "white",
-                boxShadow: "0 8px 16px rgba(184, 134, 11, 0.3)"
+                overflow: "hidden"
               }}
             >
-              A
+              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </motion.div>
             <div style={{ color: "white", display: "flex", flexDirection: "column" }}>
               <span className="logo-text">AFEDIE</span>
@@ -121,7 +120,41 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div id="google_translate_element" style={{ overflow: "hidden", borderRadius: "8px", transform: "scale(0.85)" }}></div>
+            {/* Professional Language Switcher */}
+            <div style={{ display: "flex", alignItems: "center", gap: "5px", background: "rgba(255,255,255,0.05)", padding: "4px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <button 
+                onClick={() => setLanguage("fr")}
+                style={{ 
+                  padding: "4px 8px", 
+                  borderRadius: "6px", 
+                  fontSize: "0.7rem", 
+                  fontWeight: 800, 
+                  background: language === "fr" ? "var(--or)" : "transparent",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "0.3s"
+                }}
+              >
+                FR
+              </button>
+              <button 
+                onClick={() => setLanguage("en")}
+                style={{ 
+                  padding: "4px 8px", 
+                  borderRadius: "6px", 
+                  fontSize: "0.7rem", 
+                  fontWeight: 800, 
+                  background: language === "en" ? "var(--or)" : "transparent",
+                  color: "white",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "0.3s"
+                }}
+              >
+                EN
+              </button>
+            </div>
             
             <Link
               href="#contact"
@@ -140,7 +173,7 @@ export default function Navbar() {
               }}
               className="nav-cta"
             >
-              Rejoindre <ArrowUpRight size={14} />
+              {t("nav.join")} <ArrowUpRight size={14} />
             </Link>
           </div>
 
@@ -206,11 +239,57 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+              {/* Mobile Language Switcher */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                style={{ 
+                  display: "flex", 
+                  justifyContent: "center", 
+                  gap: "10px", 
+                  background: "rgba(255,255,255,0.05)", 
+                  padding: "6px", 
+                  borderRadius: "10px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  margin: "1rem auto"
+                }}
+              >
+                <button 
+                  onClick={() => { setLanguage("fr"); setIsMobileMenuOpen(false); }}
+                  style={{ 
+                    padding: "8px 15px", 
+                    borderRadius: "8px", 
+                    fontSize: "0.8rem", 
+                    fontWeight: 800, 
+                    background: language === "fr" ? "var(--or)" : "transparent",
+                    color: "white",
+                    border: "none"
+                  }}
+                >
+                  FRANÇAIS
+                </button>
+                <button 
+                  onClick={() => { setLanguage("en"); setIsMobileMenuOpen(false); }}
+                  style={{ 
+                    padding: "8px 15px", 
+                    borderRadius: "8px", 
+                    fontSize: "0.8rem", 
+                    fontWeight: 800, 
+                    background: language === "en" ? "var(--or)" : "transparent",
+                    color: "white",
+                    border: "none"
+                  }}
+                >
+                  ENGLISH
+                </button>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                style={{ marginTop: "1rem" }}
+                style={{ marginTop: "0.5rem" }}
               >
                 <Link
                   href="#contact"

@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Quote, Award, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutSection() {
+  const { t } = useLanguage();
   const revealVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
@@ -46,7 +47,7 @@ export default function AboutSection() {
                   color: "var(--or)",
                 }}
               >
-                Notre Histoire
+                {t("about.badge")}
               </span>
             </div>
             
@@ -59,7 +60,11 @@ export default function AboutSection() {
                 marginBottom: "2rem",
               }}
             >
-              Une association au service de la <span style={{ color: "var(--vert2)" }}>femme camerounaise</span>
+              {t("about.title").includes("femme camerounaise") ? (
+                <>{t("about.title").split("femme camerounaise")[0]}<span style={{ color: "var(--vert2)" }}>femme camerounaise</span></>
+              ) : t("about.title").includes("Cameroonian women") ? (
+                <>{t("about.title").split("Cameroonian women")[0]}<span style={{ color: "var(--vert2)" }}>Cameroonian women</span></>
+              ) : t("about.title")}
             </h2>
             
             <p
@@ -71,9 +76,7 @@ export default function AboutSection() {
                 fontWeight: 400,
               }}
             >
-              L&apos;AFEDIE — Association des Femmes de la Dignité et de l&apos;Excellence — est une organisation
-              à but non lucratif enregistrée au Cameroun, fondée en 2020 par
-              <strong> Mme Ida Sandrine NGNOTUE FOTSO</strong>.
+              {t("about.desc1")}
             </p>
             
             <p
@@ -84,9 +87,7 @@ export default function AboutSection() {
                 marginBottom: "3rem",
               }}
             >
-              Héritière de la vision de feue Mme Marie Souzane GAMGNE — &quot;la Visionnaire&quot; —
-              fondatrice de l&apos;AMICA en 1998, l&apos;AFEDIE perpétue un idéal de dignité et d&apos;excellence 
-              pour l&apos;autonomisation durable des femmes.
+              {t("about.desc2")}
             </p>
 
             <div
@@ -110,13 +111,12 @@ export default function AboutSection() {
                   fontWeight: 500,
                 }}
               >
-                « Notre engagement va au-delà des mots : nous agissons pour que chaque femme
-                accède à la dignité qu&apos;elle mérite et à l&apos;excellence qu&apos;elle peut atteindre. »
+                {t("about.quote")}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <div style={{ width: "30px", height: "1px", background: "var(--or)" }} />
                 <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--or)", textTransform: "uppercase" }}>
-                  Mme Ida Sandrine NGNOTUE FOTSO
+                  {t("about.quoteAuthor")}
                 </span>
               </div>
             </div>
@@ -144,25 +144,21 @@ export default function AboutSection() {
               <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(184, 134, 11, 0.1)' }} />
               
               <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--or2)", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "1rem" }}>
-                Certifications & Statuts
+                {t("about.certTitle")}
               </div>
               <h3 style={{ fontSize: "2.5rem", fontWeight: 800, color: "white", marginBottom: "2rem" }}>AFEDIE</h3>
               
               <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "3rem" }}>
-                {[
-                  { icon: <Award size={18} />, text: "N° 00001396/RDA/J06/SAAJP/BAPP" },
-                  { icon: <CheckCircle2 size={18} />, text: "Association à but non lucratif" },
-                  { icon: <CheckCircle2 size={18} />, text: "Gouvernance Transparente" },
-                ].map((item, i) => (
+                {t("about.certItems").map((item: string, i: number) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.8)", fontSize: "0.95rem" }}>
-                    <div style={{ color: "var(--or2)" }}>{item.icon}</div>
-                    {item.text}
+                    <div style={{ color: "var(--or2)" }}>{i === 0 ? <Award size={18} /> : <CheckCircle2 size={18} />}</div>
+                    {item}
                   </div>
                 ))}
               </div>
 
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-                {["Solidarité", "Humanitaire", "Excellence"].map((tag) => (
+                {t("about.tags").map((tag: string) => (
                   <span
                     key={tag}
                     style={{
@@ -187,7 +183,7 @@ export default function AboutSection() {
                   </div>
                   <div>
                     <p style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "var(--or2)", marginBottom: "0.3rem" }}>
-                      Présidente Fondatrice
+                      {t("about.founderRole")}
                     </p>
                     <p style={{ fontSize: "1.2rem", fontWeight: 700, color: "white" }}>
                       Ida Sandrine NGNOTUE FOTSO
@@ -216,7 +212,7 @@ export default function AboutSection() {
               }}
             >
               <span style={{ display: "block", fontSize: "2.2rem", fontWeight: 900, color: "var(--marine)", lineHeight: 1 }}>2020</span>
-              <span style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", color: "#888", letterSpacing: "2px" }}>Depuis</span>
+              <span style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", color: "#888", letterSpacing: "2px" }}>{t("about.since")}</span>
             </motion.div>
           </motion.div>
         </div>

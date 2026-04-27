@@ -3,8 +3,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -101,7 +103,7 @@ export default function HeroSection() {
           }}
         >
           <Sparkles size={14} />
-          Fondée en 2020 · Yaoundé, Cameroun
+          {t("hero.badge")}
         </motion.div>
 
         <motion.h1
@@ -115,15 +117,19 @@ export default function HeroSection() {
             maxWidth: "1000px",
           }}
         >
-          Association des Femmes <br />
+          {t("hero.title1")} <br />
           <span style={{ 
             color: "var(--or2)", 
             display: "inline-block",
             position: "relative"
           }}>
-            de la Dignité
+            {t("hero.title2")}
           </span> <br />
-          et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span>
+          {t("hero.title3").includes("et de l'") ? (
+            <>et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span></>
+          ) : (
+            <>{t("hero.title3").split("Excellence")[0]}<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span></>
+          )}
         </motion.h1>
 
         <motion.p
@@ -137,7 +143,7 @@ export default function HeroSection() {
             lineHeight: 1.6,
           }}
         >
-          Unir, élever et autonomiser les femmes à travers la solidarité, l&apos;engagement humanitaire et le développement communautaire.
+          {t("hero.subtitle")}
         </motion.p>
 
         <motion.div
@@ -160,7 +166,7 @@ export default function HeroSection() {
               gap: "12px",
             }}
           >
-            Découvrir nos Actions <ArrowRight size={20} />
+            {t("hero.cta_primary")} <ArrowRight size={20} />
           </Link>
           <Link
             href="#contact"
@@ -176,7 +182,7 @@ export default function HeroSection() {
               border: "1px solid rgba(255, 255, 255, 0.15)",
             }}
           >
-            Rejoindre l&apos;AFEDIE
+            {t("hero.cta_secondary")}
           </Link>
         </motion.div>
       </motion.div>
@@ -197,9 +203,9 @@ export default function HeroSection() {
       >
         <div className="container" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
           {[
-            { num: "2020", label: "Année de fondation", icon: <Sparkles size={20} /> },
-            { num: "7", label: "Actions prévues 2026", icon: <Shield size={20} /> },
-            { num: "Ydé", label: "Basée à Yaoundé", icon: <Heart size={20} /> },
+            { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={20} /> },
+            { num: "7", label: t("hero.stats.actions"), icon: <Shield size={20} /> },
+            { num: "Ydé", label: t("hero.stats.location"), icon: <Heart size={20} /> },
           ].map((stat, i) => (
             <div key={i} style={{ textAlign: "center" }}>
               <div style={{ color: "var(--or2)", marginBottom: "0.5rem", display: "flex", justifyContent: "center" }}>{stat.icon}</div>

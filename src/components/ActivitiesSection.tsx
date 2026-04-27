@@ -1,48 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Stethoscope, BookOpen, UserPlus, HeartHandshake, Award, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-const activities = [
-  {
-    icon: <GraduationCap size={32} />,
-    title: "Autonomisation & Formation",
-    desc: "Programmes de formation professionnelle et de renforcement des capacités pour permettre aux femmes de développer leurs activités.",
-    color: "var(--or)"
-  },
-  {
-    icon: <Stethoscope size={32} />,
-    title: "Actions Humanitaires",
-    desc: "Caravanes humanitaires, consultations médicales gratuites et distribution de kits aux populations vulnérables.",
-    color: "var(--vert2)"
-  },
-  {
-    icon: <BookOpen size={32} />,
-    title: "Soutien Scolaire",
-    desc: "Remise de prix d'excellence, soutien aux jeunes filles méritantes et accompagnement éducatif ciblé.",
-    color: "var(--marine2)"
-  },
-  {
-    icon: <UserPlus size={32} />,
-    title: "Accompagnement des Aînées",
-    desc: "Soutien aux femmes âgées pour l'accès aux soins, notamment via le dispositif LAFTA (Lutte contre les Affections liées au Temps).",
-    color: "var(--or)"
-  },
-  {
-    icon: <HeartHandshake size={32} />,
-    title: "Solidarité & Entraide",
-    desc: "Fonds de solidarité interne et mobilisation communautaire lors d'événements marquants pour nos membres.",
-    color: "var(--vert2)"
-  },
-  {
-    icon: <Award size={32} />,
-    title: "Cérémonie de l'Excellence",
-    desc: "Valorisation des parcours exemplaires de femmes et de jeunes filles à travers des distinctions annuelles prestigieuses.",
-    color: "var(--marine2)"
-  },
+const icons = [
+  <GraduationCap size={32} key="grad" />,
+  <Stethoscope size={32} key="steth" />,
+  <BookOpen size={32} key="book" />,
+  <UserPlus size={32} key="user" />,
+  <HeartHandshake size={32} key="heart" />,
+  <Award size={32} key="award" />
+];
+
+const colors = [
+  "var(--or)",
+  "var(--vert2)",
+  "var(--marine2)",
+  "var(--or)",
+  "var(--vert2)",
+  "var(--marine2)"
 ];
 
 export default function ActivitiesSection() {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -75,11 +55,15 @@ export default function ActivitiesSection() {
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
               <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
               <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--or)" }}>
-                Nos Domaines d&apos;Action
+                {t("activities.badge")}
               </span>
             </div>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1 }}>
-              Ce que nous <span style={{ color: "var(--vert2)" }}>faisons</span> concrètement
+              {t("activities.title").includes("faisons") ? (
+                <>{t("activities.title").split("faisons")[0]}<span style={{ color: "var(--vert2)" }}>faisons</span> concrètement</>
+              ) : t("activities.title").includes("do") ? (
+                <>{t("activities.title").split("do")[0]}<span style={{ color: "var(--vert2)" }}>do</span> concretely</>
+              ) : t("activities.title")}
             </h2>
           </motion.div>
           <motion.div
@@ -89,7 +73,7 @@ export default function ActivitiesSection() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
           >
             <p style={{ fontSize: "1.15rem", color: "#666", lineHeight: 1.8 }}>
-              L&apos;AFEDIE déploie ses actions dans des domaines complémentaires qui visent l&apos;autonomisation globale de la femme : de la formation à l&apos;aide humanitaire d&apos;urgence.
+              {t("activities.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -105,7 +89,7 @@ export default function ActivitiesSection() {
             gap: "2.5rem",
           }}
         >
-          {activities.map((act, index) => (
+          {t("activities.items").map((act: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -131,11 +115,11 @@ export default function ActivitiesSection() {
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center", 
-                color: act.color,
+                color: colors[index % colors.length],
                 marginBottom: "2rem",
                 boxShadow: "0 10px 25px rgba(0,0,0,0.05)"
               }}>
-                {act.icon}
+                {icons[index % icons.length]}
               </div>
               <h3 style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1.2rem" }}>
                 {act.title}
@@ -143,8 +127,8 @@ export default function ActivitiesSection() {
               <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.7, marginBottom: "2.5rem" }}>
                 {act.desc}
               </p>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", color: act.color, fontWeight: 700, fontSize: "0.95rem", cursor: "pointer" }}>
-                En savoir plus <ArrowRight size={20} />
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", color: colors[index % colors.length], fontWeight: 700, fontSize: "0.95rem", cursor: "pointer" }}>
+                {t("activities.more")} <ArrowRight size={20} />
               </div>
             </motion.div>
           ))}

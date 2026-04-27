@@ -1,48 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Target, Users, Zap, Heart, Star } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-const values = [
-  { 
-    icon: <Shield size={32} />, 
-    title: "Dignité", 
-    desc: "Restaurer l'estime de soi et le respect de chaque femme dans son environnement.",
-    color: "var(--or)"
-  },
-  { 
-    icon: <Star size={32} />, 
-    title: "Excellence", 
-    desc: "Viser la qualité et la performance dans toutes nos initiatives et réalisations.",
-    color: "var(--vert2)"
-  },
-  { 
-    icon: <Users size={32} />, 
-    title: "Solidarité", 
-    desc: "Développer une entraide authentique et durable entre les membres de la communauté.",
-    color: "var(--marine2)"
-  },
-  { 
-    icon: <Target size={32} />, 
-    title: "Engagement", 
-    desc: "Agir avec détermination pour l'amélioration concrète des conditions de vie.",
-    color: "var(--or)"
-  },
-  { 
-    icon: <Heart size={32} />, 
-    title: "Humanité", 
-    desc: "Placer l'empathie et le soutien aux plus vulnérables au cœur de nos actions.",
-    color: "var(--vert2)"
-  },
-  { 
-    icon: <Zap size={32} />, 
-    title: "Innovation", 
-    desc: "Adapter nos méthodes pour répondre efficacement aux défis communautaires.",
-    color: "var(--marine2)"
-  },
+const icons = [
+  <Shield size={32} key="shield" />, 
+  <Star size={32} key="star" />, 
+  <Users size={32} key="users" />, 
+  <Target size={32} key="target" />, 
+  <Heart size={32} key="heart" />, 
+  <Zap size={32} key="zap" />
+];
+
+const colors = [
+  "var(--or)",
+  "var(--vert2)",
+  "var(--marine2)",
+  "var(--or)",
+  "var(--vert2)",
+  "var(--marine2)"
 ];
 
 export default function ValuesSection() {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +52,7 @@ export default function ValuesSection() {
             viewport={{ once: true }}
             style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or)", display: "block", marginBottom: "1rem" }}
           >
-            Nos Piliers
+            {t("values.badge")}
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +60,11 @@ export default function ValuesSection() {
             viewport={{ once: true }}
             style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", marginBottom: "1.5rem" }}
           >
-            Les valeurs qui guident <span style={{ color: "var(--or)" }}>notre mission</span>
+            {t("values.title").includes("notre mission") ? (
+              <>{t("values.title").split("notre mission")[0]}<span style={{ color: "var(--or)" }}>notre mission</span></>
+            ) : t("values.title").includes("our mission") ? (
+              <>{t("values.title").split("our mission")[0]}<span style={{ color: "var(--or)" }}>our mission</span></>
+            ) : t("values.title")}
           </motion.h2>
           <motion.div 
             initial={{ width: 0 }}
@@ -89,7 +73,7 @@ export default function ValuesSection() {
             style={{ height: "4px", background: "var(--or)", margin: "0 auto 2rem" }} 
           />
           <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.7 }}>
-            L&apos;AFEDIE s&apos;appuie sur des principes fondamentaux qui assurent la cohérence et l&apos;impact de ses interventions sociales et humanitaires.
+            {t("values.subtitle")}
           </p>
         </div>
 
@@ -104,7 +88,7 @@ export default function ValuesSection() {
             gap: "2rem",
           }}
         >
-          {values.map((val, index) => (
+          {t("values.items").map((val: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -140,17 +124,17 @@ export default function ValuesSection() {
               <div style={{ 
                 width: "70px", 
                 height: "70px", 
-                background: `${val.color}10`, 
+                background: `${colors[index % colors.length]}10`, 
                 borderRadius: "20px", 
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center", 
-                color: val.color,
+                color: colors[index % colors.length],
                 marginBottom: "2rem",
                 position: "relative",
                 zIndex: 1
               }}>
-                {val.icon}
+                {icons[index % icons.length]}
               </div>
               <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1rem", position: "relative", zIndex: 1 }}>
                 {val.title}

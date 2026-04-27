@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, ArrowUp } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -15,11 +17,13 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.5fr 0.8fr 0.8fr 1.2fr", gap: "6rem", marginBottom: "8rem" }} className="footer-grid">
           <div>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2.5rem" }}>
-              <div style={{ width: "40px", height: "40px", background: "var(--or)", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 900 }}>A</div>
+              <div style={{ width: "40px", height: "40px", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              </div>
               <span style={{ fontSize: "1.5rem", fontWeight: 800, letterSpacing: "1px" }}>AFEDIE</span>
             </Link>
             <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginBottom: "2.5rem", maxWidth: "350px" }}>
-              Unir, élever et autonomiser les femmes à travers la solidarité et l&apos;engagement humanitaire au Cameroun.
+              {t("footer.description")}
             </p>
             <div style={{ display: "flex", gap: "1.5rem" }}>
               {["Facebook", "Twitter", "Instagram", "LinkedIn"].map((platform, i) => (
@@ -31,16 +35,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>Navigation</h4>
+            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>{t("footer.nav")}</h4>
             <ul style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
-              {["Accueil", "À Propos", "Valeurs", "Activités"].map((item) => (
-                <li key={item}><Link href={`#${item.toLowerCase().replace(" ", "")}`} style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.95rem", transition: "0.3s" }} className="footer-link">{item}</Link></li>
+              {[t("nav.home"), t("nav.about"), t("nav.values"), t("nav.activities")].map((item, i) => (
+                <li key={i}><Link href="#" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.95rem", transition: "0.3s" }} className="footer-link">{item}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>Légal</h4>
+            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>{t("footer.legal")}</h4>
             <ul style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
               {["Confidentialité", "Conditions", "Statuts", "Contact"].map((item) => (
                 <li key={item}><Link href="#" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.95rem", transition: "0.3s" }} className="footer-link">{item}</Link></li>
@@ -49,8 +53,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>Newsletter</h4>
-            <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>Restez informée de nos prochaines actions humanitaires.</p>
+            <h4 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "2rem", color: "white" }}>{t("footer.newsletter")}</h4>
+            <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", marginBottom: "1.5rem" }}>{t("footer.newsletter_desc")}</p>
             <div style={{ position: "relative" }}>
               <input 
                 type="email" 
@@ -66,10 +70,10 @@ export default function Footer() {
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
           <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>
-            © 2026 AFEDIE. Tous droits réservés. Powered by <span style={{ color: "var(--or2)", fontWeight: 700 }}>wellborne</span>.
+            © 2026 AFEDIE. {t("footer.rights")} Powered by <span style={{ color: "var(--or2)", fontWeight: 700 }}>wellborne</span>.
           </p>
           <div style={{ display: "flex", gap: "3rem" }}>
-            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>Yaoundé, Cameroun</span>
+            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>{t("footer.location")}</span>
             <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>Association N° 00001396</span>
           </div>
         </div>
