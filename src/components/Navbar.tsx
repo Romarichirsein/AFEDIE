@@ -53,7 +53,7 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 1000,
-          padding: isScrolled ? "0.4rem 0" : "0.6rem 0",
+          padding: isScrolled ? "0.3rem 0" : "0.5rem 0",
           background: isScrolled ? "var(--glass-dark)" : "rgba(7, 21, 26, 0.4)",
           backdropFilter: isScrolled ? "blur(20px)" : "blur(5px)",
           borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(255, 255, 255, 0.05)",
@@ -309,7 +309,7 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style jsx>{`
-        .logo-box { width: 45px; height: 45px; }
+        .logo-box { width: 35px; height: 35px; }
         
         .nav-link:hover {
           opacity: 1 !important;

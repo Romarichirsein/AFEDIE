@@ -81,7 +81,7 @@ export default function HeroSection() {
           justifyContent: "center",
           textAlign: "center",
           opacity,
-          paddingTop: "80px", // Pushes content below the fixed header
+          paddingTop: "120px", // Pushes content below the fixed header
         }}
       >
         <motion.div
