@@ -65,15 +65,17 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center" }} className="logo-group">
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="logo-box"
               style={{ 
+                width: "42px",
+                height: "42px",
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
-                overflow: "hidden"
+                overflow: "hidden",
+                flexShrink: 0,
               }}
             >
-              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "42px", height: "42px", objectFit: "contain", display: "block" }} />
             </motion.div>
           </Link>
 
@@ -308,9 +310,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <style jsx>{`
-        .logo-box { width: 35px; height: 35px; }
-        
+      <style>{`
         .nav-link:hover {
           opacity: 1 !important;
           color: var(--or2) !important;
@@ -325,9 +325,6 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) {
           .desktop-menu { display: none; }
-        }
-        @media (max-width: 640px) {
-          .logo-box { width: 38px; height: 38px; }
         }
       `}</style>
     </>
