@@ -69,11 +69,11 @@ export default function Contact() {
             transition={{ duration: 1, ease: "easeOut" as const }}
             style={{ 
               background: "white", 
-              padding: "4rem", 
               borderRadius: "40px", 
               boxShadow: "0 40px 100px rgba(0,0,0,0.06)",
               border: "1px solid rgba(0,0,0,0.03)"
             }}
+            className="contact-form-card"
           >
             <form style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }} className="form-row">
@@ -138,17 +138,29 @@ export default function Contact() {
         </div>
 
         {/* Partners Section */}
-        <div style={{ marginTop: "10rem", textAlign: "center" }}>
+        <div style={{ textAlign: "center" }} className="partners-section">
           <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "3rem" }}>{t("contact.partners")}</p>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5rem", flexWrap: "wrap", opacity: 0.5, filter: "grayscale(100%)" }}>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", opacity: 0.5, filter: "grayscale(100%)" }} className="partners-row">
             {["MINAS", "MINPROFF", "Yaoundé 3e", "UN Women"].map((partner) => (
-              <span key={partner} style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--marine)" }}>{partner}</span>
+              <span key={partner} style={{ fontWeight: 800, color: "var(--marine)" }} className="partner-name">{partner}</span>
             ))}
           </div>
         </div>
       </div>
 
       <style jsx>{`
+        .contact-form-card {
+          padding: 4rem;
+        }
+        .partners-section {
+          margin-top: 10rem;
+        }
+        .partners-row {
+          gap: 5rem;
+        }
+        .partner-name {
+          font-size: 1.5rem;
+        }
         input:focus, textarea:focus {
           border-color: var(--or) !important;
           background: white !important;
@@ -160,9 +172,34 @@ export default function Contact() {
             gap: 4rem !important;
           }
         }
+        @media (max-width: 768px) {
+          .contact-form-card {
+            padding: 2.5rem !important;
+            border-radius: 28px !important;
+          }
+          .partners-section {
+            margin-top: 5rem !important;
+          }
+          .partners-row {
+            gap: 2rem !important;
+          }
+          .partner-name {
+            font-size: 1.1rem !important;
+          }
+        }
         @media (max-width: 640px) {
           .form-row {
             grid-template-columns: 1fr !important;
+          }
+          .contact-form-card {
+            padding: 1.5rem !important;
+            border-radius: 24px !important;
+          }
+          .partners-row {
+            gap: 1.5rem !important;
+          }
+          .partner-name {
+            font-size: 0.95rem !important;
           }
         }
       `}</style>

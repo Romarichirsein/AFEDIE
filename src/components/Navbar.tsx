@@ -65,9 +65,8 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center" }} className="logo-group">
             <motion.div 
               whileHover={{ scale: 1.05 }}
+              className="nav-logo-wrap"
               style={{ 
-                width: "56px",
-                height: "56px",
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
@@ -75,7 +74,7 @@ export default function Navbar() {
                 flexShrink: 0,
               }}
             >
-              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "56px", height: "56px", objectFit: "contain", display: "block" }} />
+              <img src="/images/Logo.png" alt="AFEDIE Logo" className="nav-logo-img" style={{ objectFit: "contain", display: "block" }} />
             </motion.div>
           </Link>
 
@@ -158,9 +157,7 @@ export default function Navbar() {
               style={{
                 background: "var(--or)",
                 color: "white",
-                padding: "10px 20px",
                 borderRadius: "10px",
-                fontSize: "0.8rem",
                 fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
@@ -311,6 +308,18 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style>{`
+        .nav-logo-wrap {
+          width: 60px;
+          height: 60px;
+        }
+        .nav-logo-img {
+          width: 60px;
+          height: 60px;
+        }
+        .nav-cta {
+          padding: 10px 20px;
+          font-size: 0.8rem;
+        }
         .nav-link:hover {
           opacity: 1 !important;
           color: var(--or2) !important;
@@ -325,6 +334,24 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) {
           .desktop-menu { display: none; }
+          .nav-logo-wrap {
+            width: 48px;
+            height: 48px;
+          }
+          .nav-logo-img {
+            width: 48px;
+            height: 48px;
+          }
+        }
+        @media (max-width: 480px) {
+          .nav-logo-wrap {
+            width: 40px;
+            height: 40px;
+          }
+          .nav-logo-img {
+            width: 40px;
+            height: 40px;
+          }
         }
       `}</style>
     </>

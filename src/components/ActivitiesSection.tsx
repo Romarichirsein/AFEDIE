@@ -86,7 +86,7 @@ export default function ActivitiesSection() {
           viewport={{ once: true, margin: "-100px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "2.5rem",
           }}
         >
@@ -146,6 +146,12 @@ export default function ActivitiesSection() {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
             margin-bottom: 4rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .activity-card {
+            padding: 2rem !important;
+            border-radius: 24px !important;
           }
         }
       `}</style>

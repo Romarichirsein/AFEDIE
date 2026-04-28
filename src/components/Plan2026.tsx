@@ -61,7 +61,7 @@ export default function Plan2026() {
           viewport={{ once: true, margin: "-100px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "1.5rem",
           }}
         >
@@ -104,6 +104,12 @@ export default function Plan2026() {
           background: rgba(255, 255, 255, 0.06);
           border-color: var(--or2);
           box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 640px) {
+          .plan-card {
+            padding: 2rem !important;
+            border-radius: 20px !important;
+          }
         }
       `}</style>
     </section>

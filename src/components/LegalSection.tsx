@@ -42,7 +42,7 @@ export default function LegalSection() {
           viewport={{ once: true, margin: "-100px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "2.5rem",
           }}
           className="legal-grid"

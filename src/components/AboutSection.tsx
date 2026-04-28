@@ -232,6 +232,10 @@ export default function AboutSection() {
             right: 20px !important;
             padding: 1.5rem !important;
           }
+          .about-grid > div:last-child > div:first-child {
+            padding: 2rem !important;
+            border-radius: 24px !important;
+          }
         }
       `}</style>
     </section>

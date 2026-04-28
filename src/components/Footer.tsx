@@ -12,7 +12,7 @@ export default function Footer() {
   };
 
   return (
-    <footer style={{ background: "var(--marine)", color: "white", padding: "100px 0 40px", position: "relative" }}>
+    <footer style={{ background: "var(--marine)", color: "white", position: "relative" }} className="site-footer">
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "1.5fr 0.8fr 0.8fr 1.2fr", gap: "6rem", marginBottom: "8rem" }} className="footer-grid">
           <div>
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }}>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "2rem" }} className="footer-bottom">
           <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>
             © 2026 AFEDIE. {t("footer.rights")} Powered by <span style={{ color: "var(--or2)", fontWeight: 700 }}>wellborne</span>.
           </p>
@@ -102,6 +102,9 @@ export default function Footer() {
       </motion.div>
 
       <style jsx>{`
+        .site-footer {
+          padding: 100px 0 40px;
+        }
         .social-icon:hover {
           background: var(--or) !important;
           transform: translateY(-5px);
@@ -116,9 +119,25 @@ export default function Footer() {
             gap: 4rem !important;
           }
         }
+        @media (max-width: 768px) {
+          .site-footer {
+            padding: 60px 0 30px !important;
+          }
+          .footer-grid {
+            margin-bottom: 4rem !important;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+          }
+        }
         @media (max-width: 640px) {
           .footer-grid {
             grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+          }
+          .site-footer {
+            padding: 50px 0 25px !important;
           }
         }
       `}</style>

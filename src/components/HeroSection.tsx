@@ -149,14 +149,14 @@ export default function HeroSection() {
         <motion.div
           variants={itemVariants}
           style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}
+          className="hero-buttons"
         >
           <Link
             href="#activites"
-            className="btn-premium"
+            className="btn-premium hero-btn"
             style={{
               background: "var(--or)",
               color: "white",
-              padding: "20px 45px",
               fontSize: "0.9rem",
               fontWeight: 700,
               borderRadius: "12px",
@@ -170,12 +170,11 @@ export default function HeroSection() {
           </Link>
           <Link
             href="#contact"
-            className="btn-premium"
+            className="btn-premium hero-btn"
             style={{
               background: "rgba(255, 255, 255, 0.05)",
               backdropFilter: "blur(10px)",
               color: "white",
-              padding: "20px 45px",
               fontSize: "0.9rem",
               fontWeight: 600,
               borderRadius: "12px",
@@ -234,6 +233,29 @@ export default function HeroSection() {
           zIndex: 5,
         }}
       />
+
+      <style>{`
+        .hero-btn {
+          padding: 20px 45px;
+        }
+        @media (max-width: 768px) {
+          .hero-btn {
+            padding: 16px 32px;
+            font-size: 0.85rem !important;
+          }
+          .hero-buttons {
+            gap: 1rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-btn {
+            padding: 14px 24px;
+            font-size: 0.8rem !important;
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }
