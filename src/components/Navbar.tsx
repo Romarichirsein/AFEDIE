@@ -66,8 +66,8 @@ export default function Navbar() {
             <motion.div 
               whileHover={{ scale: 1.05 }}
               style={{ 
-                width: "42px",
-                height: "42px",
+                width: "56px",
+                height: "56px",
                 display: "flex", 
                 alignItems: "center", 
                 justifyContent: "center",
@@ -75,7 +75,7 @@ export default function Navbar() {
                 flexShrink: 0,
               }}
             >
-              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "42px", height: "42px", objectFit: "contain", display: "block" }} />
+              <img src="/images/Logo.png" alt="AFEDIE Logo" style={{ width: "56px", height: "56px", objectFit: "contain", display: "block" }} />
             </motion.div>
           </Link>
 
