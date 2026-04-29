@@ -6,6 +6,27 @@ import Link from "next/link";
 import { Menu, X, ArrowUpRight, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
+const MenuIcon4 = ({ isOpen }: { isOpen: boolean }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <motion.rect 
+      animate={isOpen ? { rotate: 45, y: 7, x: 2 } : { rotate: 0, y: 4, x: 2 }}
+      width="20" height="1.5" rx="0.75" fill="currentColor" 
+    />
+    <motion.rect 
+      animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+      width="20" height="1.5" rx="0.75" fill="currentColor" y="9" x="2"
+    />
+    <motion.rect 
+      animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+      width="20" height="1.5" rx="0.75" fill="currentColor" y="14" x="2"
+    />
+    <motion.rect 
+      animate={isOpen ? { rotate: -45, y: -7, x: 2 } : { rotate: 0, y: 19, x: 2 }}
+      width="20" height="1.5" rx="0.75" fill="currentColor" 
+    />
+  </svg>
+);
+
 export default function Navbar() {
   const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -172,140 +193,110 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Toggle */}
-          <motion.div 
-            whileTap={{ scale: 0.9 }}
+            className="mobile-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{ 
               color: "white", 
               cursor: "pointer",
               background: "rgba(255,255,255,0.05)",
               padding: "8px",
               borderRadius: "10px",
-              border: "1px solid rgba(255,255,255,0.1)"
+              border: "1px solid rgba(255,255,255,0.1)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
             }} 
-            className="mobile-toggle"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <MenuIcon4 isOpen={isMobileMenuOpen} />
           </motion.div>
         </div>
       </motion.nav>
 
-      {/* Ultra Sleek Mobile Menu */}
+      {/* Ultra Sleek Mobile Dropdown Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 0.4, ease: "easeOut" as const }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: "fixed",
-              inset: 0,
+              top: isScrolled ? "50px" : "70px", // Adjusted based on scroll state
+              left: 0,
+              right: 0,
               background: "var(--glass-dark)",
-              backdropFilter: "blur(40px)",
+              backdropFilter: "blur(20px)",
               zIndex: 999,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "2rem",
+              overflow: "hidden",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "2rem", textAlign: "center" }}>
-              {navLinks.map((link, i) => (
-                <motion.div
+            <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              {navLinks.map((link) => (
+                <Link
                   key={link.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  href={`#${link.id}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{ 
+                    color: activeSection === link.id ? "var(--or2)" : "white", 
+                    fontSize: "1.1rem", 
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "1px",
+                    display: "block"
+                  }}
                 >
-                  <Link
-                    href={`#${link.id}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    style={{ 
-                      color: activeSection === link.id ? "var(--or2)" : "white", 
-                      fontSize: "1.8rem", 
+                  {link.name}
+                </Link>
+              ))}
+              
+              {/* Integrated Language Switcher */}
+              <div style={{ display: "flex", gap: "10px", marginTop: "0.5rem" }}>
+                {["fr", "en"].map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => { setLanguage(lang as "fr" | "en"); setIsMobileMenuOpen(false); }}
+                    style={{
+                      padding: "8px 16px",
+                      borderRadius: "8px",
+                      background: language === lang ? "var(--or)" : "rgba(255,255,255,0.05)",
+                      color: "white",
                       fontWeight: 800,
-                      letterSpacing: "-0.5px"
+                      fontSize: "0.8rem",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      cursor: "pointer"
                     }}
                   >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-              {/* Mobile Language Switcher */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 }}
-                style={{ 
-                  display: "flex", 
-                  justifyContent: "center", 
-                  gap: "10px", 
-                  background: "rgba(255,255,255,0.05)", 
-                  padding: "6px", 
+                    {lang.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+
+              {/* Primary CTA Button */}
+              <Link
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  background: "var(--or)",
+                  color: "white",
+                  padding: "14px",
                   borderRadius: "10px",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  margin: "1rem auto"
+                  textAlign: "center",
+                  fontWeight: 800,
+                  boxShadow: "var(--shadow-gold)",
+                  marginTop: "0.5rem",
+                  display: "block",
+                  fontSize: "0.9rem"
                 }}
               >
-                <button 
-                  onClick={() => { setLanguage("fr"); setIsMobileMenuOpen(false); }}
-                  style={{ 
-                    padding: "8px 15px", 
-                    borderRadius: "8px", 
-                    fontSize: "0.8rem", 
-                    fontWeight: 800, 
-                    background: language === "fr" ? "var(--or)" : "transparent",
-                    color: "white",
-                    border: "none"
-                  }}
-                >
-                  FRANÇAIS
-                </button>
-                <button 
-                  onClick={() => { setLanguage("en"); setIsMobileMenuOpen(false); }}
-                  style={{ 
-                    padding: "8px 15px", 
-                    borderRadius: "8px", 
-                    fontSize: "0.8rem", 
-                    fontWeight: 800, 
-                    background: language === "en" ? "var(--or)" : "transparent",
-                    color: "white",
-                    border: "none"
-                  }}
-                >
-                  ENGLISH
-                </button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                style={{ marginTop: "0.5rem" }}
-              >
-                <Link
-                  href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  style={{
-                    background: "var(--or)",
-                    color: "white",
-                    padding: "15px 40px",
-                    borderRadius: "12px",
-                    fontSize: "1rem",
-                    fontWeight: 800,
-                    display: "inline-block",
-                    boxShadow: "var(--shadow-gold)"
-                  }}
-                >
-                  Contactez-nous
-                </Link>
-              </motion.div>
+                {t("nav.join")}
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
 
       <style>{`
         .nav-logo-wrap {
@@ -334,23 +325,32 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) {
           .desktop-menu { display: none; }
+          .container {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 0 1.5rem !important;
+          }
           .nav-logo-wrap {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
           }
           .nav-logo-img {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
           }
         }
         @media (max-width: 480px) {
+          .container {
+            padding: 0 1rem !important;
+          }
           .nav-logo-wrap {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
           }
           .nav-logo-img {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
           }
         }
       `}</style>
