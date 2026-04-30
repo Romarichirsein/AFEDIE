@@ -26,9 +26,14 @@ export default function Footer() {
               {t("footer.description")}
             </p>
             <div style={{ display: "flex", gap: "1.5rem" }}>
-              {["Facebook", "Twitter", "Instagram", "LinkedIn"].map((platform, i) => (
-                <Link key={i} href="#" style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", transition: "color 0.3s ease" }} className="social-text-link">
-                  {platform}
+              {[
+                { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61577555051866" },
+                { name: "Twitter", href: "#" },
+                { name: "Instagram", href: "https://www.instagram.com/afedie2026" },
+                { name: "LinkedIn", href: "#" }
+              ].map((platform, i) => (
+                <Link key={i} href={platform.href} target={platform.href !== "#" ? "_blank" : undefined} style={{ fontSize: "0.85rem", fontWeight: 600, color: "rgba(255,255,255,0.6)", transition: "color 0.3s ease" }} className="social-text-link">
+                  {platform.name}
                 </Link>
               ))}
             </div>
@@ -72,9 +77,11 @@ export default function Footer() {
           <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>
             © 2026 AFEDIE. {t("footer.rights")} Powered by <span style={{ color: "var(--or2)", fontWeight: 700 }}>wellborne</span>.
           </p>
-          <div style={{ display: "flex", gap: "3rem" }}>
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
             <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>{t("footer.location")}</span>
-            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>Association N° 00001396</span>
+            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>N° 00001396/RDA/J06/SAAJP/BAPP</span>
+            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>afediecam@gmail.com</span>
+            <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)" }}>+237 677 58 92 01 / 695 22 80 83</span>
           </div>
         </div>
       </div>

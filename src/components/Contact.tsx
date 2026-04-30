@@ -16,8 +16,8 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    { icon: <Phone size={20} />, label: t("contact.info.phone.label"), val: "(+237) 692 000 000", sub: t("contact.info.phone.sub") },
-    { icon: <Mail size={20} />, label: t("contact.info.email.label"), val: "contact@afedie.org", sub: t("contact.info.email.sub") },
+    { icon: <Phone size={20} />, label: t("contact.info.phone.label"), val: "(+237) 677 58 92 01 / 695 22 80 83", sub: t("contact.info.phone.sub") },
+    { icon: <Mail size={20} />, label: t("contact.info.email.label"), val: "afediecam@gmail.com", sub: t("contact.info.email.sub") },
     { icon: <MapPin size={20} />, label: t("contact.info.location.label"), val: t("contact.info.location.val"), sub: t("contact.info.location.sub") },
   ];
 
@@ -139,12 +139,10 @@ export default function Contact() {
 
         {/* Partners Section */}
         <div style={{ textAlign: "center" }} className="partners-section">
-          <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "3rem" }}>{t("contact.partners")}</p>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", opacity: 0.5, filter: "grayscale(100%)" }} className="partners-row">
-            {["MINAS", "MINPROFF", "Yaoundé 3e", "UN Women"].map((partner) => (
-              <span key={partner} style={{ fontWeight: 800, color: "var(--marine)" }} className="partner-name">{partner}</span>
-            ))}
-          </div>
+          <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "2rem" }}>{t("contact.partners")}</p>
+          <p style={{ fontSize: "1.1rem", color: "var(--marine)", fontWeight: 600, fontStyle: "italic", maxWidth: "600px", margin: "0 auto" }}>
+            "Plusieurs partenariats institutionnels sont en cours de signature et seront officialisés ultérieurement."
+          </p>
         </div>
       </div>
 

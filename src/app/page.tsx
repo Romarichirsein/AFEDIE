@@ -5,6 +5,7 @@ import ValuesSection from "@/components/ValuesSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
 import Plan2026 from "@/components/Plan2026";
 import Governance from "@/components/Governance";
+import Gallery from "@/components/Gallery";
 import LegalSection from "@/components/LegalSection";
 import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
       <ActivitiesSection />
       <Plan2026 />
       <Governance />
+      <Gallery />
       <LegalSection />
       <ContactSection />
       <Footer />

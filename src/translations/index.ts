@@ -60,6 +60,7 @@ export const translations = {
         { title: "Soutien Scolaire", desc: "Remise de prix d'excellence, soutien aux jeunes filles méritantes et accompagnement éducatif ciblé." },
         { title: "Accompagnement des Aînées", desc: "Soutien aux femmes âgées pour l'accès aux soins, notamment via le dispositif LAFTA (Lutte contre les Affections liées au Temps)." },
         { title: "Solidarité & Entraide", desc: "Fonds de solidarité interne et mobilisation communautaire lors d'événements marquants pour nos membres." },
+        { title: "Rencontres Mensuelles", desc: "L'AFEDIE organise chaque mois des rencontres entre ses membres, au cours desquelles sont menées des séances de sensibilisation sur des thématiques variées (santé, droits de la femme, entrepreneuriat, vie associative) ainsi que des activités de renforcement des capacités visant l'autonomisation durable de chaque membre." },
         { title: "Cérémonie de l'Excellence", desc: "Valorisation des parcours exemplaires de femmes et de jeunes filles à travers des distinctions annuelles prestigieuses." }
       ]
     },
@@ -69,12 +70,14 @@ export const translations = {
       subtitle: "Une feuille de route ambitieuse pour intensifier notre impact et élargir notre réseau de solidarité au Cameroun.",
       priorityAction: "Action Prioritaire",
       items: [
-        { date: "Février 2026", title: "AGO & Élections", desc: "Assemblée Générale Ordinaire et renouvellement des membres du Bureau National." },
+        { date: "29 mai 2026", title: "Assemblée Générale Ordinaire & Masterclass", desc: "Assemblée Générale Ordinaire et session de Masterclass pour le renforcement des capacités." },
+        { date: "30 mai 2026 à 9h00", title: "Collecte de dons", desc: "Campagne de collecte de dons organisée par l'AFEDIE en faveur de ses actions solidaires et humanitaires à l'École des Petits Mozart, Yaoundé." },
         { date: "Mai 2026", title: "Cérémonie de l'Excellence", desc: "Remise des prix aux meilleures élèves et femmes leaders de la communauté." },
         { date: "Juin 2026", title: "Séminaire de Formation", desc: "Renforcement des capacités en gestion de projets et leadership féminin." },
         { date: "Septembre 2026", title: "Rentrée Solidaire", desc: "Distribution de kits scolaires et bourses d'études pour les orphelins." },
         { date: "Octobre 2026", title: "Caravane Santé", desc: "Campagne de dépistage gratuit et sensibilisation sur l'hygiène maternelle." },
         { date: "Novembre 2026", title: "Foire de l'Autonomisation", desc: "Exposition-vente des produits artisanaux et agricoles des membres." },
+        { date: "Décembre 2026", title: "Caravane Humanitaire", desc: "Caravane humanitaire dans l'agglomération de Yaoundé au profit des couches défavorisées — distribution de vivres, kits et soutien aux populations vulnérables." },
         { date: "Décembre 2026", title: "Arbre de Noël", desc: "Célébration annuelle et distribution de cadeaux aux enfants démunis." }
       ]
     },
@@ -108,6 +111,11 @@ export const translations = {
       newsletter_desc: "Restez informée de nos prochaines actions humanitaires.",
       rights: "Tous droits réservés.",
       location: "Yaoundé, Cameroun"
+    },
+    gallery: {
+      badge: "Nos Moments",
+      title: "Galerie Photos",
+      subtitle: "Découvrez en images les actions, les rencontres et les moments forts qui marquent la vie de notre association."
     }
   },
   en: {
@@ -171,6 +179,7 @@ export const translations = {
         { title: "School Support", desc: "Awarding excellence prizes, supporting deserving young girls and targeted educational support." },
         { title: "Support for Elders", desc: "Support for elderly women for access to care, particularly through the LAFTA device (Fight against Time-related Affections)." },
         { title: "Solidarity & Mutual Aid", desc: "Internal solidarity fund and community mobilization during significant events for our members." },
+        { title: "Monthly Meetings", desc: "AFEDIE organizes monthly meetings between its members, during which awareness sessions are conducted on various themes (health, women's rights, entrepreneurship, community life) as well as capacity building activities aiming at the sustainable empowerment of each member." },
         { title: "Excellence Ceremony", desc: "Valuing exemplary journeys of women and girls through prestigious annual distinctions." }
       ]
     },
@@ -180,12 +189,14 @@ export const translations = {
       subtitle: "An ambitious roadmap to intensify our impact and expand our solidarity network in Cameroon.",
       priorityAction: "Priority Action",
       items: [
-        { date: "February 2026", title: "AGM & Elections", desc: "Ordinary General Assembly and renewal of National Board members." },
+        { date: "May 29, 2026", title: "Ordinary General Assembly & Masterclass", desc: "Ordinary General Assembly and Masterclass session for capacity building." },
+        { date: "May 30, 2026 at 9:00 AM", title: "Donation Collection", desc: "Donation collection campaign organized by AFEDIE in favor of its solidarity and humanitarian actions at École des Petits Mozart, Yaoundé." },
         { date: "May 2026", title: "Excellence Ceremony", desc: "Awarding prizes to the best students and women leaders in the community." },
         { date: "June 2026", title: "Training Seminar", desc: "Capacity building in project management and female leadership." },
         { date: "September 2026", title: "Solidarity Back-to-School", desc: "Distribution of school kits and scholarships for orphans." },
         { date: "October 2026", title: "Health Caravan", desc: "Free screening campaign and awareness on maternal hygiene." },
         { date: "November 2026", title: "Empowerment Fair", desc: "Exhibition-sale of artisanal and agricultural products by members." },
+        { date: "December 2026", title: "Humanitarian Caravan", desc: "Humanitarian caravan in the Yaoundé metropolitan area for the benefit of underprivileged groups — distribution of food, kits and support to vulnerable populations." },
         { date: "December 2026", title: "Christmas Tree", desc: "Annual celebration and distribution of gifts to underprivileged children." }
       ]
     },
@@ -219,6 +230,11 @@ export const translations = {
       newsletter_desc: "Stay informed about our next humanitarian actions.",
       rights: "All rights reserved.",
       location: "Yaoundé, Cameroon"
+    },
+    gallery: {
+      badge: "Our Moments",
+      title: "Photo Gallery",
+      subtitle: "Discover in images the actions, meetings and highlights that mark the life of our association."
     }
   }
 };

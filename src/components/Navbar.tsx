@@ -193,6 +193,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Toggle */}
+          <motion.div
             className="mobile-toggle"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{ 

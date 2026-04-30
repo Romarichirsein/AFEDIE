@@ -5,7 +5,7 @@ import { MessageCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function WhatsAppButton() {
-  const whatsappNumber = "237692000000"; 
+  const whatsappNumber = "237677589201"; 
   const message = "Bonjour AFEDIE, je souhaite avoir plus d'informations.";
 
   return (
