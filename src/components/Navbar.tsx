@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, ArrowUpRight, Globe } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowUpRight, Globe, Heart, BookOpen, Image, Ambulance } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const MenuIcon4 = ({ isOpen }: { isOpen: boolean }) => (
@@ -32,12 +33,13 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("accueil");
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
-      // Update active section based on scroll
+      if (!isHome) return;
       const sections = ["accueil", "apropos", "valeurs", "activites", "plan2026", "contact"];
       const current = sections.find(section => {
         const el = document.getElementById(section);
@@ -52,14 +54,22 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
-  const navLinks = [
-    { name: t("nav.home"), id: "accueil" },
-    { name: t("nav.about"), id: "apropos" },
-    { name: t("nav.values"), id: "valeurs" },
-    { name: t("nav.activities"), id: "activites" },
-    { name: t("nav.plan"), id: "plan2026" },
+  // Anchor-based links (homepage sections)
+  const homeLinks = [
+    { name: t("nav.home"), id: "accueil", href: "/#accueil" },
+    { name: t("nav.about"), id: "apropos", href: "/#apropos" },
+    { name: t("nav.activities"), id: "activites", href: "/#activites" },
+    { name: t("nav.plan"), id: "plan2026", href: "/#plan2026" },
+  ];
+
+  // Page-level links (separate routes)
+  const pageLinks = [
+    { name: language === "fr" ? "Rapports" : "Reports", href: "/rapports", icone: "📋" },
+    { name: language === "fr" ? "Humanitaire" : "Humanitarian", href: "/humanitaire", icone: "❤️" },
+    { name: language === "fr" ? "Galerie" : "Gallery", href: "/galerie", icone: "📸" },
+    { name: language === "fr" ? "Faire un Don" : "Donate", href: "/don", icone: "💚", isHighlight: true },
   ];
 
   return (
@@ -100,26 +110,26 @@ export default function Navbar() {
           </Link>
 
           {/* Ultra Professional Desktop Menu */}
-          <div style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="desktop-menu">
-            <div style={{ display: "flex", gap: "1.5rem" }}>
-              {navLinks.map((link) => (
+          <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }} className="desktop-menu">
+            <div style={{ display: "flex", gap: "1.2rem" }}>
+              {homeLinks.map((link) => (
                 <Link 
                   key={link.id} 
-                  href={`#${link.id}`}
+                  href={link.href}
                   style={{ 
-                    color: activeSection === link.id ? "var(--or2)" : "white", 
-                    fontSize: "0.75rem", 
+                    color: isHome && activeSection === link.id ? "var(--or2)" : "white", 
+                    fontSize: "0.72rem", 
                     fontWeight: 700, 
                     textTransform: "uppercase", 
                     letterSpacing: "1px",
-                    opacity: activeSection === link.id ? 1 : 0.7,
+                    opacity: isHome && activeSection === link.id ? 1 : 0.7,
                     position: "relative",
                     transition: "all 0.3s ease"
                   }}
                   className="nav-link"
                 >
                   {link.name}
-                  {activeSection === link.id && (
+                  {isHome && activeSection === link.id && (
                     <motion.div 
                       layoutId="nav-underline"
                       style={{ 
@@ -134,6 +144,37 @@ export default function Navbar() {
                     />
                   )}
                 </Link>
+              ))}
+
+              {/* Separator */}
+              <div style={{ width: "1px", background: "rgba(255,255,255,0.12)", margin: "0 4px" }} />
+
+              {/* Page links */}
+              {pageLinks.map((link) => (
+                link.isHighlight ? null : (
+                  <Link 
+                    key={link.href}
+                    href={link.href}
+                    style={{ 
+                      color: pathname === link.href ? "var(--or2)" : "rgba(255,255,255,0.7)",
+                      fontSize: "0.72rem", 
+                      fontWeight: 700, 
+                      textTransform: "uppercase", 
+                      letterSpacing: "1px",
+                      position: "relative",
+                      transition: "all 0.3s ease"
+                    }}
+                    className="nav-link"
+                  >
+                    {link.icone} {link.name}
+                    {pathname === link.href && (
+                      <motion.div 
+                        layoutId="nav-underline"
+                        style={{ position: "absolute", bottom: "-4px", left: "0", width: "100%", height: "2px", background: "var(--or2)", borderRadius: "2px" }} 
+                      />
+                    )}
+                  </Link>
+                )
               ))}
             </div>
 
@@ -174,7 +215,24 @@ export default function Navbar() {
             </div>
             
             <Link
-              href="#contact"
+              href="/don"
+              style={{
+                background: "linear-gradient(135deg, #166534, #15803D)",
+                color: "white",
+                borderRadius: "10px",
+                fontWeight: 800,
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                boxShadow: "0 4px 20px rgba(22,101,52,0.4)",
+                transition: "all 0.3s ease"
+              }}
+              className="nav-cta"
+            >
+              💚 Don
+            </Link>
+            <Link
+              href="/#contact"
               style={{
                 background: "var(--or)",
                 color: "white",
@@ -234,14 +292,14 @@ export default function Navbar() {
             }}
           >
             <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              {navLinks.map((link) => (
+              {homeLinks.map((link) => (
                 <Link
                   key={link.id}
-                  href={`#${link.id}`}
+                  href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   style={{ 
-                    color: activeSection === link.id ? "var(--or2)" : "white", 
-                    fontSize: "1.1rem", 
+                    color: isHome && activeSection === link.id ? "var(--or2)" : "white", 
+                    fontSize: "1rem", 
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "1px",
@@ -249,6 +307,29 @@ export default function Navbar() {
                   }}
                 >
                   {link.name}
+                </Link>
+              ))}
+
+              <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", margin: "0.5rem 0" }} />
+
+              {pageLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  style={{ 
+                    color: pathname === link.href ? "var(--or2)" : "rgba(255,255,255,0.75)",
+                    fontSize: "1rem", 
+                    fontWeight: link.isHighlight ? 800 : 600,
+                    letterSpacing: "0.5px",
+                    display: "block",
+                    background: link.isHighlight ? "rgba(22,101,52,0.15)" : "transparent",
+                    padding: link.isHighlight ? "10px 14px" : "0",
+                    borderRadius: link.isHighlight ? "10px" : "0",
+                    border: link.isHighlight ? "1px solid rgba(74,222,128,0.3)" : "none",
+                  }}
+                >
+                  {link.icone} {link.name}
                 </Link>
               ))}
               
@@ -276,7 +357,7 @@ export default function Navbar() {
 
               {/* Primary CTA Button */}
               <Link
-                href="#contact"
+                href="/#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   background: "var(--or)",

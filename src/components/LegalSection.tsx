@@ -75,7 +75,7 @@ export default function LegalSection() {
                 { k: "Juridiction", v: "République du Cameroun" },
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", borderBottom: "1px solid #f8f8f8", paddingBottom: "1.2rem", alignItems: "flex-start" }}>
-                  <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "#999", width: "130px", flexShrink: 0, marginTop: "0.2rem" }}>{item.k}</span>
+                  <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "#999", minWidth: "120px", flexShrink: 0, marginTop: "0.2rem" }}>{item.k}</span>
                   <span style={{ fontSize: "1rem", color: "var(--marine)", fontWeight: item.b ? 800 : 500 }}>{item.v}</span>
                 </div>
               ))}
@@ -110,7 +110,7 @@ export default function LegalSection() {
                 { k: "Périmètre", v: "National & International" },
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", borderBottom: "1px solid #f8f8f8", paddingBottom: "1.2rem", alignItems: "flex-start" }}>
-                  <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "#999", width: "130px", flexShrink: 0, marginTop: "0.2rem" }}>{item.k}</span>
+                  <span style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color: "#999", minWidth: "120px", flexShrink: 0, marginTop: "0.2rem" }}>{item.k}</span>
                   <span style={{ fontSize: "1rem", color: "var(--marine)", fontWeight: item.b ? 800 : 500 }}>{item.v}</span>
                 </div>
               ))}

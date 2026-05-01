@@ -26,7 +26,7 @@ export default function AboutSection() {
           style={{
             display: "grid",
             gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "6rem",
+            gap: "2.5rem",
             alignItems: "center",
           }}
           className="about-grid"
@@ -134,7 +134,7 @@ export default function AboutSection() {
               style={{
                 background: "var(--marine)",
                 borderRadius: "32px",
-                padding: "4rem",
+                padding: "2.5rem",
                 color: "white",
                 position: "relative",
                 zIndex: 1,

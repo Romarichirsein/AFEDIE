@@ -59,26 +59,10 @@ export default function BackToTop() {
             whileHover={{ y: -5, scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            style={{
-              position: "fixed",
-              bottom: "40px",
-              right: "40px",
-              zIndex: 100,
-              width: "60px",
-              height: "60px",
-              background: "var(--marine)",
-              color: "white",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
+            className="back-to-top-btn"
           >
-            {/* Circular Progress (Visual only for back to top) */}
-            <svg width="60" height="60" style={{ position: "absolute", transform: "rotate(-90deg)" }}>
+            {/* Circular Progress Background */}
+            <svg className="progress-circle" width="60" height="60" style={{ position: "absolute", transform: "rotate(-90deg)" }}>
               <circle
                 cx="30"
                 cy="30"
@@ -88,7 +72,43 @@ export default function BackToTop() {
                 fill="none"
               />
             </svg>
-            <ArrowUp size={24} />
+            <ArrowUp size={24} className="arrow-icon" />
+
+            <style jsx>{`
+              .back-to-top-btn {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                z-index: 100;
+                width: 60px;
+                height: 60px;
+                background: var(--marine);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                border: 1px solid rgba(255,255,255,0.1);
+              }
+              @media (max-width: 768px) {
+                .back-to-top-btn {
+                  bottom: 30px;
+                  right: 20px;
+                  width: 50px;
+                  height: 50px;
+                }
+                .progress-circle {
+                  width: 50px !important;
+                  height: 50px !important;
+                }
+                :global(.arrow-icon) {
+                  width: 20px !important;
+                  height: 20px !important;
+                }
+              }
+            `}</style>
           </motion.div>
         )}
       </AnimatePresence>

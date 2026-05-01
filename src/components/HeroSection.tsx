@@ -35,12 +35,13 @@ export default function HeroSection() {
     <section
       id="accueil"
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         position: "relative",
         overflow: "hidden",
         background: "var(--marine)",
+        width: "100%",
       }}
     >
       {/* Parallax Background */}
@@ -52,6 +53,7 @@ export default function HeroSection() {
           backgroundPosition: "center",
           backgroundSize: "cover",
           y: y1,
+          width: "100%",
         }}
       />
       
@@ -63,6 +65,7 @@ export default function HeroSection() {
           background: `radial-gradient(circle at 20% 30%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
                        radial-gradient(circle at 80% 70%, rgba(27, 94, 32, 0.1) 0%, transparent 50%)`,
           filter: "blur(60px)",
+          width: "100%",
         }}
       />
 
@@ -81,7 +84,9 @@ export default function HeroSection() {
           justifyContent: "center",
           textAlign: "center",
           opacity,
-          paddingTop: "120px", // Pushes content below the fixed header
+          paddingTop: "120px", 
+          paddingBottom: "60px",
+          width: "100%",
         }}
       >
         <motion.div
@@ -109,11 +114,12 @@ export default function HeroSection() {
         <motion.h1
           variants={itemVariants}
           style={{
-            fontSize: "clamp(2.2rem, 10vw, 6rem)",
+            fontSize: "clamp(2.2rem, 10vw, 5rem)",
             fontWeight: 800,
             color: "white",
             lineHeight: 1.1,
             marginBottom: "1.5rem",
+            width: "100%",
             maxWidth: "100%",
           }}
         >
@@ -135,11 +141,11 @@ export default function HeroSection() {
         <motion.p
           variants={itemVariants}
           style={{
-            fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+            fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
             color: "rgba(255, 255, 255, 0.7)",
             fontWeight: 400,
             marginBottom: "3rem",
-            maxWidth: "750px",
+            maxWidth: "100%",
             lineHeight: 1.6,
           }}
         >
@@ -148,7 +154,7 @@ export default function HeroSection() {
 
         <motion.div
           variants={itemVariants}
-          style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}
+          style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", width: "100%" }}
           className="hero-buttons"
         >
           <Link
@@ -163,7 +169,9 @@ export default function HeroSection() {
               boxShadow: "var(--shadow-gold)",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: "12px",
+              minWidth: "240px",
             }}
           >
             {t("hero.cta_primary")} <ArrowRight size={20} />
@@ -179,6 +187,10 @@ export default function HeroSection() {
               fontWeight: 600,
               borderRadius: "12px",
               border: "1px solid rgba(255, 255, 255, 0.15)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              minWidth: "240px",
             }}
           >
             {t("hero.cta_secondary")}
@@ -198,67 +210,23 @@ export default function HeroSection() {
           backdropFilter: "blur(20px)",
           borderTop: "1px solid rgba(255, 255, 255, 0.05)",
           padding: "2rem 0",
+          width: "100%",
         }}
       >
-        <div className="container" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
+        <div className="container hero-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
           {[
-            { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={20} /> },
-            { num: "7", label: t("hero.stats.actions"), icon: <Shield size={20} /> },
-            { num: "Ydé", label: t("hero.stats.location"), icon: <Heart size={20} /> },
+            { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={18} /> },
+            { num: "7", label: t("hero.stats.actions"), icon: <Shield size={18} /> },
+            { num: "Ydé", label: t("hero.stats.location"), icon: <Heart size={18} /> },
           ].map((stat, i) => (
             <div key={i} style={{ textAlign: "center" }}>
               <div style={{ color: "var(--or2)", marginBottom: "0.5rem", display: "flex", justifyContent: "center" }}>{stat.icon}</div>
-              <div style={{ fontSize: "2rem", fontWeight: 800, color: "white" }}>{stat.num}</div>
-              <div style={{ fontSize: "0.75rem", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", letterSpacing: "1px" }}>{stat.label}</div>
+              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "white" }}>{stat.num}</div>
+              <div style={{ fontSize: "0.65rem", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", letterSpacing: "1px" }}>{stat.label}</div>
             </div>
           ))}
         </div>
       </motion.div>
-
-      {/* Decorative Floating Elements */}
-      <motion.div
-        animate={{ 
-          y: [0, -30, 0],
-          rotate: [0, 5, 0]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          top: "15%",
-          left: "5%",
-          width: "150px",
-          height: "150px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%)",
-          zIndex: 5,
-        }}
-      />
-
-      <style>{`
-        .hero-btn {
-          padding: 20px 45px;
-        }
-        @media (max-width: 768px) {
-          .hero-btn {
-            padding: 16px 32px;
-            font-size: 0.85rem !important;
-          }
-          .hero-buttons {
-            flex-direction: column !important;
-            gap: 1rem !important;
-            width: 100% !important;
-            max-width: 300px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .hero-btn {
-            padding: 14px 24px;
-            font-size: 0.8rem !important;
-            width: 100% !important;
-            justify-content: center !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

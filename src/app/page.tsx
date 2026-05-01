@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import EquipeSection from "@/components/EquipeSection";
 import ValuesSection from "@/components/ValuesSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
 import Plan2026 from "@/components/Plan2026";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <EquipeSection />
       <ValuesSection />
       <ActivitiesSection />
       <Plan2026 />

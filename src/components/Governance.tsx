@@ -24,7 +24,7 @@ export default function Governance() {
   return (
     <section id="gouvernance" className="section-padding" style={{ background: "var(--blanc)" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center" }} className="gov-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center" }} className="gov-grid">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -44,7 +44,7 @@ export default function Governance() {
               L&apos;AFEDIE est structurée autour d&apos;un Bureau National engagé et d&apos;une organisation décentralisée pour une efficacité maximale sur le terrain.
             </p>
 
-            <div className="gov-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div className="gov-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
               {[
                 { icon: <Users size={24} />, title: "Bureau National", desc: "Instance de pilotage stratégique." },
                 { icon: <ShieldCheck size={24} />, title: "Commissions", desc: "Groupes de travail spécialisés." },
@@ -66,12 +66,13 @@ export default function Governance() {
             viewport={{ once: true }}
             style={{ 
               background: "var(--marine)", 
-              padding: "4rem", 
+              padding: "2.5rem", 
               borderRadius: "32px", 
               color: "white",
               boxShadow: "0 40px 80px rgba(0,0,0,0.15)",
               position: "relative",
-              overflow: "hidden"
+              overflow: "hidden",
+              width: "100%"
             }}
           >
             <div style={{ position: 'absolute', bottom: '-50px', right: '-50px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)' }} />

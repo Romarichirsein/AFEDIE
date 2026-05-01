@@ -46,7 +46,7 @@ export default function ActivitiesSection() {
   return (
     <section id="activites" className="section-padding" style={{ background: "white", position: "relative" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center", marginBottom: "6rem" }} className="activities-header">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center", marginBottom: "6rem" }} className="activities-header">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +84,7 @@ export default function ActivitiesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="values-grid"
+          className="activities-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
@@ -150,7 +150,7 @@ export default function ActivitiesSection() {
           }
         }
         @media (max-width: 768px) {
-          .values-grid {
+          .activities-grid {
             grid-template-columns: 1fr !important;
           }
         }
