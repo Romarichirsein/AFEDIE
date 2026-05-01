@@ -83,6 +83,7 @@ export default function ValuesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          className="values-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
@@ -152,6 +153,11 @@ export default function ValuesSection() {
         .value-card:hover {
           box-shadow: 0 30px 60px rgba(0,0,0,0.08);
           border-color: var(--or);
+        }
+        @media (max-width: 768px) {
+          .values-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
         @media (max-width: 640px) {
           .value-card {

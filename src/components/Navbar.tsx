@@ -322,10 +322,10 @@ export default function Navbar() {
           background: var(--or2) !important;
         }
         @media (min-width: 1025px) {
-          .mobile-toggle { display: none; }
+          .mobile-toggle { display: none !important; }
         }
         @media (max-width: 1024px) {
-          .desktop-menu { display: none; }
+          .desktop-menu { display: none !important; }
           .container {
             display: flex !important;
             justify-content: space-between !important;
@@ -333,12 +333,12 @@ export default function Navbar() {
             padding: 0 1.5rem !important;
           }
           .nav-logo-wrap {
-            width: 50px;
-            height: 50px;
+            width: 50px !important;
+            height: 50px !important;
           }
           .nav-logo-img {
-            width: 50px;
-            height: 50px;
+            width: 50px !important;
+            height: 50px !important;
           }
         }
         @media (max-width: 480px) {

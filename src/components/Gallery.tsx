@@ -57,9 +57,10 @@ export default function Gallery() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
+          className="gallery-grid"
           style={{ 
             display: "grid", 
-            gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))", 
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
             gap: "1.5rem" 
           }}
         >
@@ -114,8 +115,8 @@ export default function Gallery() {
         div:hover > .gallery-overlay {
           opacity: 1 !important;
         }
-        @media (max-width: 640px) {
-          div[style*="gridTemplateColumns"] {
+        @media (max-width: 768px) {
+          .gallery-grid {
             grid-template-columns: 1fr !important;
           }
         }

@@ -223,13 +223,16 @@ export default function AboutSection() {
         @media (max-width: 1024px) {
           .about-grid {
             grid-template-columns: 1fr !important;
-            gap: 4rem !important;
+            gap: 3rem !important;
           }
         }
         @media (max-width: 640px) {
           .floating-badge {
-            bottom: -20px !important;
-            right: 20px !important;
+            position: relative !important;
+            bottom: auto !important;
+            right: auto !important;
+            margin-top: 2rem !important;
+            display: inline-block !important;
             padding: 1.5rem !important;
           }
           .about-grid > div:last-child > div:first-child {

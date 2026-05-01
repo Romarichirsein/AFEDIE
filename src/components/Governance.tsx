@@ -103,7 +103,7 @@ export default function Governance() {
         @media (max-width: 1024px) {
           .gov-grid {
             grid-template-columns: 1fr !important;
-            gap: 4rem !important;
+            gap: 3rem !important;
           }
         }
         @media (max-width: 640px) {
@@ -111,7 +111,11 @@ export default function Governance() {
             grid-template-columns: 1fr !important;
           }
           .gov-box {
-            padding: 2.5rem !important;
+            padding: 2rem !important;
+            border-radius: 24px !important;
+          }
+          .gov-box h3 {
+            font-size: 1.5rem !important;
           }
         }
       `}</style>

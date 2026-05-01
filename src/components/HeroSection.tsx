@@ -109,12 +109,12 @@ export default function HeroSection() {
         <motion.h1
           variants={itemVariants}
           style={{
-            fontSize: "clamp(2.5rem, 8vw, 6rem)",
+            fontSize: "clamp(2.2rem, 10vw, 6rem)",
             fontWeight: 800,
             color: "white",
-            lineHeight: 1,
+            lineHeight: 1.1,
             marginBottom: "1.5rem",
-            maxWidth: "1000px",
+            maxWidth: "100%",
           }}
         >
           {t("hero.title1")} <br />
@@ -244,15 +244,18 @@ export default function HeroSection() {
             font-size: 0.85rem !important;
           }
           .hero-buttons {
+            flex-direction: column !important;
             gap: 1rem !important;
+            width: 100% !important;
+            max-width: 300px !important;
           }
         }
         @media (max-width: 480px) {
           .hero-btn {
             padding: 14px 24px;
             font-size: 0.8rem !important;
-            width: 100%;
-            justify-content: center;
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
       `}</style>

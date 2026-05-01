@@ -84,10 +84,11 @@ export default function ActivitiesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          className="values-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2.5rem",
+            gap: "2rem",
           }}
         >
           {t("activities.items").map((act: { title: string; desc: string }, index: number) => (
@@ -146,6 +147,11 @@ export default function ActivitiesSection() {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
             margin-bottom: 4rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .values-grid {
+            grid-template-columns: 1fr !important;
           }
         }
         @media (max-width: 640px) {
