@@ -132,9 +132,9 @@ export default function HeroSection() {
             {t("hero.title2")}
           </span> <br />
           {t("hero.title3").includes("et de l'") ? (
-            <>et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span></>
+            <>et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400 }}>Excellence</span></>
           ) : (
-            <>{t("hero.title3").split("Excellence")[0]}<span style={{ fontStyle: "italic", fontWeight: 400, fontFamily: "var(--font-playfair)" }}>Excellence</span></>
+            <>{t("hero.title3").split("Excellence")[0]}<span style={{ fontStyle: "italic", fontWeight: 400 }}>Excellence</span></>
           )}
         </motion.h1>
 

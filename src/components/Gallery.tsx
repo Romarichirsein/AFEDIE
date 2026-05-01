@@ -8,12 +8,12 @@ export default function Gallery() {
   
   // Sample placeholder images - will be replaced by actual photos
   const images = [
-    { id: 1, src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop", title: "Action Sociale" },
-    { id: 2, src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop", title: "Solidarité" },
-    { id: 3, src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop", title: "Leadership" },
-    { id: 4, src: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop", title: "Réunion Mensuelle" },
-    { id: 5, src: "https://images.unsplash.com/photo-1559027615-cd99c59633fa?q=80&w=2070&auto=format&fit=crop", title: "Formation" },
-    { id: 6, src: "https://images.unsplash.com/photo-1509059852496-f3822ae057bf?q=80&w=1924&auto=format&fit=crop", title: "Excellence" },
+    { id: 1, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.32.jpeg", title: "Action Sociale" },
+    { id: 2, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.33 (1).jpeg", title: "Solidarité" },
+    { id: 3, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.34.jpeg", title: "Leadership" },
+    { id: 4, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.35.jpeg", title: "Réunion Mensuelle" },
+    { id: 5, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.38.jpeg", title: "Formation" },
+    { id: 6, src: "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.40.jpeg", title: "Excellence" },
   ];
 
   const containerVariants = {

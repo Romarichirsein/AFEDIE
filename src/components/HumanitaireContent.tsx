@@ -4,37 +4,37 @@ import { motion } from "framer-motion";
 
 const actions = [
   {
-    icone: "🏥",
+    icone: "✦",
     titre: "Caravanes de Santé",
     desc: "Consultations médicales gratuites et dépistages au profit des populations vulnérables autour de Yaoundé.",
     couleur: "#DC2626",
   },
   {
-    icone: "👩‍👧",
+    icone: "✦",
     titre: "Soutien aux Femmes en Détresse",
     desc: "Accompagnement psychologique, matériel et social des femmes en situation de vulnérabilité ou de précarité.",
     couleur: "#7C3AED",
   },
   {
-    icone: "🏚️",
+    icone: "✦",
     titre: "Aide aux Orphelinats",
     desc: "Dons réguliers à l'orphelinat, en fidélité à la vision humanitaire de la Fondatrice Mme Marie Souzane GAMGNE.",
     couleur: "#B8860B",
   },
   {
-    icone: "👴",
+    icone: "✦",
     titre: "Soutien aux Personnes Âgées (LAFTA)",
     desc: "Partenariat avec LAFTA pour accompagner les femmes âgées dans l'accès aux soins et à la dignité.",
     couleur: "#166534",
   },
   {
-    icone: "🎒",
+    icone: "✦",
     titre: "Rentrée Solidaire",
     desc: "Distribution de kits scolaires, bourses d'études et soutien aux orphelins pour une scolarité assurée.",
     couleur: "#0369A1",
   },
   {
-    icone: "🎄",
+    icone: "✦",
     titre: "Arbre de Noël & Caravane",
     desc: "Organisation d'un Noël solidaire avec repas et cadeaux pour les enfants défavorisés, dépistage gratuit pour les seniors.",
     couleur: "#166534",
@@ -74,7 +74,7 @@ export default function HumanitaireContent() {
               textTransform: "uppercase",
               display: "inline-block",
               marginBottom: "1.5rem",
-            }}>❤️ Action Humanitaire</span>
+            }}>Action Humanitaire</span>
 
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
@@ -82,7 +82,7 @@ export default function HumanitaireContent() {
               color: "white",
               lineHeight: 1.1,
               marginBottom: "1rem",
-              fontFamily: "var(--font-playfair)",
+              fontFamily: "var(--font-poppins)",
             }}>
               Solidarité & <br />
               <span style={{ color: "#F87171" }}>Aide Humanitaire</span>
@@ -99,7 +99,7 @@ export default function HumanitaireContent() {
       <section style={{ background: "#07151A", padding: "5rem 0" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ color: "white", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, fontFamily: "var(--font-playfair)" }}>
+            <h2 style={{ color: "white", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, fontFamily: "var(--font-poppins)" }}>
               Nos Domaines d'Intervention
             </h2>
             <p style={{ color: "rgba(255,255,255,0.5)", marginTop: "0.5rem" }}>
@@ -124,7 +124,7 @@ export default function HumanitaireContent() {
                 }}
                 whileHover={{ y: -5 }}
               >
-                <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{action.icone}</div>
+                <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>✦</div>
                 <h3 style={{ color: "white", fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.75rem" }}>{action.titre}</h3>
                 <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.88rem", lineHeight: 1.7, margin: 0 }}>{action.desc}</p>
               </motion.div>
@@ -137,7 +137,7 @@ export default function HumanitaireContent() {
       <section style={{ background: "#0a1a28", padding: "4rem 0 6rem" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h2 style={{ color: "white", fontSize: "clamp(1.3rem, 3vw, 1.8rem)", fontWeight: 800, fontFamily: "var(--font-playfair)" }}>
+            <h2 style={{ color: "white", fontSize: "clamp(1.3rem, 3vw, 1.8rem)", fontWeight: 800, fontFamily: "var(--font-poppins)" }}>
               Nos Partenaires Institutionnels
             </h2>
           </div>
@@ -157,7 +157,7 @@ export default function HumanitaireContent() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🤝</div>
+                <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>✦</div>
                 <div style={{ color: "var(--or2)", fontWeight: 800, fontSize: "1rem", marginBottom: "0.25rem" }}>{p.nom}</div>
                 <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem" }}>{p.desc}</div>
               </motion.div>

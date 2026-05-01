@@ -213,7 +213,7 @@ export default function EquipeSection() {
                     borderRadius: "100px",
                   }}
                 >
-                  ★ {language === "fr" ? "Présidente Fondatrice" : "Founding President"}
+                  {language === "fr" ? "Présidente Fondatrice" : "Founding President"}
                 </div>
 
                 {/* Photo */}

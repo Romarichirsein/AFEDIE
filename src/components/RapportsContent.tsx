@@ -40,9 +40,7 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.34 (2).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.35.jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.35 (1).jpeg",
-    ],
-    couleur: "#7C3AED",
-    icone: "🏛️",
+    icone: "foundation",
   },
   "2024": {
     titre: "Ouverture Institutionnelle",
@@ -69,7 +67,7 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.37 (2).jpeg",
     ],
     couleur: "#B8860B",
-    icone: "🤝",
+    icone: "partnership",
   },
   "2025": {
     titre: "Résilience et Renouveau",
@@ -96,6 +94,9 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.40.jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.40 (1).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.41.jpeg",
+    ],
+    couleur: "#166534",
+    icone: "resilience",mages/gallery/WhatsApp Image 2026-05-01 at 08.13.41.jpeg",
     ],
     couleur: "#166534",
     icone: "🌱",
@@ -148,7 +149,7 @@ export default function RapportsContent() {
               textTransform: "uppercase",
               display: "inline-block",
               marginBottom: "1.5rem",
-            }}>📋 Rapports d'Activités</span>
+            }}>Rapports d'Activités</span>
 
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
@@ -156,7 +157,7 @@ export default function RapportsContent() {
               color: "white",
               lineHeight: 1.1,
               marginBottom: "1rem",
-              fontFamily: "var(--font-playfair)",
+              fontFamily: "var(--font-poppins)",
             }}>
               Bilan & Perspectives<br />
               <span style={{ color: "var(--or2)" }}>AFEDIE 2023 – 2025</span>
@@ -198,7 +199,6 @@ export default function RapportsContent() {
                   gap: "4px",
                 }}
               >
-                <span style={{ fontSize: "1.3rem" }}>{data.icone}</span>
                 <span style={{ fontSize: "1.1rem", fontWeight: 900 }}>{year}</span>
                 <span style={{ fontSize: "0.65rem", letterSpacing: "0.5px", opacity: 0.8 }}>{data.titre.split(" ")[0]}</span>
               </button>
@@ -227,12 +227,11 @@ export default function RapportsContent() {
                 marginBottom: "3rem",
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: "3rem" }}>{rapport.icone}</span>
                   <div>
                     <div style={{ color: rapport.couleur, fontSize: "0.8rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase" }}>
                       Bilan {activeYear}
                     </div>
-                    <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "white", fontFamily: "var(--font-playfair)", margin: 0 }}>
+                    <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "white", fontFamily: "var(--font-poppins)", margin: 0 }}>
                       {rapport.titre}
                     </h2>
                     <p style={{ color: "rgba(255,255,255,0.5)", margin: "4px 0 0", fontSize: "0.9rem" }}>{rapport.sous_titre}</p>
@@ -252,7 +251,7 @@ export default function RapportsContent() {
                   padding: "2rem",
                 }}>
                   <h3 style={{ color: rapport.couleur, fontSize: "0.8rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "1.5rem" }}>
-                    ✦ Faits Marquants
+                    Faits Marquants
                   </h3>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                     {rapport.faits.map((fait, i) => (
@@ -293,7 +292,7 @@ export default function RapportsContent() {
                     padding: "2rem",
                   }}>
                     <h3 style={{ color: rapport.couleur, fontSize: "0.8rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "1rem" }}>
-                      💡 Enseignements de l'Année
+                      Enseignements de l'Année
                     </h3>
                     <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.8, fontSize: "0.9rem", margin: 0, fontStyle: "italic" }}>
                       "{rapport.enseignement}"
@@ -308,7 +307,7 @@ export default function RapportsContent() {
                     padding: "1.5rem",
                   }}>
                     <h3 style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", marginBottom: "1rem" }}>
-                      📊 Indicateurs Clés
+                      Indicateurs Clés
                     </h3>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                       {[
@@ -412,9 +411,9 @@ export default function RapportsContent() {
               fontSize: "1.3rem",
               fontWeight: 800,
               marginBottom: "1.5rem",
-              fontFamily: "var(--font-playfair)",
+              fontFamily: "var(--font-poppins)",
             }}>
-              📊 Tableau de Bord Comparatif 2023 – 2024 – 2025
+              Tableau de Bord Comparatif 2023 – 2024 – 2025
             </h2>
             <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "500px" }}>
               <thead>
@@ -424,7 +423,7 @@ export default function RapportsContent() {
                   </th>
                   {years.map(year => (
                     <th key={year} style={{ textAlign: "center", padding: "12px 16px", color: rapportData[year].couleur, fontSize: "0.9rem", fontWeight: 900, borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                      {rapportData[year].icone} {year}
+                      {year}
                     </th>
                   ))}
                 </tr>

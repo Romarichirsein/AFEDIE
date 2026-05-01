@@ -86,7 +86,7 @@ export default function GalerieContent() {
               textTransform: "uppercase",
               display: "inline-block",
               marginBottom: "1.5rem",
-            }}>📸 Nos Moments</span>
+            }}>Nos Moments</span>
 
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
@@ -94,7 +94,7 @@ export default function GalerieContent() {
               color: "white",
               lineHeight: 1.1,
               marginBottom: "1rem",
-              fontFamily: "var(--font-playfair)",
+              fontFamily: "var(--font-poppins)",
             }}>
               Galerie <span style={{ color: "var(--or2)" }}>Photos</span>
             </h1>
@@ -151,7 +151,7 @@ export default function GalerieContent() {
                 }}
                   className="gallery-overlay"
                 >
-                  <span style={{ color: "white", fontSize: "0.75rem", fontWeight: 700 }}>🔍 Voir</span>
+                  <span style={{ color: "white", fontSize: "0.75rem", fontWeight: 700 }}>Voir</span>
                 </div>
               </motion.div>
             ))}

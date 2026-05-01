@@ -66,10 +66,10 @@ export default function Navbar() {
 
   // Page-level links (separate routes)
   const pageLinks = [
-    { name: language === "fr" ? "Rapports" : "Reports", href: "/rapports", icone: "📋" },
-    { name: language === "fr" ? "Humanitaire" : "Humanitarian", href: "/humanitaire", icone: "❤️" },
-    { name: language === "fr" ? "Galerie" : "Gallery", href: "/galerie", icone: "📸" },
-    { name: language === "fr" ? "Faire un Don" : "Donate", href: "/don", icone: "💚", isHighlight: true },
+    { name: language === "fr" ? "Rapports" : "Reports", href: "/rapports", icon: <BookOpen size={14} /> },
+    { name: language === "fr" ? "Humanitaire" : "Humanitarian", href: "/humanitaire", icon: <Heart size={14} /> },
+    { name: language === "fr" ? "Galerie" : "Gallery", href: "/galerie", icon: <Image size={14} /> },
+    { name: language === "fr" ? "Faire un Don" : "Donate", href: "/don", icon: <Heart size={14} />, isHighlight: true },
   ];
 
   return (
@@ -162,11 +162,14 @@ export default function Navbar() {
                       textTransform: "uppercase", 
                       letterSpacing: "1px",
                       position: "relative",
-                      transition: "all 0.3s ease"
+                      transition: "all 0.3s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px"
                     }}
                     className="nav-link"
                   >
-                    {link.icone} {link.name}
+                    {link.icon} {link.name}
                     {pathname === link.href && (
                       <motion.div 
                         layoutId="nav-underline"
@@ -229,7 +232,7 @@ export default function Navbar() {
               }}
               className="nav-cta"
             >
-              💚 Don
+              Faire un Don
             </Link>
             <Link
               href="/#contact"
@@ -322,14 +325,16 @@ export default function Navbar() {
                     fontSize: "1rem", 
                     fontWeight: link.isHighlight ? 800 : 600,
                     letterSpacing: "0.5px",
-                    display: "block",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
                     background: link.isHighlight ? "rgba(22,101,52,0.15)" : "transparent",
                     padding: link.isHighlight ? "10px 14px" : "0",
                     borderRadius: link.isHighlight ? "10px" : "0",
                     border: link.isHighlight ? "1px solid rgba(74,222,128,0.3)" : "none",
                   }}
                 >
-                  {link.icone} {link.name}
+                  {link.icon} {link.name}
                 </Link>
               ))}
               

@@ -44,7 +44,7 @@ export default function DonContent() {
               textTransform: "uppercase",
               display: "inline-block",
               marginBottom: "1.5rem",
-            }}>💚 Faire un Don</span>
+            }}>Faire un Don</span>
 
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
@@ -52,7 +52,7 @@ export default function DonContent() {
               color: "white",
               lineHeight: 1.1,
               marginBottom: "1rem",
-              fontFamily: "var(--font-playfair)",
+              fontFamily: "var(--font-poppins)",
             }}>
               Soutenez <span style={{ color: "#4ADE80" }}>notre mission</span>
             </h1>
@@ -73,8 +73,7 @@ export default function DonContent() {
               animate={{ opacity: 1, scale: 1 }}
               style={{ textAlign: "center", padding: "4rem 2rem" }}
             >
-              <div style={{ fontSize: "5rem", marginBottom: "1.5rem" }}>🙏</div>
-              <h2 style={{ color: "white", fontSize: "2rem", fontWeight: 800, fontFamily: "var(--font-playfair)" }}>
+              <h2 style={{ color: "white", fontSize: "2rem", fontWeight: 800, fontFamily: "var(--font-poppins)" }}>
                 Merci pour votre générosité !
               </h2>
               <p style={{ color: "rgba(255,255,255,0.6)", marginTop: "1rem", maxWidth: "500px", margin: "1rem auto 0" }}>
@@ -122,7 +121,7 @@ export default function DonContent() {
                         transition: "all 0.2s",
                       }}
                     >
-                      <div style={{ fontSize: "1.8rem", marginBottom: "6px" }}>{c.icone}</div>
+                      <div style={{ fontSize: "1.2rem", fontWeight: 800, marginBottom: "6px" }}>✦</div>
                       {c.label}
                     </button>
                   ))}
@@ -206,11 +205,11 @@ export default function DonContent() {
                   gap: "10px",
                 }}
               >
-                💚 Confirmer mon Don {(montant || montantCustom) ? `de ${montantCustom || montant} FCFA` : ""}
+                Confirmer mon Don {(montant || montantCustom) ? `de ${montantCustom || montant} FCFA` : ""}
               </motion.button>
 
               <p style={{ textAlign: "center", color: "rgba(255,255,255,0.35)", fontSize: "0.75rem", marginTop: "1.5rem", lineHeight: 1.6 }}>
-                🔒 Vos informations sont sécurisées. Nous vous contacterons pour coordonner le paiement via Mobile Money (MTN/Orange) ou virement bancaire.
+                Vos informations sont sécurisées. Nous vous contacterons pour coordonner le paiement via Mobile Money (MTN/Orange) ou virement bancaire.
               </p>
             </div>
           )}
