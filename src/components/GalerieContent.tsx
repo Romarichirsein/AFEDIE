@@ -110,7 +110,7 @@ export default function GalerieContent() {
       {/* GALLERY GRID */}
       <section style={{ background: "#07151A", padding: "4rem 0 6rem" }}>
         <div className="container">
-          <div style={{
+          <div className="galerie-grid" style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
             gap: "1rem",
@@ -210,11 +210,23 @@ export default function GalerieContent() {
         )}
       </AnimatePresence>
 
-      <style>{`
+      <style jsx>{`
         .gallery-overlay:hover { opacity: 1 !important; }
-        @media (max-width: 480px) {
-          div[style*="repeat(auto-fill, minmax(260px"] {
+        @media (max-width: 640px) {
+          .galerie-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.5rem !important;
+          }
+          .gallery-overlay {
+            opacity: 1 !important;
+          }
+          section {
+            padding: 40px 0 !important;
+          }
+        }
+        @media (max-width: 400px) {
+           .galerie-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

@@ -284,13 +284,14 @@ export default function Navbar() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: "fixed",
-              top: isScrolled ? "50px" : "70px", // Adjusted based on scroll state
+              top: isScrolled ? "60px" : "80px", // Adjusted to match navbar height more closely
               left: 0,
               right: 0,
               background: "var(--glass-dark)",
               backdropFilter: "blur(20px)",
               zIndex: 999,
-              overflow: "hidden",
+              maxHeight: "calc(100vh - 80px)",
+              overflowY: "auto",
               borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
@@ -432,12 +433,15 @@ export default function Navbar() {
             padding: 0 1rem !important;
           }
           .nav-logo-wrap {
-            width: 45px;
-            height: 45px;
+            width: 40px !important;
+            height: 40px !important;
           }
           .nav-logo-img {
-            width: 45px;
-            height: 45px;
+            width: 40px !important;
+            height: 40px !important;
+          }
+          .mobile-toggle {
+            padding: 6px !important;
           }
         }
       `}</style>

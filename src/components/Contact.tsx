@@ -24,7 +24,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding" style={{ background: "white" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "0.8fr 1.2fr", gap: "6rem" }} className="contact-grid">
+        <div className="contact-grid">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -147,8 +147,22 @@ export default function Contact() {
       </div>
 
       <style jsx>{`
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 0.8fr 1.2fr;
+          gap: 6rem;
+        }
         .contact-form-card {
           padding: 4rem;
+          background: white;
+          border-radius: 40px;
+          box-shadow: 0 40px 100px rgba(0,0,0,0.06);
+          border: 1px solid rgba(0,0,0,0.03);
+        }
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
         }
         .partners-section {
           margin-top: 10rem;

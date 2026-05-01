@@ -22,9 +22,9 @@ export default function DonContent() {
   return (
     <>
       {/* HERO */}
-      <section style={{
+      <section className="section-padding" style={{
         background: "linear-gradient(135deg, #07151A 0%, #0d1f1a 50%, #07151A 100%)",
-        paddingTop: "8rem",
+        paddingTop: "10rem",
         paddingBottom: "4rem",
         position: "relative",
         overflow: "hidden",
@@ -103,7 +103,7 @@ export default function DonContent() {
                 <h3 style={{ color: "white", fontWeight: 700, marginBottom: "1rem", fontSize: "1rem" }}>
                   1. Choisissez une cause
                 </h3>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "0.75rem" }}>
+                <div className="causes-grid">
                   {causes.map(c => (
                     <button
                       key={c.id}
@@ -133,7 +133,7 @@ export default function DonContent() {
                 <h3 style={{ color: "white", fontWeight: 700, marginBottom: "1rem", fontSize: "1rem" }}>
                   2. Choisissez un montant (FCFA)
                 </h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1rem" }}>
+                <div className="montants-flex">
                   {montants.map(m => (
                     <button
                       key={m}
@@ -177,7 +177,7 @@ export default function DonContent() {
                 <h3 style={{ color: "white", fontWeight: 700, marginBottom: "1rem", fontSize: "1rem" }}>
                   3. Vos coordonnées
                 </h3>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="don-form-grid">
+                <div className="don-form-grid">
                   <input type="text" placeholder="Prénom & Nom" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
                   <input type="email" placeholder="Email" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
                   <input type="tel" placeholder="Téléphone (ex: +237 6XX XXX XXX)" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none", gridColumn: "1 / -1" }} />
@@ -216,11 +216,51 @@ export default function DonContent() {
         </div>
       </section>
 
-      <style>{`
-        .don-form-grid { grid-template-columns: 1fr 1fr; }
+      <style jsx>{`
+        .causes-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+          gap: 0.75rem;
+        }
+        .montants-flex {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+        .don-form-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
         @media (max-width: 600px) {
-          .don-form-grid { grid-template-columns: 1fr !important; }
-          .don-form-grid input { grid-column: 1 / -1 !important; }
+          .don-form-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .don-form-grid input {
+            grid-column: 1 / -1 !important;
+          }
+          .causes-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.5rem !important;
+          }
+          .causes-grid button {
+            padding: 0.75rem !important;
+            font-size: 0.75rem !important;
+          }
+          .montants-flex {
+            gap: 0.5rem !important;
+          }
+          .montants-flex button {
+            flex: 1 1 120px !important;
+            padding: 8px 12px !important;
+            font-size: 0.8rem !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .causes-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </>

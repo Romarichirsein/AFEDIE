@@ -107,7 +107,7 @@ export default function HumanitaireContent() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div className="humanitaire-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.5rem" }}>
             {actions.map((action, i) => (
               <motion.div
                 key={i}
@@ -132,6 +132,14 @@ export default function HumanitaireContent() {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .humanitaire-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
 
       {/* PARTENAIRES */}
       <section style={{ background: "#0a1a28", padding: "4rem 0 6rem" }}>

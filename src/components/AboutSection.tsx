@@ -23,12 +23,6 @@ export default function AboutSection() {
       
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "2.5rem",
-            alignItems: "center",
-          }}
           className="about-grid"
         >
           <motion.div
@@ -158,7 +152,7 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
+              <div className="about-tags" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
                 {t("about.tags").map((tag: string) => (
                   <span
                     key={tag}
@@ -178,7 +172,7 @@ export default function AboutSection() {
               </div>
 
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "2.5rem" }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <div className="founder-block" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                   <div style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--or)' }}>
                     <Image src="/images/founder.png" alt="Founder" width={70} height={70} style={{ objectFit: 'cover' }} />
                   </div>
@@ -226,18 +220,45 @@ export default function AboutSection() {
             gap: 3rem !important;
           }
         }
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 2.5rem;
+          align-items: center;
+        }
+        @media (max-width: 1024px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+        }
         @media (max-width: 640px) {
           .floating-badge {
             position: relative !important;
             bottom: auto !important;
             right: auto !important;
-            margin-top: 2rem !important;
-            display: inline-block !important;
-            padding: 1.5rem !important;
+            margin: 2rem auto 0 !important;
+            display: block !important;
+            width: fit-content !important;
+            padding: 1.2rem !important;
           }
           .about-grid > div:last-child > div:first-child {
-            padding: 2rem !important;
-            border-radius: 24px !important;
+            padding: 1.5rem !important;
+            border-radius: 20px !important;
+          }
+          .about-text-content {
+            text-align: center;
+          }
+          .about-text-content > div:first-child {
+            justify-content: center !important;
+          }
+          .about-tags {
+            justify-content: center;
+          }
+          .founder-block {
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
           }
         }
       `}</style>

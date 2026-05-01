@@ -24,7 +24,7 @@ export default function Governance() {
   return (
     <section id="gouvernance" className="section-padding" style={{ background: "var(--blanc)" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center" }} className="gov-grid">
+        <div className="gov-grid">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -101,6 +101,17 @@ export default function Governance() {
       </div>
 
       <style jsx>{`
+        .gov-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: center;
+        }
+        .gov-cards {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
         @media (max-width: 1024px) {
           .gov-grid {
             grid-template-columns: 1fr !important;

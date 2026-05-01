@@ -9,12 +9,21 @@ export default function WhatsAppButton() {
   const message = "Bonjour AFEDIE, je souhaite avoir plus d'informations.";
 
   return (
-    <Link
-      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div 
       className="whatsapp-btn-wrap"
+      style={{
+        position: "fixed",
+        bottom: "110px",
+        right: "30px",
+        zIndex: 100
+      }}
     >
+      <Link
+        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ display: "block" }}
+      >
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -27,9 +36,6 @@ export default function WhatsAppButton() {
 
       <style jsx>{`
         .whatsapp-btn-wrap {
-          position: fixed;
-          bottom: 110px;
-          right: 30px;
           z-index: 100;
         }
         .whatsapp-btn-inner {
@@ -55,6 +61,7 @@ export default function WhatsAppButton() {
           }
         }
       `}</style>
-    </Link>
+      </Link>
+    </div>
   );
 }

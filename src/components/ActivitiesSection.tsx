@@ -85,11 +85,6 @@ export default function ActivitiesSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="activities-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2rem",
-          }}
         >
           {t("activities.items").map((act: { title: string; desc: string }, index: number) => (
             <motion.div
@@ -138,9 +133,25 @@ export default function ActivitiesSection() {
       </div>
 
       <style jsx>{`
+        .activities-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+        .activity-card {
+          padding: 3.5rem;
+          background: var(--gris);
+          border-radius: 32px;
+          transition: all 0.4s ease;
+        }
         .activity-card:hover {
           background: white;
           box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 1200px) {
+          .activities-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
         @media (max-width: 1024px) {
           .activities-header {
@@ -151,13 +162,17 @@ export default function ActivitiesSection() {
         }
         @media (max-width: 768px) {
           .activities-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr;
           }
         }
         @media (max-width: 640px) {
           .activity-card {
-            padding: 1.5rem !important;
+            padding: 2rem 1.5rem !important;
             border-radius: 20px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
         }
       `}</style>

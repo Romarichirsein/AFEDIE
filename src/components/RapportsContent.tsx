@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { FileText, Quote as QuoteIcon } from "lucide-react";
 
 const years = ["2023", "2024", "2025"] as const;
 type Year = typeof years[number];
@@ -96,6 +97,7 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.40 (1).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.41.jpeg",
     ],
+    couleur: "#00C853", // Green for resilience and growth
     icone: "resilience",
   },
 };
@@ -169,8 +171,22 @@ export default function RapportsContent() {
       </section>
 
       {/* YEAR TABS */}
-      <section style={{ background: "#0d1f2d", position: "sticky", top: "70px", zIndex: 100, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-        <div className="container" style={{ display: "flex", justifyContent: "center", gap: "0", padding: "0" }}>
+      <section style={{ 
+        background: "#0d1f2d", 
+        position: "sticky", 
+        top: "60px", 
+        zIndex: 100, 
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        overflowX: "auto",
+        scrollbarWidth: "none"
+      }}>
+        <div className="container" style={{ 
+          display: "flex", 
+          justifyContent: "center", 
+          gap: "0", 
+          padding: "0",
+          minWidth: "max-content"
+        }}>
           {years.map((year) => {
             const isActive = activeYear === year;
             const data = rapportData[year];
@@ -238,7 +254,7 @@ export default function RapportsContent() {
               </div>
 
               {/* 2-column layout */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", marginBottom: "3rem" }} className="rapport-grid">
+              <div style={{ marginBottom: "3rem" }} className="rapport-grid">
 
                 {/* Faits marquants */}
                 <div style={{
@@ -441,6 +457,71 @@ export default function RapportsContent() {
               </tbody>
             </table>
           </div>
+
+          {/* Conclusion Banner from PPTX */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            style={{
+              marginTop: "5rem",
+              background: "linear-gradient(135deg, var(--or) 0%, #b8860b 100%)",
+              borderRadius: "30px",
+              padding: "4rem 2rem",
+              textAlign: "center",
+              position: "relative",
+              overflow: "hidden",
+              boxShadow: "0 20px 50px rgba(184, 134, 11, 0.2)",
+            }}
+          >
+            <div style={{ position: "absolute", top: "20px", left: "20px", opacity: 0.1, color: "var(--marine)" }}>
+              <QuoteIcon size={120} />
+            </div>
+            
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <h3 style={{
+                color: "var(--marine)",
+                fontSize: "clamp(1.5rem, 4vw, 2.2rem)",
+                fontWeight: 900,
+                lineHeight: 1.3,
+                marginBottom: "2.5rem",
+                maxWidth: "800px",
+                margin: "0 auto 2.5rem",
+              }}>
+                "En 2023, nous avons tenu. En 2024, nous avons avancé. En 2025, nous nous sommes relevées. En 2026, nous allons briller."
+              </h3>
+              
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem" }}>
+                <div style={{ textAlign: "center" }}>
+                  <p style={{ color: "var(--marine)", fontWeight: 800, fontSize: "1.1rem", marginBottom: "0.2rem" }}>Mme IDA SANDRINE NGNOTUE FOTSO</p>
+                  <p style={{ color: "var(--marine)", fontWeight: 600, fontSize: "0.85rem", opacity: 0.8, textTransform: "uppercase", letterSpacing: "1px" }}>Présidente Fondatrice, AFEDIE</p>
+                </div>
+
+                <a
+                  href="/documents/rapport_activite_AGO_2026.pptx"
+                  download
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "1.2rem 2.5rem",
+                    background: "var(--marine)",
+                    color: "white",
+                    borderRadius: "100px",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                    transition: "transform 0.3s ease",
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+                  onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+                >
+                  <FileText size={20} />
+                  Télécharger le Rapport d'Activité (PPTX)
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -498,11 +579,29 @@ export default function RapportsContent() {
 
       <style>{`
         .rapport-grid {
+          display: grid;
           grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .rapport-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .photo-overlay {
+            opacity: 1 !important;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent) !important;
+          }
+          section {
+            padding: 40px 0 !important;
+          }
+          .table-container {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+          }
+          table {
+            min-width: 500px !important;
           }
         }
         .photo-overlay:hover {

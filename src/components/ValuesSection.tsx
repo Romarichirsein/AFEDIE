@@ -84,30 +84,11 @@ export default function ValuesSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="values-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2rem",
-          }}
         >
           {t("values.items").map((val: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              style={{
-                background: "white",
-                padding: "3rem",
-                borderRadius: "32px",
-                boxShadow: "0 10px 40px rgba(0,0,0,0.03)",
-                border: "1px solid rgba(0,0,0,0.02)",
-                transition: "all 0.4s ease",
-                position: "relative",
-                overflow: "hidden",
-              }}
               className="value-card"
             >
               {/* Decorative background number */}
@@ -150,19 +131,48 @@ export default function ValuesSection() {
       </div>
 
       <style jsx>{`
+        .values-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+        }
+        .value-card {
+          padding: 3rem;
+          background: white;
+          border-radius: 32px;
+          border: 1px solid #f0f0f0;
+          transition: all 0.4s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+        }
         .value-card:hover {
+          transform: translateY(-10px);
           box-shadow: 0 30px 60px rgba(0,0,0,0.08);
           border-color: var(--or);
         }
+        @media (max-width: 1024px) {
+          .values-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
         @media (max-width: 768px) {
           .values-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr;
           }
         }
         @media (max-width: 640px) {
           .value-card {
-            padding: 2rem !important;
-            border-radius: 24px !important;
+            padding: 2rem 1.5rem !important;
+            border-radius: 20px !important;
+            align-items: center;
+            text-align: center;
+          }
+          .section-padding {
+            padding: 40px 0 !important;
           }
         }
       `}</style>

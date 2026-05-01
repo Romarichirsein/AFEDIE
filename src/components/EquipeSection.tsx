@@ -265,9 +265,6 @@ export default function EquipeSection() {
         {/* Autres membres */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "1.8rem",
             maxWidth: "1000px",
             margin: "0 auto",
           }}
@@ -346,16 +343,39 @@ export default function EquipeSection() {
       </div>
 
       <style jsx>{`
+        .equipe-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 1.8rem;
+        }
         .membre-card:hover {
           background: rgba(255, 255, 255, 0.06) !important;
           border-color: rgba(184, 134, 11, 0.3) !important;
           transform: translateY(-6px);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
+        @media (max-width: 768px) {
+          .equipe-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
         @media (max-width: 640px) {
           .equipe-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 1rem !important;
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+          .membre-card {
+            padding: 1.5rem !important;
+            text-align: center;
+          }
+          .membre-card > div {
+            align-items: center !important;
+            text-align: center;
+          }
+        }
+        @media (max-width: 480px) {
+          .equipe-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

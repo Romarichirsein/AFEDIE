@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, CheckCircle2 } from "lucide-react";
+import { Calendar, CheckCircle2, FileText } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Plan2026() {
@@ -60,11 +60,6 @@ export default function Plan2026() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="plan-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.5rem",
-          }}
         >
           {t("plan2026.items").map((item: { date: string; title: string; desc: string }, index: number) => (
             <motion.div
@@ -98,23 +93,77 @@ export default function Plan2026() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Download Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ marginTop: "4rem", textAlign: "center" }}
+        >
+          <a
+            href="/documents/rapport_activite_AGO_2026.pptx"
+            download
+            className="btn-primary"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "1rem 2.5rem",
+              fontSize: "1rem",
+              background: "var(--or)",
+              color: "var(--marine)",
+              borderRadius: "100px",
+              fontWeight: 700,
+              textDecoration: "none",
+              transition: "all 0.3s ease",
+            }}
+          >
+            <FileText size={20} />
+            {useLanguage().language === "fr" 
+              ? "Télécharger le Rapport d'Activité Complet (PPTX)" 
+              : "Download Full Activity Report (PPTX)"}
+          </a>
+        </motion.div>
       </div>
 
       <style jsx>{`
+        .plan-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        .plan-card {
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(10px);
+          padding: 2.5rem;
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          transition: all 0.3s ease;
+        }
         .plan-card:hover {
           background: rgba(255, 255, 255, 0.06);
           border-color: var(--or2);
           box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
+        @media (max-width: 1024px) {
+          .plan-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
         @media (max-width: 768px) {
           .plan-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr;
           }
         }
         @media (max-width: 640px) {
           .plan-card {
-            padding: 2rem !important;
+            padding: 2rem 1.5rem !important;
             border-radius: 20px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
           }
         }
       `}</style>

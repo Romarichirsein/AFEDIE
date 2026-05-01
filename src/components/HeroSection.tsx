@@ -154,7 +154,6 @@ export default function HeroSection() {
 
         <motion.div
           variants={itemVariants}
-          style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", width: "100%" }}
           className="hero-buttons"
         >
           <Link
@@ -171,7 +170,8 @@ export default function HeroSection() {
               alignItems: "center",
               justifyContent: "center",
               gap: "12px",
-              minWidth: "240px",
+              minWidth: "200px",
+              flex: "1",
             }}
           >
             {t("hero.cta_primary")} <ArrowRight size={20} />
@@ -190,7 +190,8 @@ export default function HeroSection() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              minWidth: "240px",
+              minWidth: "200px",
+              flex: "1",
             }}
           >
             {t("hero.cta_secondary")}
@@ -213,7 +214,11 @@ export default function HeroSection() {
           width: "100%",
         }}
       >
-        <div className="container hero-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
+        <div className="container hero-stats-grid" style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", 
+          gap: "1rem" 
+        }}>
           {[
             { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={18} /> },
             { num: "7", label: t("hero.stats.actions"), icon: <Shield size={18} /> },
@@ -227,6 +232,41 @@ export default function HeroSection() {
           ))}
         </div>
       </motion.div>
+      <style jsx>{`
+        .hero-buttons {
+          display: flex;
+          gap: 1rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+        }
+        .hero-btn {
+          min-width: 240px;
+        }
+        .hero-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        @media (max-width: 768px) {
+          .hero-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .hero-btn {
+            min-width: 100% !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+          section {
+            min-height: auto !important;
+            padding-bottom: 3rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

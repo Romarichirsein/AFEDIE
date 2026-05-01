@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "var(--marine)", color: "white", position: "relative" }} className="site-footer">
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 0.8fr 0.8fr 1.2fr", gap: "6rem", marginBottom: "8rem" }} className="footer-grid">
+        <div className="footer-grid">
           <div>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "2.5rem" }}>
               <div style={{ width: "40px", height: "40px", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
@@ -112,6 +112,12 @@ export default function Footer() {
         .site-footer {
           padding: 100px 0 40px;
         }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.5fr 0.8fr 0.8fr 1.2fr;
+          gap: 6rem;
+          margin-bottom: 8rem;
+        }
         .social-icon:hover {
           background: var(--or) !important;
           transform: translateY(-5px);
@@ -119,6 +125,11 @@ export default function Footer() {
         .footer-link:hover {
           color: var(--or) !important;
           padding-left: 5px;
+        }
+        @media (max-width: 1200px) {
+          .footer-grid {
+            gap: 3rem !important;
+          }
         }
         @media (max-width: 1024px) {
           .footer-grid {

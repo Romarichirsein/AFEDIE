@@ -60,6 +60,10 @@ export default function BackToTop() {
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
             className="back-to-top-btn"
+            style={{
+              position: "fixed",
+              zIndex: 100
+            }}
           >
             {/* Circular Progress Background */}
             <svg className="progress-circle" width="60" height="60" style={{ position: "absolute", transform: "rotate(-90deg)" }}>
@@ -76,10 +80,8 @@ export default function BackToTop() {
 
             <style jsx>{`
               .back-to-top-btn {
-                position: fixed;
                 bottom: 40px;
                 right: 40px;
-                z-index: 100;
                 width: 60px;
                 height: 60px;
                 background: var(--marine);
