@@ -416,7 +416,7 @@ export default function Navbar() {
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
-            padding: 0 1.5rem !important;
+            padding: 0 1rem !important;
           }
           .nav-logo-wrap {
             width: 50px !important;

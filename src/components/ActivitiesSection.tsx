@@ -156,8 +156,8 @@ export default function ActivitiesSection() {
         }
         @media (max-width: 640px) {
           .activity-card {
-            padding: 2rem !important;
-            border-radius: 24px !important;
+            padding: 1.5rem !important;
+            border-radius: 20px !important;
           }
         }
       `}</style>

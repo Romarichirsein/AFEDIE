@@ -39,7 +39,8 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.34 (1).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.34 (2).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.35.jpeg",
-      "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.35 (1).jpeg",
+    ],
+    couleur: "#7C3AED",
     icone: "foundation",
   },
   "2024": {
@@ -95,11 +96,7 @@ const rapportData: Record<Year, {
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.40 (1).jpeg",
       "/images/gallery/WhatsApp Image 2026-05-01 at 08.13.41.jpeg",
     ],
-    couleur: "#166534",
-    icone: "resilience",mages/gallery/WhatsApp Image 2026-05-01 at 08.13.41.jpeg",
-    ],
-    couleur: "#166534",
-    icone: "🌱",
+    icone: "resilience",
   },
 };
 
