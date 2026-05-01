@@ -71,14 +71,12 @@ export const translations = {
       priorityAction: "Action Prioritaire",
       items: [
         { date: "29 mai 2026", title: "Assemblée Générale Ordinaire & Masterclass", desc: "Assemblée Générale Ordinaire et session de Masterclass pour le renforcement des capacités." },
-        { date: "30 mai 2026 à 9h00", title: "Collecte de dons", desc: "Campagne de collecte de dons organisée par l'AFEDIE en faveur de ses actions solidaires et humanitaires à l'École des Petits Mozart, Yaoundé." },
-        { date: "Mai 2026", title: "Cérémonie de l'Excellence", desc: "Remise des prix aux meilleures élèves et femmes leaders de la communauté." },
+        { date: "30 mai 2026 à 9h00", title: "Cérémonie de l'Excellence & Collecte de Dons", desc: "Célébration des parcours exemplaires avec remise de prix aux meilleures élèves et femmes leaders, accompagnée d'une collecte de dons en faveur de l'École des Petits Mozart à Yaoundé." },
         { date: "Juin 2026", title: "Séminaire de Formation", desc: "Renforcement des capacités en gestion de projets et leadership féminin." },
         { date: "Septembre 2026", title: "Rentrée Solidaire", desc: "Distribution de kits scolaires et bourses d'études pour les orphelins." },
-        { date: "Octobre 2026", title: "Caravane Santé", desc: "Campagne de dépistage gratuit et sensibilisation sur l'hygiène maternelle." },
-        { date: "Novembre 2026", title: "Foire de l'Autonomisation", desc: "Exposition-vente des produits artisanaux et agricoles des membres." },
-        { date: "Décembre 2026", title: "Caravane Humanitaire", desc: "Caravane humanitaire dans l'agglomération de Yaoundé au profit des couches défavorisées — distribution de vivres, kits et soutien aux populations vulnérables." },
-        { date: "Décembre 2026", title: "Arbre de Noël", desc: "Célébration annuelle et distribution de cadeaux aux enfants démunis." }
+        { date: "Octobre 2026", title: "Activités en cours de planification", desc: "Le programme détaillé pour ce mois sera communiqué prochainement." },
+        { date: "Novembre 2026", title: "Activités en cours de planification", desc: "Le programme détaillé pour ce mois sera communiqué prochainement." },
+        { date: "Décembre 2026", title: "Caravane Humanitaire & Arbre de Noël", desc: "Grande campagne humanitaire autour de Yaoundé : distribution de dons, arbre de Noël pour les enfants (repas et cadeaux), et caravane de santé avec dépistage gratuit pour les personnes âgées." }
       ]
     },
     contact: {
@@ -190,14 +188,12 @@ export const translations = {
       priorityAction: "Priority Action",
       items: [
         { date: "May 29, 2026", title: "Ordinary General Assembly & Masterclass", desc: "Ordinary General Assembly and Masterclass session for capacity building." },
-        { date: "May 30, 2026 at 9:00 AM", title: "Donation Collection", desc: "Donation collection campaign organized by AFEDIE in favor of its solidarity and humanitarian actions at École des Petits Mozart, Yaoundé." },
-        { date: "May 2026", title: "Excellence Ceremony", desc: "Awarding prizes to the best students and women leaders in the community." },
+        { date: "May 30, 2026 at 9:00 AM", title: "Excellence Ceremony & Donation Collection", desc: "Celebration of exemplary journeys with awards for top students and women leaders, accompanied by a donation drive for the Petits Mozart School in Yaoundé." },
         { date: "June 2026", title: "Training Seminar", desc: "Capacity building in project management and female leadership." },
         { date: "September 2026", title: "Solidarity Back-to-School", desc: "Distribution of school kits and scholarships for orphans." },
-        { date: "October 2026", title: "Health Caravan", desc: "Free screening campaign and awareness on maternal hygiene." },
-        { date: "November 2026", title: "Empowerment Fair", desc: "Exhibition-sale of artisanal and agricultural products by members." },
-        { date: "December 2026", title: "Humanitarian Caravan", desc: "Humanitarian caravan in the Yaoundé metropolitan area for the benefit of underprivileged groups — distribution of food, kits and support to vulnerable populations." },
-        { date: "December 2026", title: "Christmas Tree", desc: "Annual celebration and distribution of gifts to underprivileged children." }
+        { date: "October 2026", title: "Activities under planning", desc: "The detailed program for this month will be announced soon." },
+        { date: "November 2026", title: "Activities under planning", desc: "The detailed program for this month will be announced soon." },
+        { date: "December 2026", title: "Humanitarian Caravan & Christmas Tree", desc: "Major humanitarian campaign around Yaoundé: donation distribution, Christmas tree for children (meal and gifts), and a health caravan with free screening for the elderly." }
       ]
     },
     contact: {
