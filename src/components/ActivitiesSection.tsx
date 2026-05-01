@@ -59,7 +59,7 @@ export default function ActivitiesSection() {
                 {t("activities.badge")}
               </span>
             </div>
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1 }}>
+            <h2 className="text-balance" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1 }}>
               {t("activities.title").includes("faisons") ? (
                 <>{t("activities.title").split("faisons")[0]}<span style={{ color: "var(--vert2)" }}>faisons</span> concrètement</>
               ) : t("activities.title").includes("do") ? (
@@ -167,12 +167,26 @@ export default function ActivitiesSection() {
         }
         @media (max-width: 640px) {
           .activity-card {
-            padding: 2rem 1.5rem !important;
-            border-radius: 20px !important;
+            padding: 2.5rem 1.8rem !important;
+            border-radius: 24px !important;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
+            text-align: left;
+          }
+          .activity-card h3 {
+            font-size: 1.3rem !important;
+          }
+          .activities-header h2 {
             text-align: center;
+          }
+          .activities-header p {
+            text-align: center;
+          }
+        }
+        @media (max-width: 480px) {
+          .activity-card {
+            padding: 2rem 1.5rem !important;
           }
         }
       `}</style>

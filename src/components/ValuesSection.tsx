@@ -94,12 +94,13 @@ export default function ValuesSection() {
               {/* Decorative background number */}
               <span style={{ 
                 position: 'absolute', 
-                top: '20px', 
-                right: '30px', 
-                fontSize: '4rem', 
+                top: '15px', 
+                right: '20px', 
+                fontSize: '3.5rem', 
                 fontWeight: 900, 
                 color: 'rgba(0,0,0,0.03)',
-                zIndex: 0
+                zIndex: 0,
+                pointerEvents: 'none'
               }}>
                 0{index + 1}
               </span>
@@ -166,13 +167,21 @@ export default function ValuesSection() {
         }
         @media (max-width: 640px) {
           .value-card {
-            padding: 2rem 1.5rem !important;
-            border-radius: 20px !important;
-            align-items: center;
-            text-align: center;
+            padding: 2.5rem 1.8rem !important;
+            border-radius: 24px !important;
+            align-items: flex-start;
+            text-align: left;
+          }
+          .value-card h3 {
+            font-size: 1.3rem !important;
           }
           .section-padding {
-            padding: 40px 0 !important;
+            padding: 50px 0 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .value-card {
+            padding: 2rem 1.5rem !important;
           }
         }
       `}</style>

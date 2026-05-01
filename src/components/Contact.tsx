@@ -48,13 +48,13 @@ export default function Contact() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
               {contactInfo.map((item, i) => (
-                <div key={i} style={{ display: "flex", gap: "1.5rem" }}>
-                  <div style={{ width: "56px", height: "56px", background: "var(--gris)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--or)", flexShrink: 0 }}>
+                <div key={i} style={{ display: "flex", gap: "1.5rem" }} className="contact-info-item">
+                  <div style={{ width: "56px", height: "56px", background: "var(--gris)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--or)", flexShrink: 0 }} className="contact-info-icon">
                     {item.icon}
                   </div>
                   <div>
                     <p style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "#aaa", letterSpacing: "1px", marginBottom: "0.3rem" }}>{item.label}</p>
-                    <p style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--marine)", marginBottom: "0.2rem" }}>{item.val}</p>
+                    <p style={{ fontSize: "1.2rem", fontWeight: 700, color: "var(--marine)", marginBottom: "0.2rem", wordBreak: "break-all" }}>{item.val}</p>
                     <p style={{ fontSize: "0.85rem", color: "#888" }}>{item.sub}</p>
                   </div>
                 </div>
@@ -186,32 +186,27 @@ export default function Contact() {
         }
         @media (max-width: 768px) {
           .contact-form-card {
-            padding: 2.5rem !important;
-            border-radius: 28px !important;
+            padding: 2.5rem 1.8rem !important;
+            border-radius: 32px !important;
           }
           .partners-section {
-            margin-top: 5rem !important;
-          }
-          .partners-row {
-            gap: 2rem !important;
-          }
-          .partner-name {
-            font-size: 1.1rem !important;
+            margin-top: 6rem !important;
           }
         }
         @media (max-width: 640px) {
-          .form-row {
-            grid-template-columns: 1fr !important;
-          }
           .contact-form-card {
-            padding: 1.5rem !important;
-            border-radius: 24px !important;
+            padding: 2rem 1.2rem !important;
+            border-radius: 28px !important;
           }
-          .partners-row {
-            gap: 1.5rem !important;
+          .contact-info-item {
+            gap: 1rem !important;
           }
-          .partner-name {
-            font-size: 0.95rem !important;
+          .contact-info-icon {
+            width: 48px !important;
+            height: 48px !important;
+          }
+          .partners-section {
+            margin-top: 4rem !important;
           }
         }
       `}</style>

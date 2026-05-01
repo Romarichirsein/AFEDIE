@@ -113,14 +113,14 @@ export default function HeroSection() {
 
         <motion.h1
           variants={itemVariants}
+          className="text-balance"
           style={{
             fontSize: "clamp(2.2rem, 10vw, 5rem)",
             fontWeight: 800,
             color: "white",
             lineHeight: 1.1,
             marginBottom: "1.5rem",
-            width: "100%",
-            maxWidth: "100%",
+            maxWidth: "900px",
           }}
         >
           {t("hero.title1")} <br />
@@ -140,12 +140,13 @@ export default function HeroSection() {
 
         <motion.p
           variants={itemVariants}
+          className="text-balance"
           style={{
             fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
             color: "rgba(255, 255, 255, 0.7)",
             fontWeight: 400,
             marginBottom: "3rem",
-            maxWidth: "100%",
+            maxWidth: "800px",
             lineHeight: 1.6,
           }}
         >
@@ -250,20 +251,26 @@ export default function HeroSection() {
         }
         @media (max-width: 768px) {
           .hero-stats-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem !important;
           }
           .hero-btn {
             min-width: 100% !important;
           }
         }
+        @media (max-width: 600px) {
+           .hero-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
         @media (max-width: 480px) {
           .hero-stats-grid {
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 1.5rem !important;
           }
           section {
             min-height: auto !important;
-            padding-bottom: 3rem !important;
+            padding-bottom: 0 !important;
           }
         }
       `}</style>

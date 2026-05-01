@@ -260,10 +260,10 @@ export default function Navbar() {
             style={{ 
               color: "white", 
               cursor: "pointer",
-              background: "rgba(255,255,255,0.05)",
-              padding: "8px",
-              borderRadius: "10px",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "rgba(255,255,255,0.08)",
+              padding: "10px",
+              borderRadius: "12px",
+              border: "1px solid rgba(255,255,255,0.15)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center"
@@ -430,18 +430,18 @@ export default function Navbar() {
         }
         @media (max-width: 480px) {
           .container {
-            padding: 0 1rem !important;
+            padding: 0 1.2rem !important;
           }
           .nav-logo-wrap {
-            width: 40px !important;
-            height: 40px !important;
+            width: 45px !important;
+            height: 45px !important;
           }
           .nav-logo-img {
-            width: 40px !important;
-            height: 40px !important;
+            width: 45px !important;
+            height: 45px !important;
           }
           .mobile-toggle {
-            padding: 6px !important;
+            padding: 8px !important;
           }
         }
       `}</style>

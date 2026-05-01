@@ -234,31 +234,34 @@ export default function AboutSection() {
         }
         @media (max-width: 640px) {
           .floating-badge {
-            position: relative !important;
-            bottom: auto !important;
-            right: auto !important;
-            margin: 2rem auto 0 !important;
-            display: block !important;
-            width: fit-content !important;
+            position: absolute !important;
+            bottom: -20px !important;
+            right: 20px !important;
             padding: 1.2rem !important;
+            transform: scale(0.85);
           }
           .about-grid > div:last-child > div:first-child {
-            padding: 1.5rem !important;
-            border-radius: 20px !important;
-          }
-          .about-text-content {
-            text-align: center;
-          }
-          .about-text-content > div:first-child {
-            justify-content: center !important;
+            padding: 2rem 1.5rem !important;
+            border-radius: 24px !important;
           }
           .about-tags {
-            justify-content: center;
+            justify-content: flex-start;
           }
           .founder-block {
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
+            gap: 1rem !important;
+          }
+          .founder-block img {
+            width: 60px !important;
+            height: 60px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .founder-block {
+            flex-direction: row !important;
+            text-align: left !important;
+          }
+          .floating-badge {
+            right: 10px !important;
           }
         }
       `}</style>

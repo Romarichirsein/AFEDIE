@@ -90,6 +90,7 @@ export default function Footer() {
       <motion.div
         whileHover={{ y: -5 }}
         onClick={scrollToTop}
+        className="back-to-top-footer"
         style={{
           position: "absolute",
           top: "-30px",
@@ -102,7 +103,8 @@ export default function Footer() {
           alignItems: "center",
           justifyContent: "center",
           cursor: "pointer",
-          boxShadow: "0 10px 30px rgba(184, 134, 11, 0.3)"
+          boxShadow: "0 10px 30px rgba(184, 134, 11, 0.3)",
+          zIndex: 5
         }}
       >
         <ArrowUp size={24} />
@@ -143,19 +145,30 @@ export default function Footer() {
           }
           .footer-grid {
             margin-bottom: 4rem !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 3rem !important;
           }
           .footer-bottom {
             flex-direction: column;
             text-align: center;
           }
+          .back-to-top-footer {
+            right: 30px !important;
+          }
         }
         @media (max-width: 640px) {
           .footer-grid {
             grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+            gap: 2.5rem !important;
           }
           .site-footer {
             padding: 50px 0 25px !important;
+          }
+          .back-to-top-footer {
+            right: 20px !important;
+            width: 50px !important;
+            height: 50px !important;
+            top: -25px !important;
           }
         }
       `}</style>

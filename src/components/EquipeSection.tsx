@@ -171,6 +171,7 @@ export default function EquipeSection() {
               }}
             >
               <div
+                className="president-card"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(184, 134, 11, 0.4)",
@@ -357,25 +358,27 @@ export default function EquipeSection() {
         @media (max-width: 768px) {
           .equipe-grid {
             grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem !important;
           }
         }
         @media (max-width: 640px) {
-          .equipe-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
+          .president-card {
+            padding: 2rem 1.5rem !important;
+            border-radius: 24px !important;
           }
           .membre-card {
-            padding: 1.5rem !important;
-            text-align: center;
+            padding: 1.5rem 1rem !important;
+            border-radius: 20px !important;
           }
-          .membre-card > div {
-            align-items: center !important;
-            text-align: center;
+          .membre-card img {
+            width: 90px !important;
+            height: 90px !important;
           }
         }
         @media (max-width: 480px) {
           .equipe-grid {
             grid-template-columns: 1fr !important;
+            gap: 1rem !important;
           }
         }
       `}</style>
