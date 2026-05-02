@@ -29,17 +29,17 @@ export default function ValuesSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 40 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     },
   };
 
@@ -48,8 +48,9 @@ export default function ValuesSection() {
       <div className="container">
         <div style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto 5rem" }}>
           <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "4px", textTransform: "uppercase", color: "var(--or)", display: "block", marginBottom: "1rem" }}
           >
@@ -58,6 +59,7 @@ export default function ValuesSection() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", marginBottom: "1.5rem" }}
           >
@@ -70,25 +72,34 @@ export default function ValuesSection() {
           <motion.div 
             initial={{ width: 0 }}
             whileInView={{ width: "80px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            style={{ height: "4px", background: "var(--or)", margin: "0 auto 2rem" }} 
+            style={{ height: "4px", background: "var(--or)", margin: "0 auto 2rem", borderRadius: "2px" }} 
           />
-          <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.7 }}>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.7 }}
+          >
             {t("values.subtitle")}
-          </p>
+          </motion.p>
         </div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="values-grid"
         >
           {t("values.items").map((val: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="value-card"
             >
               {/* Decorative background number */}
@@ -105,21 +116,24 @@ export default function ValuesSection() {
                 0{index + 1}
               </span>
 
-              <div style={{ 
-                width: "70px", 
-                height: "70px", 
-                background: `${colors[index % colors.length]}10`, 
-                borderRadius: "20px", 
-                display: "flex", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                color: colors[index % colors.length],
-                marginBottom: "2rem",
-                position: "relative",
-                zIndex: 1
-              }}>
+              <motion.div 
+                whileHover={{ rotate: 10, scale: 1.1 }}
+                style={{ 
+                  width: "70px", 
+                  height: "70px", 
+                  background: `${colors[index % colors.length]}15`, 
+                  borderRadius: "20px", 
+                  display: "flex", 
+                  alignItems: "center", 
+                  justifyContent: "center", 
+                  color: colors[index % colors.length],
+                  marginBottom: "2rem",
+                  position: "relative",
+                  zIndex: 1
+                }}
+              >
                 {icons[index % icons.length]}
-              </div>
+              </motion.div>
               <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1rem", position: "relative", zIndex: 1 }}>
                 {val.title}
               </h3>
@@ -142,16 +156,16 @@ export default function ValuesSection() {
           background: white;
           border-radius: 32px;
           border: 1px solid #f0f0f0;
-          transition: all 0.4s ease;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           height: 100%;
           position: relative;
           overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .value-card:hover {
-          transform: translateY(-10px);
           box-shadow: 0 30px 60px rgba(0,0,0,0.08);
           border-color: var(--or);
         }

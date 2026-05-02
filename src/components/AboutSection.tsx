@@ -7,13 +7,34 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutSection() {
   const { t } = useLanguage();
-  const revealVariants = {
-    hidden: { opacity: 0, y: 50 },
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" as const }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
     },
+  };
+
+  const quoteVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
   };
 
   return (
@@ -29,9 +50,9 @@ export default function AboutSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            variants={revealVariants}
+            variants={containerVariants}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
+            <motion.div variants={itemVariants} style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
               <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
               <span
                 style={{
@@ -44,9 +65,10 @@ export default function AboutSection() {
               >
                 {t("about.badge")}
               </span>
-            </div>
+            </motion.div>
             
-            <h2
+            <motion.h2
+              variants={itemVariants}
               className="text-balance"
               style={{
                 fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
@@ -61,9 +83,10 @@ export default function AboutSection() {
               ) : t("about.title").includes("Cameroonian women") ? (
                 <>{t("about.title").split("Cameroonian women")[0]}<span style={{ color: "var(--vert2)" }}>Cameroonian women</span></>
               ) : t("about.title")}
-            </h2>
+            </motion.h2>
             
-            <p
+            <motion.p
+              variants={itemVariants}
               style={{
                 fontSize: "1.2rem",
                 color: "#444",
@@ -73,9 +96,10 @@ export default function AboutSection() {
               }}
             >
               {t("about.desc1")}
-            </p>
+            </motion.p>
             
-            <p
+            <motion.p
+              variants={itemVariants}
               style={{
                 fontSize: "1.05rem",
                 color: "#666",
@@ -84,9 +108,10 @@ export default function AboutSection() {
               }}
             >
               {t("about.desc2")}
-            </p>
+            </motion.p>
 
-            <div
+            <motion.div
+              variants={quoteVariants}
               style={{
                 padding: "2.5rem",
                 background: "var(--gris)",
@@ -115,14 +140,14 @@ export default function AboutSection() {
                   {t("about.quoteAuthor")}
                 </span>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: "easeOut" as const }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             style={{ position: "relative" }}
           >
             <div
@@ -146,17 +171,25 @@ export default function AboutSection() {
               
               <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "3rem" }}>
                 {t("about.certItems").map((item: string, i: number) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.8)", fontSize: "0.95rem" }}>
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + (i * 0.1) }}
+                    viewport={{ once: true }}
+                    style={{ display: "flex", alignItems: "center", gap: "12px", color: "rgba(255,255,255,0.8)", fontSize: "0.95rem" }}
+                  >
                     <div style={{ color: "var(--or2)" }}>{i === 0 ? <Award size={18} /> : <CheckCircle2 size={18} />}</div>
                     {item}
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
               <div className="about-tags" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "3rem" }}>
-                {t("about.tags").map((tag: string) => (
-                  <span
+                {t("about.tags").map((tag: string, i: number) => (
+                  <motion.span
                     key={tag}
+                    whileHover={{ scale: 1.05, background: "rgba(184, 134, 11, 0.2)", borderColor: "var(--or)" }}
                     style={{
                       padding: "8px 20px",
                       background: "rgba(255,255,255,0.05)",
@@ -165,10 +198,12 @@ export default function AboutSection() {
                       fontWeight: 600,
                       color: "white",
                       border: "1px solid rgba(255,255,255,0.1)",
+                      cursor: "default",
+                      transition: "background 0.3s, border-color 0.3s"
                     }}
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
 
@@ -192,8 +227,8 @@ export default function AboutSection() {
             {/* Float Badge */}
             <motion.div
               className="floating-badge"
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              animate={{ y: [0, -15, 0], rotate: [0, 2, 0, -2, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               style={{
                 position: "absolute",
                 bottom: "-30px",

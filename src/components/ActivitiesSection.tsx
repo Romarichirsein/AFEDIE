@@ -48,55 +48,90 @@ export default function ActivitiesSection() {
 
   const colors = ["#D4AF37", "#1B5E20", "#07151A"];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  };
+
   return (
     <section id="activites" className="section-padding" style={{ background: "white", position: "relative" }}>
       <div className="container">
         <div className="activities-header" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "flex-end", gap: "4rem", marginBottom: "6rem" }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}
+            >
               <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
               <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--or)" }}>
                 {t("activities.badge")}
               </span>
-            </div>
-            <h2 className="text-balance" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1 }}>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-balance" 
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, color: "var(--marine)", lineHeight: 1.1 }}
+            >
               {t("activities.title").includes("faisons") ? (
                 <>{t("activities.title").split("faisons")[0]}<span style={{ color: "var(--vert2)" }}>faisons</span> concrètement</>
               ) : t("activities.title").includes("do") ? (
                 <>{t("activities.title").split("do")[0]}<span style={{ color: "var(--vert2)" }}>do</span> concretely</>
               ) : t("activities.title")}
-            </h2>
+            </motion.h2>
           </div>
-          <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.8, maxWidth: "500px" }}>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.8, maxWidth: "500px" }}
+          >
             {t("activities.subtitle")}
-          </p>
+          </motion.p>
         </div>
 
         <motion.div 
           className="activities-grid"
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           {(t("activities.items") as any[]).map((act: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
-              variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.6 } }
-              }}
+              variants={itemVariants}
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="activity-card"
             >
-              <div style={{ width: "70px", height: "70px", borderRadius: "20px", background: "white", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: colors[index % colors.length], marginBottom: "2rem" }}>
+              <motion.div 
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                style={{ width: "70px", height: "70px", borderRadius: "20px", background: "white", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: colors[index % colors.length], marginBottom: "2rem" }}
+              >
                 {activities[index % activities.length]?.icon}
-              </div>
+              </motion.div>
               <h3 style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1.2rem" }}>
                 {act.title}
               </h3>
               <p style={{ fontSize: "1rem", color: "#666", lineHeight: 1.7, marginBottom: "2.5rem" }}>
                 {act.desc}
               </p>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", color: colors[index % colors.length], fontWeight: 700, fontSize: "0.95rem", cursor: "pointer" }}>
+              <div className="activity-more" style={{ display: "flex", alignItems: "center", gap: "10px", color: colors[index % colors.length], fontWeight: 700, fontSize: "0.95rem", cursor: "pointer", transition: "transform 0.3s ease" }}>
                 {t("activities.more")} <ArrowRight size={20} />
               </div>
             </motion.div>
@@ -114,11 +149,16 @@ export default function ActivitiesSection() {
           padding: 3.5rem;
           background: var(--gris);
           border-radius: 32px;
-          transition: all 0.4s ease;
+          border: 1px solid transparent;
+          transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
         }
         .activity-card:hover {
           background: white;
-          box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+          border-color: rgba(184, 134, 11, 0.2);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+        }
+        .activity-card:hover .activity-more {
+          transform: translateX(10px);
         }
         @media (max-width: 1200px) {
           .activities-grid {
