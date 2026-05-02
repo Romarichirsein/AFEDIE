@@ -204,13 +204,14 @@ export default function Navbar() {
               style={{
                 background: "linear-gradient(135deg, #166534, #15803D)",
                 color: "white",
-                borderRadius: "100px",
+                borderRadius: "12px",
                 fontWeight: 600,
                 letterSpacing: "0.5px",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "8px",
-                boxShadow: "0 4px 15px rgba(22,101,52,0.3)",
+                boxShadow: "0 4px 15px rgba(22,101,52,0.2)",
                 transition: "all 0.3s ease",
                 textDecoration: "none"
               }}
@@ -223,13 +224,14 @@ export default function Navbar() {
               style={{
                 background: "var(--or)",
                 color: "white",
-                borderRadius: "100px",
+                borderRadius: "12px",
                 fontWeight: 600,
                 letterSpacing: "0.5px",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "8px",
-                boxShadow: "0 4px 15px rgba(184, 134, 11, 0.3)",
+                boxShadow: "0 4px 15px rgba(184, 134, 11, 0.2)",
                 transition: "all 0.3s ease",
                 textDecoration: "none"
               }}
@@ -385,8 +387,9 @@ export default function Navbar() {
           height: 60px;
         }
         .nav-cta {
-          padding: 10px 24px;
+          padding: 12px 28px;
           font-size: 0.85rem;
+          margin-left: 0.5rem;
         }
         .nav-link:hover {
           opacity: 1 !important;
