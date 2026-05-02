@@ -386,7 +386,7 @@ export default function Navbar() {
       </AnimatePresence>
 
 
-      <style>{`
+      <style jsx>{`
         .nav-logo-wrap {
           width: 60px;
           height: 60px;
@@ -413,12 +413,6 @@ export default function Navbar() {
         }
         @media (max-width: 1024px) {
           .desktop-menu { display: none !important; }
-          .container {
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 0 1rem !important;
-          }
           .nav-logo-wrap {
             width: 50px !important;
             height: 50px !important;
@@ -429,9 +423,6 @@ export default function Navbar() {
           }
         }
         @media (max-width: 480px) {
-          .container {
-            padding: 0 1rem !important;
-          }
           .nav-logo-wrap {
             width: 50px !important;
             height: 50px !important;

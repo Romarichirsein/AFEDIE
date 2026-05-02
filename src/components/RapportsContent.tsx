@@ -577,7 +577,7 @@ export default function RapportsContent() {
         )}
       </AnimatePresence>
 
-      <style>{`
+      <style jsx>{`
         .rapport-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
