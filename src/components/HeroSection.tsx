@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   const { t } = useLanguage();
@@ -122,7 +123,7 @@ export default function HeroSection() {
             variants={itemVariants}
             style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}
           >
-            <button className="btn-primary hero-btn" style={{ 
+            <Link href="#activites" className="btn-primary hero-btn" style={{ 
               background: "var(--or)", 
               color: "white", 
               border: "none",
@@ -134,14 +135,15 @@ export default function HeroSection() {
               gap: "10px",
               boxShadow: "0 10px 30px rgba(184, 134, 11, 0.3)",
               cursor: "pointer",
-              transition: "all 0.3s ease"
+              transition: "all 0.3s ease",
+              textDecoration: "none"
             }}
             onMouseOver={(e) => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 15px 40px rgba(184, 134, 11, 0.4)"; }}
             onMouseOut={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 10px 30px rgba(184, 134, 11, 0.3)"; }}
             >
               {t("hero.cta_primary")} <ArrowRight size={20} />
-            </button>
-            <button className="btn-outline hero-btn" style={{ 
+            </Link>
+            <Link href="#contact" className="btn-outline hero-btn" style={{ 
               background: "rgba(255,255,255,0.05)",
               backdropFilter: "blur(10px)",
               borderColor: "rgba(255,255,255,0.2)", 
@@ -153,13 +155,14 @@ export default function HeroSection() {
               alignItems: "center",
               gap: "10px",
               cursor: "pointer",
-              transition: "all 0.3s ease"
+              transition: "all 0.3s ease",
+              textDecoration: "none"
             }}
             onMouseOver={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.transform = "translateY(-5px)"; }}
             onMouseOut={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
               {t("hero.cta_secondary")}
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 
