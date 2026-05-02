@@ -15,10 +15,10 @@ export default function Plan2026() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
-      x: 0,
+      y: 0,
       transition: { duration: 0.6, ease: "easeOut" as const }
     }
   };
