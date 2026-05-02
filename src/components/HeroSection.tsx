@@ -39,7 +39,7 @@ export default function HeroSection() {
       {/* Background Image with Overlay */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
-          src="/images/hero-bg.jpg"
+          src="/images/hero.png"
           alt="Hero Background"
           fill
           priority
