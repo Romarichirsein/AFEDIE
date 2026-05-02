@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 export default function Gallery() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   // Sample placeholder images - will be replaced by actual photos
   const images = [
@@ -102,9 +105,32 @@ export default function Gallery() {
         </motion.div>
         
         <div style={{ marginTop: "4rem", textAlign: "center" }}>
-          <p style={{ color: "#aaa", fontStyle: "italic", fontSize: "0.9rem" }}>
-            * D&apos;autres photos seront bientôt disponibles après l&apos;Assemblée Générale.
-          </p>
+          <Link href="/galerie" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "12px",
+            padding: "1rem 2.5rem",
+            background: "var(--or)",
+            color: "white",
+            borderRadius: "50px",
+            fontWeight: 800,
+            fontSize: "1rem",
+            textDecoration: "none",
+            boxShadow: "0 10px 30px rgba(184, 134, 11, 0.3)",
+            transition: "all 0.3s ease",
+            textTransform: "uppercase",
+            letterSpacing: "1px"
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = "translateY(-5px)";
+            e.currentTarget.style.boxShadow = "0 15px 35px rgba(184, 134, 11, 0.4)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "0 10px 30px rgba(184, 134, 11, 0.3)";
+          }}>
+            {language === "fr" ? "Voir toute la galerie" : "View full gallery"} <ArrowRight size={20} />
+          </Link>
         </div>
       </div>
 
