@@ -66,10 +66,10 @@ export default function Navbar() {
 
   // Page-level links (separate routes)
   const pageLinks = [
-    { name: language === "fr" ? "Rapports" : "Reports", href: "/rapports", icon: <BookOpen size={14} /> },
-    { name: language === "fr" ? "Humanitaire" : "Humanitarian", href: "/humanitaire", icon: <Heart size={14} /> },
-    { name: language === "fr" ? "Galerie" : "Gallery", href: "/galerie", icon: <Image size={14} /> },
-    { name: language === "fr" ? "Faire un Don" : "Donate", href: "/don", icon: <Heart size={14} />, isHighlight: true },
+    { name: language === "fr" ? "Rapports" : "Reports", href: "/rapports" },
+    { name: language === "fr" ? "Humanitaire" : "Humanitarian", href: "/humanitaire" },
+    { name: language === "fr" ? "Galerie" : "Gallery", href: "/galerie" },
+    { name: language === "fr" ? "Faire un Don" : "Donate", href: "/don", isHighlight: true },
   ];
 
   return (
@@ -93,7 +93,7 @@ export default function Navbar() {
       >
         <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           {/* Sophisticated Logo Area */}
-          <Link href="/" style={{ display: "flex", alignItems: "center" }} className="logo-group">
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }} className="logo-group">
             <motion.div 
               whileHover={{ scale: 1.05 }}
               className="nav-logo-wrap"
@@ -122,6 +122,7 @@ export default function Navbar() {
                     fontWeight: 700, 
                     textTransform: "uppercase", 
                     letterSpacing: "1px",
+                    textDecoration: "none",
                     opacity: isHome && activeSection === link.id ? 1 : 0.7,
                     position: "relative",
                     transition: "all 0.3s ease"
@@ -129,20 +130,6 @@ export default function Navbar() {
                   className="nav-link"
                 >
                   {link.name}
-                  {isHome && activeSection === link.id && (
-                    <motion.div 
-                      layoutId="nav-underline"
-                      style={{ 
-                        position: "absolute", 
-                        bottom: "-4px", 
-                        left: "0", 
-                        width: "100%", 
-                        height: "2px", 
-                        background: "var(--or2)",
-                        borderRadius: "2px"
-                      }} 
-                    />
-                  )}
                 </Link>
               ))}
 
@@ -161,6 +148,7 @@ export default function Navbar() {
                       fontWeight: 700, 
                       textTransform: "uppercase", 
                       letterSpacing: "1px",
+                      textDecoration: "none",
                       position: "relative",
                       transition: "all 0.3s ease",
                       display: "flex",
@@ -169,13 +157,7 @@ export default function Navbar() {
                     }}
                     className="nav-link"
                   >
-                    {link.icon} {link.name}
-                    {pathname === link.href && (
-                      <motion.div 
-                        layoutId="nav-underline"
-                        style={{ position: "absolute", bottom: "-4px", left: "0", width: "100%", height: "2px", background: "var(--or2)", borderRadius: "2px" }} 
-                      />
-                    )}
+                    {link.name}
                   </Link>
                 )
               ))}
@@ -228,7 +210,8 @@ export default function Navbar() {
                 alignItems: "center",
                 gap: "8px",
                 boxShadow: "0 4px 20px rgba(22,101,52,0.4)",
-                transition: "all 0.3s ease"
+                transition: "all 0.3s ease",
+                textDecoration: "none"
               }}
               className="nav-cta"
             >
@@ -245,7 +228,8 @@ export default function Navbar() {
                 alignItems: "center",
                 gap: "8px",
                 boxShadow: "var(--shadow-gold)",
-                transition: "all 0.3s ease"
+                transition: "all 0.3s ease",
+                textDecoration: "none"
               }}
               className="nav-cta"
             >
@@ -307,7 +291,8 @@ export default function Navbar() {
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "1px",
-                    display: "block"
+                    display: "block",
+                    textDecoration: "none"
                   }}
                 >
                   {link.name}
@@ -333,9 +318,10 @@ export default function Navbar() {
                     padding: link.isHighlight ? "10px 14px" : "0",
                     borderRadius: link.isHighlight ? "10px" : "0",
                     border: link.isHighlight ? "1px solid rgba(74,222,128,0.3)" : "none",
+                    textDecoration: "none"
                   }}
                 >
-                  {link.icon} {link.name}
+                  {link.name}
                 </Link>
               ))}
               
@@ -375,7 +361,8 @@ export default function Navbar() {
                   boxShadow: "var(--shadow-gold)",
                   marginTop: "0.5rem",
                   display: "block",
-                  fontSize: "0.9rem"
+                  fontSize: "0.9rem",
+                  textDecoration: "none"
                 }}
               >
                 {t("nav.join")}
