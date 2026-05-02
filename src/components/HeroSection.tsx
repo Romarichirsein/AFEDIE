@@ -18,13 +18,13 @@ export default function HeroSection() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
   };
 
   const floatVariants = {
     animate: {
       y: [0, -10, 0],
-      transition: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+      transition: { duration: 5, repeat: Infinity, ease: "easeInOut" as const }
     }
   };
 

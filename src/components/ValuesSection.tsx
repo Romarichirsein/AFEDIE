@@ -39,7 +39,7 @@ export default function ValuesSection() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     },
   };
 
@@ -72,7 +72,7 @@ export default function ValuesSection() {
           <motion.div 
             initial={{ width: 0 }}
             whileInView={{ width: "80px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
             viewport={{ once: true }}
             style={{ height: "4px", background: "var(--or)", margin: "0 auto 2rem", borderRadius: "2px" }} 
           />

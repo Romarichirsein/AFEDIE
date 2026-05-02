@@ -267,7 +267,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: "easeOut" as const }}
             style={{
               position: "fixed",
               top: isScrolled ? "60px" : "80px", // Adjusted to match navbar height more closely

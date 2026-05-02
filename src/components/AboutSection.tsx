@@ -24,7 +24,7 @@ export default function AboutSection() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     },
   };
 
@@ -33,7 +33,7 @@ export default function AboutSection() {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { duration: 0.8, ease: "easeOut" as const }
     }
   };
 
@@ -147,7 +147,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: "easeOut" as const }}
             style={{ position: "relative" }}
           >
             <div
@@ -228,7 +228,7 @@ export default function AboutSection() {
             <motion.div
               className="floating-badge"
               animate={{ y: [0, -15, 0], rotate: [0, 2, 0, -2, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" as const }}
               style={{
                 position: "absolute",
                 bottom: "-30px",
