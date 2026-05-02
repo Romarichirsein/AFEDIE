@@ -1,58 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Stethoscope, BookOpen, UserPlus, HeartHandshake, Award, ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen, Users, Globe, ShieldCheck, HeartHandshake, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-
-const icons = [
-  <GraduationCap size={32} key="grad" />,
-  <Stethoscope size={32} key="steth" />,
-  <BookOpen size={32} key="book" />,
-  <UserPlus size={32} key="user" />,
-  <HeartHandshake size={32} key="heart" />,
-  <Award size={32} key="award" />
-];
-
-const colors = [
-  "var(--or)",
-  "var(--vert2)",
-  "var(--marine2)",
-  "var(--or)",
-  "var(--vert2)",
-  "var(--marine2)"
-];
 
 export default function ActivitiesSection() {
   const { t } = useLanguage();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.7, ease: "easeOut" as const }
+  const activities = [
+    {
+      title: t("activities.act1.title"),
+      desc: t("activities.act1.desc"),
+      icon: <BookOpen size={32} />,
+      color: "#D4AF37",
     },
-  };
+    {
+      title: t("activities.act2.title"),
+      desc: t("activities.act2.desc"),
+      icon: <Users size={32} />,
+      color: "#1B5E20",
+    },
+    {
+      title: t("activities.act3.title"),
+      desc: t("activities.act3.desc"),
+      icon: <Globe size={32} />,
+      color: "#07151A",
+    },
+    {
+      title: t("activities.act4.title"),
+      desc: t("activities.act4.desc"),
+      icon: <ShieldCheck size={32} />,
+      color: "#B8860B",
+    },
+    {
+      title: t("activities.act5.title"),
+      desc: t("activities.act5.desc"),
+      icon: <HeartHandshake size={32} />,
+      color: "#2E7D32",
+    },
+    {
+      title: t("activities.act6.title"),
+      desc: t("activities.act6.desc"),
+      icon: <Lightbulb size={32} />,
+      color: "#D4AF37",
+    },
+  ];
+
+  const colors = ["#D4AF37", "#1B5E20", "#07151A"];
 
   return (
     <section id="activites" className="section-padding" style={{ background: "white", position: "relative" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2.5rem", alignItems: "center", marginBottom: "6rem" }} className="activities-header">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" as const }}
-          >
+        <div className="activities-header" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "flex-end", gap: "4rem", marginBottom: "6rem" }}>
+          <div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "1.5rem" }}>
               <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
               <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--or)" }}>
@@ -66,57 +66,29 @@ export default function ActivitiesSection() {
                 <>{t("activities.title").split("do")[0]}<span style={{ color: "var(--vert2)" }}>do</span> concretely</>
               ) : t("activities.title")}
             </h2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
-          >
-            <p style={{ fontSize: "1.15rem", color: "#666", lineHeight: 1.8 }}>
-              {t("activities.subtitle")}
-            </p>
-          </motion.div>
+          </div>
+          <p style={{ fontSize: "1.1rem", color: "#666", lineHeight: 1.8, maxWidth: "500px" }}>
+            {t("activities.subtitle")}
+          </p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
+        <motion.div 
+          className="activities-grid"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="activities-grid"
         >
-          {t("activities.items").map((act: { title: string; desc: string }, index: number) => (
+          {(t("activities.items") as any[]).map((act: { title: string; desc: string }, index: number) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              whileHover={{ 
-                y: -15,
-                transition: { duration: 0.3 }
-              }}
-              style={{
-                background: "var(--gris)",
-                padding: "3.5rem",
-                borderRadius: "32px",
-                position: "relative",
-                overflow: "hidden",
-                transition: "all 0.4s ease",
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.6 } }
               }}
               className="activity-card"
             >
-              <div style={{ 
-                width: "70px", 
-                height: "70px", 
-                background: "white", 
-                borderRadius: "20px", 
-                display: "flex", 
-                alignItems: "center", 
-                justifyContent: "center", 
-                color: colors[index % colors.length],
-                marginBottom: "2rem",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.05)"
-              }}>
-                {icons[index % icons.length]}
+              <div style={{ width: "70px", height: "70px", borderRadius: "20px", background: "white", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", display: "flex", alignItems: "center", justifyContent: "center", color: colors[index % colors.length], marginBottom: "2rem" }}>
+                {activities[index % activities.length]?.icon}
               </div>
               <h3 style={{ fontSize: "1.4rem", fontWeight: 700, color: "var(--marine)", marginBottom: "1.2rem" }}>
                 {act.title}

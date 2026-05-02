@@ -86,29 +86,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Back to top button */}
-      <motion.div
-        whileHover={{ y: -5 }}
-        onClick={scrollToTop}
-        className="back-to-top-footer"
-        style={{
-          position: "absolute",
-          top: "-30px",
-          right: "100px",
-          width: "60px",
-          height: "60px",
-          background: "var(--or)",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          boxShadow: "0 10px 30px rgba(184, 134, 11, 0.3)",
-          zIndex: 5
-        }}
-      >
-        <ArrowUp size={24} />
-      </motion.div>
 
       <style jsx>{`
         .site-footer {
@@ -164,11 +141,10 @@ export default function Footer() {
           .site-footer {
             padding: 50px 0 25px !important;
           }
-          .back-to-top-footer {
-            right: 20px !important;
-            width: 50px !important;
-            height: 50px !important;
-            top: -25px !important;
+          .footer-bottom {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 1.5rem !important;
           }
         }
       `}</style>

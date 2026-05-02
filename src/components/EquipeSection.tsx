@@ -42,15 +42,14 @@ export default function EquipeSection() {
   const { t, language } = useLanguage();
 
   const revealVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: i * 0.12, ease: "easeOut" as const },
+      transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
     }),
   };
 
-  // Trier : présidente en premier
   const sorted = [...membres].sort((a, b) =>
     a.isPresident ? -1 : b.isPresident ? 1 : 0
   );
@@ -65,95 +64,34 @@ export default function EquipeSection() {
         overflow: "hidden",
       }}
     >
-      {/* Decorative background circles */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-120px",
-          left: "-120px",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background: "rgba(184, 134, 11, 0.07)",
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-80px",
-          right: "-80px",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "rgba(184, 134, 11, 0.05)",
-          zIndex: 0,
-        }}
-      />
-
-      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+      <div className="container" style={{ position: "relative", zIndex: 2 }}>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
           style={{ textAlign: "center", marginBottom: "4rem" }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "12px",
-              marginBottom: "1.2rem",
-            }}
-          >
-            <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
-            <span
-              style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                letterSpacing: "3px",
-                textTransform: "uppercase",
-                color: "var(--or)",
-              }}
-            >
+          <div className="team-badge-wrap">
+            <div className="team-line" />
+            <span className="team-badge">
               {language === "fr" ? "Notre Équipe" : "Our Team"}
             </span>
-            <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
+            <div className="team-line" />
           </div>
 
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 3rem)",
-              fontWeight: 800,
-              color: "white",
-              lineHeight: 1.15,
-              marginBottom: "1rem",
-            }}
-          >
-            {language === "fr"
-              ? "Les Responsables de l'Association"
-              : "Association Leadership"}
+          <h2 className="team-title text-balance">
+            {language === "fr" ? "Les Responsables" : "Leadership Team"}
           </h2>
 
-          <p
-            style={{
-              fontSize: "1.05rem",
-              color: "rgba(255,255,255,0.6)",
-              maxWidth: "620px",
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="team-subtitle">
             {language === "fr"
-              ? "Des femmes engagées et déterminées qui portent chaque jour la vision et les valeurs de l'AFEDIE."
-              : "Committed and determined women who carry the vision and values of AFEDIE every day."}
+              ? "Des femmes engagées qui portent la vision de l'AFEDIE."
+              : "Committed women carrying the vision of AFEDIE."}
           </p>
         </motion.div>
 
-        {/* Président card - highlighted */}
+        {/* Président card */}
         {sorted
           .filter((m) => m.isPresident)
           .map((membre) => (
@@ -164,113 +102,33 @@ export default function EquipeSection() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={revealVariants}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginBottom: "3.5rem",
-              }}
+              className="president-card-wrap"
             >
-              <div
-                className="president-card"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(184, 134, 11, 0.4)",
-                  borderRadius: "28px",
-                  padding: "2.5rem 3rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "1.5rem",
-                  maxWidth: "380px",
-                  width: "100%",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "0 30px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(184,134,11,0.15)",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                {/* Gold shimmer top bar */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "4px",
-                    background: "linear-gradient(90deg, transparent, var(--or), transparent)",
-                  }}
-                />
-
-                {/* Badge présidente */}
-                <div
-                  style={{
-                    background: "var(--or)",
-                    color: "var(--marine)",
-                    fontSize: "0.65rem",
-                    fontWeight: 800,
-                    letterSpacing: "2px",
-                    textTransform: "uppercase",
-                    padding: "6px 18px",
-                    borderRadius: "100px",
-                  }}
-                >
+              <div className="president-card">
+                <div className="president-badge">
                   {language === "fr" ? "Présidente Fondatrice" : "Founding President"}
                 </div>
-
-                {/* Photo */}
-                <div
-                  style={{
-                    width: "160px",
-                    height: "160px",
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                    border: "5px solid var(--or)",
-                    boxShadow: "0 0 0 3px rgba(184,134,11,0.2), 0 20px 40px rgba(0,0,0,0.4)",
-                    flexShrink: 0,
-                  }}
-                >
+                <div className="president-photo-wrap">
                   <Image
                     src={membre.image}
-                    alt={language === "fr" ? membre.role_fr : membre.role_en}
+                    alt="Présidente"
                     width={160}
                     height={160}
-                    style={{ objectFit: "cover", objectPosition: "top" }}
+                    className="team-img"
                   />
                 </div>
-
-                {/* Nom */}
                 <div style={{ textAlign: "center" }}>
-                  <p
-                    style={{
-                      fontSize: "1.25rem",
-                      fontWeight: 700,
-                      color: "white",
-                      marginBottom: "0.4rem",
-                    }}
-                  >
-                    Ida Sandrine NGNOTUE FOTSO
+                  <p className="president-name">
+                    Ida Sandrine <br className="mobile-only" /> NGNOTUE FOTSO
                   </p>
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "2px",
-                      background: "var(--or)",
-                      margin: "0 auto",
-                    }}
-                  />
+                  <div className="name-line" />
                 </div>
               </div>
             </motion.div>
           ))}
 
         {/* Autres membres */}
-        <div
-          style={{
-            maxWidth: "1000px",
-            margin: "0 auto",
-          }}
-          className="equipe-grid"
-        >
+        <div className="equipe-grid">
           {sorted
             .filter((m) => !m.isPresident)
             .map((membre, i) => (
@@ -279,63 +137,21 @@ export default function EquipeSection() {
                 custom={i + 1}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true }}
                 variants={revealVariants}
               >
-                <div
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    borderRadius: "24px",
-                    padding: "2rem 1.5rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "1.2rem",
-                    transition: "all 0.35s ease",
-                    cursor: "default",
-                  }}
-                  className="membre-card"
-                >
-                  {/* Photo */}
-                  <div
-                    style={{
-                      width: "110px",
-                      height: "110px",
-                      borderRadius: "50%",
-                      overflow: "hidden",
-                      border: "3px solid rgba(184, 134, 11, 0.5)",
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-                      flexShrink: 0,
-                    }}
-                  >
+                <div className="membre-card">
+                  <div className="membre-photo-wrap">
                     <Image
                       src={membre.image}
-                      alt={language === "fr" ? membre.role_fr : membre.role_en}
+                      alt={membre.role_fr}
                       width={110}
                       height={110}
-                      style={{ objectFit: "cover", objectPosition: "top" }}
+                      className="team-img"
                     />
                   </div>
-
-                  {/* Rôle */}
-                  <div style={{ textAlign: "center" }}>
-                    <span
-                      style={{
-                        display: "inline-block",
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        letterSpacing: "1.5px",
-                        textTransform: "uppercase",
-                        color: "var(--or2)",
-                        background: "rgba(184, 134, 11, 0.12)",
-                        padding: "5px 14px",
-                        borderRadius: "100px",
-                        border: "1px solid rgba(184, 134, 11, 0.25)",
-                      }}
-                    >
-                      {language === "fr" ? membre.role_fr : membre.role_en}
-                    </span>
+                  <div className="role-badge">
+                    {language === "fr" ? membre.role_fr : membre.role_en}
                   </div>
                 </div>
               </motion.div>
@@ -344,41 +160,181 @@ export default function EquipeSection() {
       </div>
 
       <style jsx>{`
+        .team-badge-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin-bottom: 1.2rem;
+          width: 100%;
+        }
+        .team-line {
+          width: 40px;
+          height: 2px;
+          background: var(--or);
+          flex-shrink: 0;
+        }
+        .team-badge {
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--or);
+          white-space: nowrap;
+        }
+        .team-title {
+          font-size: clamp(1.8rem, 4vw, 3rem);
+          font-weight: 800;
+          color: white;
+          line-height: 1.15;
+          margin-bottom: 1rem;
+        }
+        .team-subtitle {
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.6);
+          max-width: 620px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+        .president-card-wrap {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 3.5rem;
+          width: 100%;
+        }
+        .president-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(184, 134, 11, 0.4);
+          border-radius: 28px;
+          padding: 2.5rem 3rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.5rem;
+          max-width: 380px;
+          width: 100%;
+          box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        .president-badge {
+          background: var(--or);
+          color: var(--marine);
+          font-size: 0.65rem;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          padding: 6px 18px;
+          border-radius: 100px;
+        }
+        .president-photo-wrap {
+          width: 160px;
+          height: 160px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 5px solid var(--or);
+          flex-shrink: 0;
+        }
+        .team-img {
+          object-fit: cover;
+          object-position: top;
+        }
+        .president-name {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: white;
+          margin-bottom: 0.4rem;
+          white-space: normal;
+          word-break: keep-all;
+          overflow-wrap: break-word;
+        }
+        .mobile-only {
+          display: none;
+        }
+        .name-line {
+          width: 40px;
+          height: 2px;
+          background: var(--or);
+          margin: 0 auto;
+        }
         .equipe-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 1.8rem;
+          width: 100%;
+          max-width: 1000px;
+          margin: 0 auto;
         }
-        .membre-card:hover {
-          background: rgba(255, 255, 255, 0.06) !important;
-          border-color: rgba(184, 134, 11, 0.3) !important;
-          transform: translateY(-6px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        .membre-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 24px;
+          padding: 2rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1.2rem;
+          width: 100%;
         }
+        .membre-photo-wrap {
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 3px solid rgba(184, 134, 11, 0.5);
+          flex-shrink: 0;
+        }
+        .role-badge {
+          display: inline-block;
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          color: var(--or2);
+          background: rgba(184, 134, 11, 0.12);
+          padding: 5px 14px;
+          border-radius: 100px;
+          border: 1px solid rgba(184, 134, 11, 0.25);
+          text-align: center;
+        }
+
         @media (max-width: 768px) {
           .equipe-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.2rem !important;
           }
         }
         @media (max-width: 640px) {
+          .mobile-only {
+            display: block;
+          }
+          .team-badge-wrap {
+            gap: 8px;
+          }
+          .equipe-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
           .president-card {
             padding: 2rem 1.5rem !important;
-            border-radius: 24px !important;
+            max-width: 100% !important;
           }
           .membre-card {
-            padding: 1.5rem 1rem !important;
-            border-radius: 20px !important;
+            max-width: 320px;
+            margin: 0 auto;
           }
-          .membre-card img {
-            width: 90px !important;
-            height: 90px !important;
+          .team-line {
+            width: 20px;
+          }
+          .team-badge {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
           }
         }
         @media (max-width: 480px) {
-          .equipe-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
+          .president-photo-wrap {
+            width: 130px;
+            height: 130px;
+          }
+          .president-name {
+            font-size: 1.1rem;
           }
         }
       `}</style>

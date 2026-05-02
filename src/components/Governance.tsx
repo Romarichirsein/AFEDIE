@@ -118,11 +118,12 @@ export default function Governance() {
             gap: 3rem !important;
           }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .gov-cards {
             grid-template-columns: 1fr !important;
-            gap: 1.2rem !important;
           }
+        }
+        @media (max-width: 640px) {
           .gov-box {
             padding: 2.5rem 1.5rem !important;
             border-radius: 28px !important;

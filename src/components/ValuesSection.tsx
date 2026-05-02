@@ -166,22 +166,28 @@ export default function ValuesSection() {
           }
         }
         @media (max-width: 640px) {
+          .values-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
           .value-card {
-            padding: 2.5rem 1.8rem !important;
-            border-radius: 24px !important;
+            padding: 3rem 1.8rem !important;
+            border-radius: 32px !important;
             align-items: flex-start;
             text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
           }
           .value-card h3 {
-            font-size: 1.3rem !important;
+            font-size: 1.4rem !important;
           }
           .section-padding {
-            padding: 50px 0 !important;
+            padding: 60px 0 !important;
           }
         }
         @media (max-width: 480px) {
           .value-card {
-            padding: 2rem 1.5rem !important;
+            padding: 2.5rem 1.5rem !important;
           }
         }
       `}</style>

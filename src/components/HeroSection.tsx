@@ -1,276 +1,220 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Heart } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Image from "next/image";
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" as const }
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   return (
-    <section
+    <section 
       id="accueil"
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        position: "relative",
-        overflow: "hidden",
-        background: "var(--marine)",
+      style={{ 
+        position: "relative", 
+        minHeight: "100svh", 
         width: "100%",
+        display: "flex", 
+        alignItems: "center", 
+        paddingTop: "clamp(80px, 15vh, 140px)", 
+        paddingBottom: "80px",
+        background: "var(--marine)",
+        overflow: "hidden"
       }}
     >
-      {/* Parallax Background */}
-      <motion.div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: "linear-gradient(to bottom, rgba(7, 21, 26, 0.7), rgba(7, 21, 26, 0.9)), url('/images/hero.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          y: y1,
-          width: "100%",
-        }}
-      />
-      
-      {/* Dynamic Glows */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 30%, rgba(184, 134, 11, 0.15) 0%, transparent 50%),
-                       radial-gradient(circle at 80% 70%, rgba(27, 94, 32, 0.1) 0%, transparent 50%)`,
-          filter: "blur(60px)",
-          width: "100%",
-        }}
-      />
+      {/* Background Image with Overlay */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Hero Background"
+          fill
+          priority
+          style={{ objectFit: "cover", opacity: 0.4 }}
+        />
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          background: "linear-gradient(to bottom, rgba(7,21,26,0.8) 0%, var(--marine) 100%)" 
+        }} />
+      </div>
 
-      <motion.div
-        className="container"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{
-          position: "relative",
-          zIndex: 10,
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          opacity,
-          paddingTop: "120px", 
-          paddingBottom: "60px",
-          width: "100%",
-        }}
-      >
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <motion.div
-          variants={itemVariants}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "8px 20px",
-            borderRadius: "100px",
-            background: "rgba(184, 134, 11, 0.1)",
-            border: "1px solid rgba(184, 134, 11, 0.2)",
-            color: "var(--or2)",
-            fontSize: "0.75rem",
-            fontWeight: 600,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-            marginBottom: "2rem",
-          }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ maxWidth: "100%" }}
         >
-          <Sparkles size={14} />
-          {t("hero.badge")}
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariants}
-          className="text-balance"
-          style={{
-            fontSize: "clamp(2.2rem, 10vw, 5rem)",
-            fontWeight: 800,
-            color: "white",
-            lineHeight: 1.1,
-            marginBottom: "1.5rem",
-            maxWidth: "900px",
-          }}
-        >
-          {t("hero.title1")} <br />
-          <span style={{ 
-            color: "var(--or2)", 
-            display: "inline-block",
-            position: "relative"
-          }}>
-            {t("hero.title2")}
-          </span> <br />
-          {t("hero.title3").includes("et de l'") ? (
-            <>et de l&apos;<span style={{ fontStyle: "italic", fontWeight: 400 }}>Excellence</span></>
-          ) : (
-            <>{t("hero.title3").split("Excellence")[0]}<span style={{ fontStyle: "italic", fontWeight: 400 }}>Excellence</span></>
-          )}
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-balance"
-          style={{
-            fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
-            color: "rgba(255, 255, 255, 0.7)",
-            fontWeight: 400,
-            marginBottom: "3rem",
-            maxWidth: "800px",
-            lineHeight: 1.6,
-          }}
-        >
-          {t("hero.subtitle")}
-        </motion.p>
-
-        <motion.div
-          variants={itemVariants}
-          className="hero-buttons"
-        >
-          <Link
-            href="#activites"
-            className="btn-premium hero-btn"
-            style={{
-              background: "var(--or)",
-              color: "white",
-              fontSize: "0.9rem",
-              fontWeight: 700,
-              borderRadius: "12px",
-              boxShadow: "var(--shadow-gold)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "12px",
-              minWidth: "200px",
-              flex: "1",
+          <motion.div
+            variants={itemVariants}
+            style={{ 
+              display: "flex", 
+              alignItems: "center", 
+              gap: "12px", 
+              marginBottom: "1.5rem" 
             }}
           >
-            {t("hero.cta_primary")} <ArrowRight size={20} />
-          </Link>
-          <Link
-            href="#contact"
-            className="btn-premium hero-btn"
+            <div style={{ width: "40px", height: "2px", background: "var(--or)" }} />
+            <span style={{ 
+              fontSize: "0.85rem", 
+              fontWeight: 700, 
+              color: "var(--or)", 
+              textTransform: "uppercase", 
+              letterSpacing: "4px" 
+            }}>
+              {t("hero.badge")}
+            </span>
+          </motion.div>
+
+          <motion.h1
+            variants={itemVariants}
+            className="text-balance hero-h1"
             style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              backdropFilter: "blur(10px)",
+              fontSize: "clamp(1.8rem, 8vw, 4.5rem)",
+              fontWeight: 800,
               color: "white",
-              fontSize: "0.9rem",
-              fontWeight: 600,
-              borderRadius: "12px",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              minWidth: "200px",
-              flex: "1",
+              lineHeight: 1.1,
+              marginBottom: "1.5rem",
+              maxWidth: "900px",
             }}
           >
-            {t("hero.cta_secondary")}
-          </Link>
-        </motion.div>
-      </motion.div>
+            {t("hero.title1")} <br />
+            <span style={{ color: "var(--or2)" }}>{t("hero.title2")}</span> <br />
+            {t("hero.title3")}
+          </motion.h1>
 
-      {/* Stats Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-        style={{
-          position: "relative",
-          zIndex: 20,
-          background: "rgba(255, 255, 255, 0.02)",
-          backdropFilter: "blur(20px)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-          padding: "2rem 0",
-          width: "100%",
-        }}
-      >
-        <div className="container hero-stats-grid" style={{ 
-          display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", 
-          gap: "1rem" 
-        }}>
-          {[
-            { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={18} /> },
-            { num: "7", label: t("hero.stats.actions"), icon: <Shield size={18} /> },
-            { num: "Ydé", label: t("hero.stats.location"), icon: <Heart size={18} /> },
-          ].map((stat, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ color: "var(--or2)", marginBottom: "0.5rem", display: "flex", justifyContent: "center" }}>{stat.icon}</div>
-              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "white" }}>{stat.num}</div>
-              <div style={{ fontSize: "0.65rem", color: "rgba(255, 255, 255, 0.5)", textTransform: "uppercase", letterSpacing: "1px" }}>{stat.label}</div>
-            </div>
-          ))}
+          <motion.p
+            variants={itemVariants}
+            style={{
+              fontSize: "clamp(1rem, 2vw, 1.25rem)",
+              color: "rgba(255,255,255,0.7)",
+              maxWidth: "600px",
+              lineHeight: 1.6,
+              marginBottom: "3rem",
+            }}
+          >
+            {t("hero.subtitle")}
+          </motion.p>
+
+          <motion.div 
+            variants={itemVariants}
+            style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}
+          >
+            <button className="btn-primary hero-btn">
+              {t("hero.cta_primary")} <ArrowRight size={20} />
+            </button>
+            <button className="btn-outline hero-btn" style={{ borderColor: "rgba(255,255,255,0.2)", color: "white" }}>
+              {t("hero.cta_secondary")}
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* Stats Bar */}
+        <div className="hero-stats-wrapper">
+          <div className="hero-stats-container">
+            {[
+              { num: "2020", label: t("hero.stats.foundation"), icon: <Sparkles size={20} /> },
+              { num: "7", label: t("hero.stats.actions"), icon: <Shield size={20} /> },
+              { num: "Ydé", label: t("hero.stats.location"), icon: <Heart size={20} /> },
+            ].map((stat, i) => (
+              <div key={i} className="hero-stat-item">
+                <div className="stat-icon">{stat.icon}</div>
+                <div className="stat-content">
+                  <div className="stat-num">{stat.num}</div>
+                  <div className="stat-label">{stat.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
+
       <style jsx>{`
-        .hero-buttons {
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-          justify-content: center;
+        .hero-stats-wrapper {
+          margin-top: 5rem;
+          padding-top: 3rem;
+          border-top: 1px solid rgba(255,255,255,0.1);
           width: 100%;
         }
+        .hero-stats-container {
+          display: flex;
+          gap: 4rem;
+          flex-wrap: wrap;
+        }
+        .hero-stat-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+        .stat-icon {
+          color: var(--or2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .stat-num {
+          font-size: 1.8rem;
+          font-weight: 800;
+          color: white;
+          line-height: 1;
+        }
+        .stat-label {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.5);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-top: 4px;
+        }
         .hero-btn {
-          min-width: 240px;
+          min-width: 200px;
         }
-        .hero-stats-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-        }
+
         @media (max-width: 768px) {
-          .hero-stats-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem !important;
+          .hero-stats-container {
+            gap: 2.5rem;
           }
           .hero-btn {
+            min-width: 180px;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-h1 {
+            font-size: 2.2rem !important;
+          }
+          .hero-stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+          }
+          .hero-btn {
+            width: 100% !important;
             min-width: 100% !important;
           }
         }
-        @media (max-width: 600px) {
-           .hero-stats-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
         @media (max-width: 480px) {
-          .hero-stats-grid {
+          .hero-stats-container {
             grid-template-columns: 1fr;
             gap: 1.5rem !important;
           }
+          .hero-h1 {
+            font-size: 1.8rem !important;
+          }
           section {
-            min-height: auto !important;
-            padding-bottom: 0 !important;
+            padding-top: 100px !important;
           }
         }
       `}</style>

@@ -198,6 +198,10 @@ export default function Contact() {
             padding: 2rem 1.2rem !important;
             border-radius: 28px !important;
           }
+          .form-row {
+            grid-template-columns: 1fr !important;
+            gap: 1.2rem !important;
+          }
           .contact-info-item {
             gap: 1rem !important;
           }

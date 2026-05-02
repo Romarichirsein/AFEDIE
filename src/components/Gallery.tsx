@@ -118,6 +118,7 @@ export default function Gallery() {
         @media (max-width: 768px) {
           .gallery-grid {
             grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
           }
         }
       `}</style>

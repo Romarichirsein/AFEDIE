@@ -156,8 +156,8 @@ export default function LegalSection() {
         }
         @media (max-width: 640px) {
           .hide-mobile { display: none; }
-          .legal-grid > div {
-            padding: 2.5rem 1.5rem !important;
+          .legal-grid > :global(div) {
+            padding: 2.5rem 1.2rem !important;
             border-radius: 24px !important;
           }
           .legal-grid h3 {

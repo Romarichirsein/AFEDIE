@@ -430,15 +430,15 @@ export default function Navbar() {
         }
         @media (max-width: 480px) {
           .container {
-            padding: 0 1.2rem !important;
+            padding: 0 1rem !important;
           }
           .nav-logo-wrap {
-            width: 45px !important;
-            height: 45px !important;
+            width: 50px !important;
+            height: 50px !important;
           }
           .nav-logo-img {
-            width: 45px !important;
-            height: 45px !important;
+            width: 50px !important;
+            height: 50px !important;
           }
           .mobile-toggle {
             padding: 8px !important;

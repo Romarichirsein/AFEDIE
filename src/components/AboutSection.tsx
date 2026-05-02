@@ -47,8 +47,9 @@ export default function AboutSection() {
             </div>
             
             <h2
+              className="text-balance"
               style={{
-                fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                fontSize: "clamp(1.6rem, 5vw, 3.2rem)",
                 fontWeight: 800,
                 color: "var(--marine)",
                 lineHeight: 1.1,
@@ -214,12 +215,6 @@ export default function AboutSection() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 1024px) {
-          .about-grid {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
-          }
-        }
         .about-grid {
           display: grid;
           grid-template-columns: 1.1fr 0.9fr;
@@ -235,14 +230,16 @@ export default function AboutSection() {
         @media (max-width: 640px) {
           .floating-badge {
             position: absolute !important;
-            bottom: -20px !important;
-            right: 20px !important;
-            padding: 1.2rem !important;
-            transform: scale(0.85);
+            bottom: -10px !important;
+            right: 5px !important;
+            padding: 1rem !important;
+            transform: scale(0.65) !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+            z-index: 5 !important;
           }
           .about-grid > div:last-child > div:first-child {
-            padding: 2rem 1.5rem !important;
-            border-radius: 24px !important;
+            padding: 2.5rem 1.5rem !important;
+            border-radius: 32px !important;
           }
           .about-tags {
             justify-content: flex-start;
@@ -251,17 +248,18 @@ export default function AboutSection() {
             gap: 1rem !important;
           }
           .founder-block img {
-            width: 60px !important;
-            height: 60px !important;
+            width: 55px !important;
+            height: 55px !important;
           }
         }
         @media (max-width: 480px) {
           .founder-block {
             flex-direction: row !important;
             text-align: left !important;
+            align-items: center !important;
           }
           .floating-badge {
-            right: 10px !important;
+            right: 5px !important;
           }
         }
       `}</style>
