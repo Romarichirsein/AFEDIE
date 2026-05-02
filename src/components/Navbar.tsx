@@ -206,11 +206,14 @@ export default function Navbar() {
                 color: "white",
                 borderRadius: "12px",
                 fontWeight: 600,
+                padding: "12px 35px",
+                fontSize: "0.85rem",
+                whiteSpace: "nowrap",
                 letterSpacing: "0.5px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: "8px",
+                gap: "10px",
                 boxShadow: "0 4px 15px rgba(22,101,52,0.2)",
                 transition: "all 0.3s ease",
                 textDecoration: "none"
@@ -226,11 +229,14 @@ export default function Navbar() {
                 color: "white",
                 borderRadius: "12px",
                 fontWeight: 600,
+                padding: "12px 35px",
+                fontSize: "0.85rem",
+                whiteSpace: "nowrap",
                 letterSpacing: "0.5px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: "8px",
+                gap: "10px",
                 boxShadow: "0 4px 15px rgba(184, 134, 11, 0.2)",
                 transition: "all 0.3s ease",
                 textDecoration: "none"
@@ -387,9 +393,7 @@ export default function Navbar() {
           height: 60px;
         }
         .nav-cta {
-          padding: 12px 28px;
-          font-size: 0.85rem;
-          margin-left: 0.5rem;
+          margin-left: 0.8rem;
         }
         .nav-link:hover {
           opacity: 1 !important;
