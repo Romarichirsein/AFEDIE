@@ -12,6 +12,7 @@ import ContactSection from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CampaignPopup from "@/components/CampaignPopup";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
+      <CampaignPopup />
     </main>
   );
 }
