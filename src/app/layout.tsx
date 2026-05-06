@@ -21,7 +21,11 @@ export const metadata: Metadata = {
   description: "Unir, élever et autonomiser les femmes à travers la solidarité, l'engagement humanitaire et le développement communautaire au Cameroun.",
   keywords: "AFEDIE, Association femmes Cameroun, Dignité, Excellence, Autonomisation femme, Humanitaire Yaoundé",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/icon.png" },
+      { url: "/favicon.png" },
+    ],
+    apple: "/icon.png",
   },
 };
 
