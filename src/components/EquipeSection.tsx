@@ -7,8 +7,8 @@ import { useLanguage } from "@/context/LanguageContext";
 const visionnaire = {
   name: "Mme Marie souzane Gamgne née Ngnotue fotso",
   image: "/images/responsables/visionnaire_new.jpeg",
-  role_fr: "Visionnaire Fondatrice",
-  role_en: "Founding Visionary",
+  role_fr: "Visionnaire",
+  role_en: "Visionary",
 };
 
 const membres = [
