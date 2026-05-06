@@ -4,30 +4,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
+const visionnaire = {
+  name: "Mme Marie souzane Gamgne née Ngnotue fotso",
+  image: "/images/responsables/visionnaire_new.jpeg",
+  role_fr: "Visionnaire Fondatrice",
+  role_en: "Founding Visionary",
+};
+
 const membres = [
   {
     id: 1,
-    name: "Mme Aroung Marylène",
-    image: "/images/responsables/vice_presidente.jpeg",
-    role_fr: "1ère Vice-Présidente",
-    role_en: "1st Vice President",
-  },
-  {
-    id: 2,
-    name: "Mme Maffouo Séverine",
-    image: "/images/responsables/tresoriere.jpeg",
-    role_fr: "Trésorière",
-    role_en: "Treasurer",
-  },
-  {
-    id: 3,
-    name: "Mme kom Marthe",
-    image: "/images/responsables/commissaire_comptes.jpeg",
-    role_fr: "Commissaire aux Comptes",
-    role_en: "Auditor",
-  },
-  {
-    id: 4,
     name: "Ida Sandrine NGNOTUE FOTSO",
     image: "/images/responsables/responsable4.jpeg",
     role_fr: "Présidente Fondatrice",
@@ -35,24 +21,58 @@ const membres = [
     isPresident: true,
   },
   {
-    id: 5,
+    id: 2,
+    name: "Mme Aroung Marylène",
+    image: "/images/responsables/vice_presidente_new.jpeg",
+    role_fr: "Vice-Présidente",
+    role_en: "Vice President",
+  },
+  {
+    id: 3,
     name: "Anne Marie Bonna",
-    image: "/images/responsables/secretaire_generale.jpeg",
+    image: "/images/responsables/secretaire_generale_new.jpeg",
     role_fr: "Secrétaire Générale",
     role_en: "General Secretary",
   },
   {
+    id: 4,
+    name: "Marie makoudjou",
+    image: "/images/responsables/secretaire_adjointe.jpeg",
+    role_fr: "Secrétaire Générale Adjointe",
+    role_en: "Assistant General Secretary",
+  },
+  {
+    id: 5,
+    name: "Séverine maffouo",
+    image: "/images/responsables/tresoriere_new.jpeg",
+    role_fr: "Secrétaire Financière (Trésorière)",
+    role_en: "Financial Secretary (Treasurer)",
+  },
+  {
     id: 6,
-    name: "Mme Marie Souzane GAMGNE",
-    image: "/images/responsables/visionnaire.jpeg",
-    role_fr: "Visionnaire Fondatrice",
-    role_en: "Founding Visionary",
-    isVisionary: true,
+    name: "Mme kom Marthe",
+    image: "/images/responsables/commissaire_comptes_new.jpeg",
+    role_fr: "Contrôleur Financier (Commissaire aux Comptes)",
+    role_en: "Financial Controller (Auditor)",
   },
   {
     id: 7,
-    name: "Mme makoudjou Marie",
-    image: "/images/responsables/conseillere.jpeg",
+    name: "Charlotte NANA",
+    image: "/images/responsables/relations_publiques.jpeg",
+    role_fr: "Responsable des Relations Publiques et Extérieures",
+    role_en: "Public and External Relations Manager",
+  },
+  {
+    id: 8,
+    name: "Mme mbiakop Rosalie",
+    image: "/images/responsables/censeur_new.jpeg",
+    role_fr: "Censeur",
+    role_en: "Censor",
+  },
+  {
+    id: 9,
+    name: "Mme Nguetgna Marie",
+    image: "/images/responsables/conseillere_marie.jpeg",
     role_fr: "Conseillère",
     role_en: "Advisor",
   },
@@ -70,13 +90,7 @@ export default function EquipeSection() {
     }),
   };
 
-  const sorted = [...membres].sort((a, b) => {
-    if (a.isVisionary) return -1;
-    if (b.isVisionary) return 1;
-    if (a.isPresident) return -1;
-    if (b.isPresident) return 1;
-    return a.id - b.id;
-  });
+  const sorted = [...membres];
 
   return (
     <section
@@ -115,10 +129,45 @@ export default function EquipeSection() {
           </p>
         </motion.div>
 
-        {/* Top Leadership (Visionnaire & Président) */}
+        {/* Visionnaire Section (Publication toute seule) */}
+        <div style={{ marginBottom: "5rem" }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={revealVariants}
+            className="visionnaire-publication"
+          >
+            <div className="visionnaire-content">
+              <div className="visionnaire-photo-wrap">
+                <Image
+                  src={visionnaire.image}
+                  alt={visionnaire.name}
+                  width={280}
+                  height={280}
+                  className="visionnaire-img"
+                />
+              </div>
+              <div className="visionnaire-text">
+                <div className="visionnaire-badge">
+                  {language === "fr" ? visionnaire.role_fr : visionnaire.role_en}
+                </div>
+                <h3 className="visionnaire-name">{visionnaire.name}</h3>
+                <div className="visionnaire-line" />
+                <p className="visionnaire-quote">
+                  {language === "fr" 
+                    ? "« La vision est l'art de voir les choses invisibles. Notre engagement pour la dignité des femmes est le moteur de chaque action de l'AFEDIE. »"
+                    : "« Vision is the art of seeing invisible things. Our commitment to women's dignity is the driving force behind every action of AFEDIE. »"}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Top Leadership (Présidente) */}
         <div className="top-leadership-wrap">
           {sorted
-            .filter((m) => m.isVisionary || m.isPresident)
+            .filter((m) => m.isPresident)
             .map((membre, i) => (
               <motion.div
                 key={membre.id}
@@ -129,7 +178,7 @@ export default function EquipeSection() {
                 variants={revealVariants}
                 className="president-card-wrap"
               >
-                <div className={`president-card ${membre.isVisionary ? 'visionary-card' : ''}`}>
+                <div className="president-card">
                   <div className="president-badge">
                     {language === "fr" ? membre.role_fr : membre.role_en}
                   </div>
@@ -153,14 +202,14 @@ export default function EquipeSection() {
             ))}
         </div>
 
-        {/* Autres membres */}
+        {/* Autres membres du bureau */}
         <div className="equipe-grid">
           {sorted
-            .filter((m) => !m.isVisionary && !m.isPresident)
+            .filter((m) => !m.isPresident)
             .map((membre, i) => (
               <motion.div
                 key={membre.id}
-                custom={i + 2}
+                custom={i + 1}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -255,19 +304,68 @@ export default function EquipeSection() {
           box-shadow: 0 30px 60px rgba(0,0,0,0.3);
           transition: transform 0.3s ease;
         }
-        .visionary-card {
-          border-color: var(--vert2);
-          background: rgba(25, 71, 48, 0.1);
+        .visionnaire-publication {
+          background: linear-gradient(135deg, rgba(25, 71, 48, 0.2) 0%, rgba(7, 21, 26, 0.4) 100%);
+          border: 1px solid rgba(74, 222, 128, 0.2);
+          border-radius: 40px;
+          padding: 3rem;
+          max-width: 900px;
+          margin: 0 auto;
+          box-shadow: 0 40px 80px rgba(0,0,0,0.4);
         }
-        .visionary-card .president-badge {
+        .visionnaire-content {
+          display: flex;
+          align-items: center;
+          gap: 3.5rem;
+        }
+        .visionnaire-photo-wrap {
+          width: 280px;
+          height: 280px;
+          border-radius: 30px;
+          overflow: hidden;
+          border: 4px solid var(--vert2);
+          flex-shrink: 0;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .visionnaire-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+        }
+        .visionnaire-text {
+          flex: 1;
+        }
+        .visionnaire-badge {
+          display: inline-block;
           background: var(--vert2);
           color: white;
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          padding: 6px 18px;
+          border-radius: 100px;
+          margin-bottom: 1.2rem;
         }
-        .visionary-card .president-photo-wrap {
-          border-color: var(--vert2);
+        .visionnaire-name {
+          font-size: 1.75rem;
+          font-weight: 800;
+          color: white;
+          margin-bottom: 0.8rem;
+          line-height: 1.2;
         }
-        .visionary-card .name-line {
+        .visionnaire-line {
+          width: 60px;
+          height: 3px;
           background: var(--vert2);
+          margin-bottom: 1.5rem;
+        }
+        .visionnaire-quote {
+          font-size: 1.15rem;
+          color: rgba(255,255,255,0.8);
+          font-style: italic;
+          line-height: 1.6;
         }
         .president-badge {
           background: var(--or);
@@ -348,6 +446,17 @@ export default function EquipeSection() {
           border-radius: 100px;
           border: 1px solid rgba(184, 134, 11, 0.25);
           text-align: center;
+        }
+
+        @media (max-width: 900px) {
+          .visionnaire-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+          }
+          .visionnaire-line {
+            margin: 0 auto 1.5rem auto;
+          }
         }
 
         @media (max-width: 768px) {

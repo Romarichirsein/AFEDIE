@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   title: "AFEDIE | Association des Femmes de la Dignité et de l'Excellence",
   description: "Unir, élever et autonomiser les femmes à travers la solidarité, l'engagement humanitaire et le développement communautaire au Cameroun.",
   keywords: "AFEDIE, Association femmes Cameroun, Dignité, Excellence, Autonomisation femme, Humanitaire Yaoundé",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
