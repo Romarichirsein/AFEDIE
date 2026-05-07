@@ -152,7 +152,7 @@ export default function EquipeSection() {
                 <div className="visionnaire-badge">
                   {language === "fr" ? visionnaire.role_fr : visionnaire.role_en}
                 </div>
-                <h3 className="visionnaire-name">{visionnaire.name}</h3>
+                <h3 className="visionnaire-name">{visionnaire.name.toUpperCase()}</h3>
                 <div className="visionnaire-line" />
                 <p className="visionnaire-quote">
                   {language === "fr" 
@@ -193,7 +193,7 @@ export default function EquipeSection() {
                   </div>
                   <div style={{ textAlign: "center" }}>
                     <p className="president-name">
-                      {membre.name}
+                      {membre.name.toUpperCase()}
                     </p>
                     <div className="name-line" />
                   </div>
@@ -227,7 +227,7 @@ export default function EquipeSection() {
                   </div>
                   <div style={{ textAlign: 'center' }}>
                     <p style={{ color: 'white', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' }}>
-                      {membre.name}
+                      {membre.name.toUpperCase()}
                     </p>
                     <div className="role-badge">
                       {language === "fr" ? membre.role_fr : membre.role_en}
