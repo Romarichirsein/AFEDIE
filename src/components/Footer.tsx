@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, ArrowUp } from "lucide-react";
@@ -7,6 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const [newsletterEmail, setNewsletterEmail] = useState("");
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -63,10 +65,21 @@ export default function Footer() {
             <div style={{ position: "relative" }}>
               <input 
                 type="email" 
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Votre email" 
                 style={{ width: "100%", padding: "1.2rem 1.5rem", borderRadius: "12px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "white", outline: "none" }}
               />
-              <button style={{ position: "absolute", right: "8px", top: "8px", bottom: "8px", background: "var(--or)", color: "white", border: "none", padding: "0 20px", borderRadius: "8px", fontWeight: 700, cursor: "pointer" }}>
+              <button 
+                onClick={() => {
+                  if (newsletterEmail) {
+                    const whatsappMessage = encodeURIComponent(`Inscription Newsletter 📰\n\nJe souhaite m'inscrire à votre newsletter avec l'email: ${newsletterEmail}`);
+                    window.open(`https://wa.me/237677589201?text=${whatsappMessage}`, "_blank");
+                    setNewsletterEmail("");
+                  }
+                }}
+                style={{ position: "absolute", right: "8px", top: "8px", bottom: "8px", background: "var(--or)", color: "white", border: "none", padding: "0 20px", borderRadius: "8px", fontWeight: 700, cursor: "pointer" }}
+              >
                 Ok
               </button>
             </div>

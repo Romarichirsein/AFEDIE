@@ -5,7 +5,7 @@ import { Calendar, CheckCircle2, FileText } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Plan2026() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,6 +52,63 @@ export default function Plan2026() {
           <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
             {t("plan2026.subtitle")}
           </p>
+        </div>
+
+        {/* Three Axes and Strategic Perspectives */}
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "3rem", marginBottom: "5rem", background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "32px", padding: "3rem" }} className="perspectives-grid">
+          {/* Les 3 Axes */}
+          <div>
+            <h3 style={{ color: "var(--or2)", fontSize: "1.2rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "1.5rem" }}>
+              {language === "fr" ? "Les Trois Axes d'Action" : "The Three Pillars of Action"}
+            </h3>
+            <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "2rem" }}>
+              {language === "fr"
+                ? "Notre dynamique s'articule autour de trois axes temporels, traduisant l'action concrète et continue de l'association au service des femmes et de la communauté."
+                : "Our dynamic is built around three temporal pillars, reflecting the concrete and continuous action of the association serving women and the community."}
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+              {[
+                { axe: language === "fr" ? "Ce qui est fait" : "What is done", desc: language === "fr" ? "L'évaluation et la consolidation des actions d'accompagnement passées." : "Evaluation and consolidation of past support actions." },
+                { axe: language === "fr" ? "Ce qui est en cours" : "What is in progress", desc: language === "fr" ? "Le déploiement des formations régulières et le suivi des bénéficiaires." : "Deployment of regular training and follow-up of beneficiaries." },
+                { axe: language === "fr" ? "Ce qui est à venir" : "What is to come", desc: language === "fr" ? "La concrétisation de nos projets d'envergure et l'expansion de notre réseau." : "The realization of our major projects and expansion of our network." }
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "rgba(184,134,11,0.15)", border: "1px solid var(--or2)", color: "var(--or2)", fontSize: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, flexShrink: 0, marginTop: "2px" }}>
+                    {idx + 1}
+                  </span>
+                  <div>
+                    <h4 style={{ color: "white", fontWeight: 700, fontSize: "0.95rem", margin: 0 }}>{item.axe}</h4>
+                    <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.85rem", margin: "2px 0 0" }}>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Perspectives Stratégiques */}
+          <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", paddingLeft: "3rem" }} className="perspectives-right-col">
+            <h3 style={{ color: "var(--vert2)", fontSize: "1.2rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "1.5rem" }}>
+              {language === "fr" ? "Perspectives Triennales" : "Three-Year Perspectives"}
+            </h3>
+            <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: "2rem" }}>
+              {language === "fr"
+                ? "Validées lors de l'AGO du 29 mai 2026, ces quatre grands projets orientent nos efforts stratégiques à moyen terme."
+                : "Validated during the General Assembly of May 29, 2026, these four major projects guide our mid-term strategic efforts."}
+            </p>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {[
+                language === "fr" ? "L'ouverture d'un orphelinat AFEDIE" : "The opening of an AFEDIE orphanage",
+                language === "fr" ? "La création d'un centre de réinsertion sociale pour les femmes et les jeunes" : "Creation of a social reintegration center for women and youth",
+                language === "fr" ? "L'extension nationale de l'association au Cameroun" : "National expansion of the association in Cameroon",
+                language === "fr" ? "La transition vers le statut d'Organisation Non Gouvernementale (ONG)" : "Transition to the status of a Non-Governmental Organization (NGO)"
+              ].map((proj, idx) => (
+                <li key={idx} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                  <span style={{ color: "var(--vert2)", marginTop: "2px", fontWeight: 700 }}>✓</span>
+                  <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.92rem", lineHeight: 1.5 }}>{proj}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <motion.div
@@ -164,6 +221,19 @@ export default function Plan2026() {
             flex-direction: column;
             align-items: center;
             text-align: center;
+          }
+        }
+        @media (max-width: 900px) {
+          .perspectives-grid {
+            grid-template-columns: 1fr !important;
+            padding: 2rem !important;
+            gap: 2.5rem !important;
+          }
+          .perspectives-right-col {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid rgba(255,255,255,0.08) !important;
+            padding-top: 2rem !important;
           }
         }
       `}</style>

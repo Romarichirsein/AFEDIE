@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { FileText, Quote as QuoteIcon } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const years = ["2023", "2024", "2025"] as const;
 type Year = typeof years[number];
@@ -111,6 +112,7 @@ const kpiData = [
 ];
 
 export default function RapportsContent() {
+  const { language } = useLanguage();
   const [activeYear, setActiveYear] = useState<Year>("2023");
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
@@ -525,6 +527,94 @@ export default function RapportsContent() {
         </div>
       </section>
 
+      {/* DOCUMENTS & RESSOURCES SECTION */}
+      <section style={{ background: "#07151A", padding: "5rem 0 6rem", borderTop: "1px solid rgba(255,255,255,0.08)" }} id="ressources">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <span style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase", color: "var(--or2)", display: "block", marginBottom: "1rem" }}>
+              {language === "fr" ? "Documents & Ressources" : "Documents & Resources"}
+            </span>
+            <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 800, color: "white", fontFamily: "var(--font-poppins)", marginBottom: "1rem" }}>
+              {language === "fr" ? "Documents Officiels en Téléchargement" : "Official Documents for Download"}
+            </h2>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.95rem", maxWidth: "600px", margin: "0 auto" }}>
+              {language === "fr" 
+                ? "Retrouvez les publications, rapports d'activités et notes officielles de l'AFEDIE disponibles au format numérique."
+                : "Find the publications, activity reports, and official notes of AFEDIE available in digital format."}
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }} className="downloads-grid">
+            {[
+              {
+                title: language === "fr" ? "Rapport d'Activité 2025" : "2025 Activity Report",
+                desc: language === "fr" ? "« Année de transition, de restructuration et de renaissance ». Bilan financier et moral de l'exercice." : "“Year of transition, restructuring, and rebirth”. Moral and financial report of the year.",
+                file: "/documents/AFEDIE_Rapport_2025.pdf",
+                ext: "PDF",
+                size: "704 KB",
+                color: "#00C853"
+              },
+              {
+                title: language === "fr" ? "Mise à Jour du Site - Juin 2026" : "Website Update - June 2026",
+                desc: language === "fr" ? "Note officielle résumant les contenus à publier et les résolutions adoptées lors de l'AGO de mai 2026." : "Official note summarizing content to publish and resolutions adopted during the May 2026 GA.",
+                file: "/documents/Mise_a_jour_site_AFEDIE_Juin2026.docx",
+                ext: "DOCX",
+                size: "14 KB",
+                color: "#1A5276"
+              },
+              {
+                title: language === "fr" ? "Rapport d'Activité AGO 2026" : "2026 GA Activity Report",
+                desc: language === "fr" ? "Diaporama complet de présentation de l'Assemblée Générale Ordinaire du 29 mai 2026 (bilan et perspectives)." : "Full presentation slideshow of the Ordinary General Assembly of May 29, 2026 (bilan and perspectives).",
+                file: "/documents/rapport_activite_AGO_2026.pptx",
+                ext: "PPTX",
+                size: "308 KB",
+                color: "#B8860B"
+              }
+            ].map((doc, idx) => (
+              <div key={idx} style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "24px", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", transition: "all 0.3s ease" }} className="download-card">
+                <div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 800, color: doc.color, background: `${doc.color}15`, padding: "4px 12px", borderRadius: "100px", border: `1px solid ${doc.color}30` }}>
+                      {doc.ext}
+                    </span>
+                    <span style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)" }}>
+                      {doc.size}
+                    </span>
+                  </div>
+                  <h4 style={{ color: "white", fontSize: "1.15rem", fontWeight: 700, marginBottom: "0.8rem" }}>{doc.title}</h4>
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.88rem", lineHeight: 1.5, marginBottom: "2rem" }}>{doc.desc}</p>
+                </div>
+                <a 
+                  href={doc.file}
+                  download
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                    padding: "1rem",
+                    borderRadius: "12px",
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "white",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    fontSize: "0.9rem",
+                    transition: "all 0.3s ease"
+                  }}
+                  className="download-btn"
+                  onMouseOver={(e) => { e.currentTarget.style.background = "var(--or)"; e.currentTarget.style.color = "var(--marine)"; }}
+                  onMouseOut={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.color = "white"; }}
+                >
+                  <FileText size={18} />
+                  {language === "fr" ? "Télécharger" : "Download"}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* LIGHTBOX */}
       <AnimatePresence>
         {lightboxImg && (
@@ -582,6 +672,22 @@ export default function RapportsContent() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 1.5rem;
+        }
+        .download-card:hover {
+          background: rgba(255, 255, 255, 0.05) !important;
+          border-color: var(--or2) !important;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+        }
+        @media (max-width: 640px) {
+          .downloads-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+          .download-card {
+            max-width: 360px;
+            margin: 0 auto;
+            width: 100%;
+          }
         }
         @media (max-width: 900px) {
           .rapport-grid {

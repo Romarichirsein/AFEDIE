@@ -40,7 +40,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
       if (!isHome) return;
-      const sections = ["accueil", "apropos", "valeurs", "activites", "plan2026", "contact"];
+      const sections = ["accueil", "apropos", "valeurs", "activites", "actualites", "plan2026", "contact"];
       const current = sections.find(section => {
         const el = document.getElementById(section);
         if (el) {
@@ -61,6 +61,7 @@ export default function Navbar() {
     { name: t("nav.home"), id: "accueil", href: "/#accueil" },
     { name: t("nav.about"), id: "apropos", href: "/#apropos" },
     { name: t("nav.activities"), id: "activites", href: "/#activites" },
+    { name: t("nav.actualites"), id: "actualites", href: "/#actualites" },
     { name: t("nav.plan"), id: "plan2026", href: "/#plan2026" },
   ];
 

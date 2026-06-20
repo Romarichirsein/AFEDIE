@@ -1,12 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Quote, Award, CheckCircle2 } from "lucide-react";
+import { Quote, Award, CheckCircle2, Music, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutSection() {
   const { t } = useLanguage();
+  const [showHymn, setShowHymn] = useState(false);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -140,6 +142,102 @@ export default function AboutSection() {
                   {t("about.quoteAuthor")}
                 </span>
               </div>
+            </motion.div>
+
+            {/* Hymne Officiel Accordion */}
+            <motion.div 
+              variants={itemVariants}
+              style={{
+                marginTop: "2rem",
+                background: "white",
+                borderRadius: "24px",
+                border: "1px solid rgba(0, 0, 0, 0.05)",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.02)",
+                overflow: "hidden"
+              }}
+            >
+              <button 
+                onClick={() => setShowHymn(!showHymn)}
+                style={{
+                  width: "100%",
+                  padding: "1.5rem 2rem",
+                  background: "transparent",
+                  border: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  cursor: "pointer",
+                  color: "var(--marine)",
+                  textAlign: "left"
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div style={{ color: "var(--or2)", width: "36px", height: "36px", borderRadius: "10px", background: "rgba(184,134,11,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Music size={18} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontWeight: 800, fontSize: "1rem", margin: 0 }}>
+                      {useLanguage().language === "fr" ? "Hymne Officiel AFEDIE" : "Official AFEDIE Hymn"}
+                    </h4>
+                    <span style={{ fontSize: "0.78rem", color: "#888", fontWeight: 500 }}>
+                      {useLanguage().language === "fr" ? "« Debout, Femmes de Dignité »" : "“Arise, Women of Dignity”"}
+                    </span>
+                  </div>
+                </div>
+                <div style={{ color: "var(--or)" }}>
+                  {showHymn ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </div>
+              </button>
+
+              <AnimatePresence>
+                {showHymn && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ borderTop: "1px solid #f0f0f0", background: "#fcfcfc" }}
+                  >
+                    <div style={{ padding: "2rem", maxHeight: "400px", overflowY: "auto" }}>
+                      <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+                        <p style={{ fontStyle: "italic", fontSize: "0.85rem", color: "#666", margin: 0 }}>
+                          {useLanguage().language === "fr" 
+                            ? "Composé pour incarner les valeurs de dignité, d'excellence et de solidarité."
+                            : "Composed to embody the values of dignity, excellence, and solidarity."}
+                        </p>
+                      </div>
+
+                      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", fontSize: "0.92rem", color: "#444", lineHeight: 1.6, textAlign: "center" }}>
+                        <div>
+                          <strong style={{ color: "var(--vert2)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "1px", display: "block", marginBottom: "0.5rem" }}>Couplet 1</strong>
+                          <p style={{ margin: 0 }}>Debout pour servir la vie, Debout pour la dignité,<br />Pour l'enfant, la jeunesse, la femme,<br />Et toutes les couches vulnérables.<br />Au cœur des peines et des larmes, Nous faisons renaître l'espoir,<br />Aimer et servir ce monde C'est bâtir un vrai futur.</p>
+                        </div>
+
+                        <div style={{ background: "rgba(184,134,11,0.04)", padding: "1rem", borderRadius: "16px", border: "1px dashed rgba(184,134,11,0.2)" }}>
+                          <strong style={{ color: "var(--or2)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "1px", display: "block", marginBottom: "0.5rem" }}>Refrain</strong>
+                          <p style={{ margin: 0, fontWeight: 600 }}>AFEDIE, lumière et flambeau, Force de solidarité,<br />Pour l'éducation et le bien-être,<br />Des enfants, des femmes et des couches défavorisées.<br />AFEDIE, espoir des cœurs, Main dans la main pour toujours,<br />Pour les peuples et les frères, Pour toutes les vies oubliées.</p>
+                        </div>
+
+                        <div>
+                          <strong style={{ color: "var(--vert2)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "1px", display: "block", marginBottom: "0.5rem" }}>Couplet 2 — Invocation universelle</strong>
+                          <p style={{ margin: 0 }}>Que Dieu accompagne nos pas, Et bénisse chaque action,<br />Que Sa paix repose sur nous, Dans toutes nos missions.<br />Par Sa grâce nous avançons, Au service de l'humanité,<br />Pour que l'espoir refleurisse Chez les enfants, la jeunesse, la femme<br />Et toutes les couches vulnérables.</p>
+                        </div>
+
+                        <div>
+                          <strong style={{ color: "var(--vert2)", textTransform: "uppercase", fontSize: "0.75rem", letterSpacing: "1px", display: "block", marginBottom: "0.5rem" }}>Pont</strong>
+                          <p style={{ margin: 0 }}>Et même quand la nuit est sombre,<br />Ensemble eh ! nous chantons,<br />Car la lumière qui nous inonde...</p>
+                        </div>
+
+                        <div style={{ borderTop: "1px solid #eee", paddingTop: "1rem" }}>
+                          <p style={{ fontSize: "0.8rem", color: "#888", margin: 0 }}>
+                            © AFEDIE 2026 — Tous droits réservés.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </motion.div>
 

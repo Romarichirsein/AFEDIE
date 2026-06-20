@@ -2,8 +2,10 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import EquipeSection from "@/components/EquipeSection";
+import AwardsSection from "@/components/AwardsSection";
 import ValuesSection from "@/components/ValuesSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
+import ActualitesSection from "@/components/ActualitesSection";
 import Plan2026 from "@/components/Plan2026";
 import Governance from "@/components/Governance";
 import Gallery from "@/components/Gallery";
@@ -21,8 +23,10 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <EquipeSection />
+      <AwardsSection />
       <ValuesSection />
       <ActivitiesSection />
+      <ActualitesSection />
       <Plan2026 />
       <Governance />
       <Gallery />

@@ -8,6 +8,9 @@ export default function DonContent() {
   const [montantCustom, setMontantCustom] = useState("");
   const [cause, setCause] = useState("general");
   const [submitted, setSubmitted] = useState(false);
+  const [nom, setNom] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
 
   const montants = ["5 000", "10 000", "25 000", "50 000", "100 000"];
 
@@ -178,16 +181,23 @@ export default function DonContent() {
                   3. Vos coordonnées
                 </h3>
                 <div className="don-form-grid">
-                  <input type="text" placeholder="Prénom & Nom" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
-                  <input type="email" placeholder="Email" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
-                  <input type="tel" placeholder="Téléphone (ex: +237 6XX XXX XXX)" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none", gridColumn: "1 / -1" }} />
+                  <input type="text" value={nom} onChange={(e) => setNom(e.target.value)} placeholder="Prénom & Nom" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none" }} />
+                  <input type="tel" value={telephone} onChange={(e) => setTelephone(e.target.value)} placeholder="Téléphone (ex: +237 6XX XXX XXX)" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "12px", padding: "14px 16px", color: "white", fontSize: "0.9rem", outline: "none", gridColumn: "1 / -1" }} />
                 </div>
               </div>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => setSubmitted(true)}
+                onClick={() => {
+                  const finalMontant = montantCustom || montant || "Non spécifié";
+                  const causeObj = causes.find(c => c.id === cause);
+                  const causeLabel = causeObj ? causeObj.label : cause;
+                  const whatsappMessage = encodeURIComponent(`Intention de Don 💚\n\n*Nom*: ${nom || "Non spécifié"}\n*Email*: ${email || "Non spécifié"}\n*Téléphone*: ${telephone || "Non spécifié"}\n*Cause*: ${causeLabel}\n*Montant*: ${finalMontant} FCFA\n\nJe souhaite finaliser mon don.`);
+                  window.open(`https://wa.me/237677589201?text=${whatsappMessage}`, "_blank");
+                  setSubmitted(true);
+                }}
                 style={{
                   width: "100%",
                   background: "linear-gradient(135deg, #166534, #15803D)",

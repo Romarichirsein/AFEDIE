@@ -16,62 +16,62 @@ const membres = [
     id: 1,
     name: "Ida Sandrine NGNOTUE FOTSO",
     image: "/images/responsables/responsable4.jpeg",
-    role_fr: "Présidente Fondatrice",
-    role_en: "Founding President",
+    role_fr: "Présidente Fondatrice (mandat à vie)",
+    role_en: "Founding President (lifetime mandate)",
     isPresident: true,
   },
   {
     id: 2,
-    name: "Mme Aroung Marylène",
+    name: "Mme AROUNG Marylène",
     image: "/images/responsables/vice_presidente_new.jpeg",
     role_fr: "Vice-Présidente",
     role_en: "Vice President",
   },
   {
     id: 3,
-    name: "Anne Marie Bonna",
-    image: "/images/responsables/secretaire_generale_new.jpeg",
+    name: "Mme MAFFOUO Séverine",
+    image: "/images/responsables/tresoriere_new.jpeg",
     role_fr: "Secrétaire Générale",
     role_en: "General Secretary",
   },
   {
     id: 4,
-    name: "Marie makoudjou",
+    name: "Mme MAKOUDJOU MARIE",
     image: "/images/responsables/secretaire_adjointe.jpeg",
     role_fr: "Secrétaire Générale Adjointe",
     role_en: "Assistant General Secretary",
   },
   {
     id: 5,
-    name: "Séverine maffouo",
-    image: "/images/responsables/tresoriere_new.jpeg",
-    role_fr: "Secrétaire Financière (Trésorière)",
-    role_en: "Financial Secretary (Treasurer)",
+    name: "Mme NGONGANG Suzanne",
+    image: "/images/responsables/tresoriere.jpeg",
+    role_fr: "Secrétaire Financière / Trésorière",
+    role_en: "Financial Secretary / Treasurer",
   },
   {
     id: 6,
-    name: "Mme kom Marthe",
+    name: "Mme Marthe KOM",
     image: "/images/responsables/commissaire_comptes_new.jpeg",
-    role_fr: "Contrôleur Financier (Commissaire aux Comptes)",
-    role_en: "Financial Controller (Auditor)",
+    role_fr: "Contrôleur de Gestion",
+    role_en: "Operations Controller",
   },
   {
     id: 7,
-    name: "Charlotte NANA",
+    name: "Mme Charlotte NANA",
     image: "/images/responsables/relations_publiques.jpeg",
-    role_fr: "Responsable des Relations Publiques et Extérieures",
-    role_en: "Public and External Relations Manager",
+    role_fr: "Chargée des Relations Publiques",
+    role_en: "Public Relations Manager",
   },
   {
     id: 8,
-    name: "Mme mbiakop Rosalie",
+    name: "Mme MBIAKOP Rosalie",
     image: "/images/responsables/censeur_new.jpeg",
     role_fr: "Censeur",
     role_en: "Censor",
   },
   {
     id: 9,
-    name: "Mme Nguetgna Marie",
+    name: "Mme NGUETGNA Marie",
     image: "/images/responsables/conseillere_marie.jpeg",
     role_fr: "Conseillère",
     role_en: "Advisor",
@@ -236,6 +236,75 @@ export default function EquipeSection() {
                 </div>
               </motion.div>
             ))}
+        </div>
+
+        {/* Membres d'Honneur & Bienfaiteurs Section */}
+        <div style={{ marginTop: "6rem", borderTop: "1px solid rgba(255, 255, 255, 0.1)", paddingTop: "4rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h3 style={{ color: "white", fontSize: "1.8rem", fontWeight: 800, marginBottom: "0.8rem" }}>
+              {language === "fr" ? "Membres d'Honneur & Bienfaiteurs" : "Honorary & Benefactor Members"}
+            </h3>
+            <p style={{ color: "rgba(255, 255, 255, 0.5)", fontSize: "0.95rem", maxWidth: "600px", margin: "0 auto" }}>
+              {language === "fr" 
+                ? "Personnalités intronisées lors de l'Assemblée Générale Ordinaire du 29 mai 2026 en reconnaissance de leur soutien exceptionnel." 
+                : "Personalities inducted during the Ordinary General Assembly of May 29, 2026, in recognition of their exceptional support."}
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }} className="membres-special-grid">
+            {/* Membres Bienfaiteurs */}
+            <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "24px", padding: "2.5rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.8rem" }}>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--or)" }} />
+                <h4 style={{ color: "var(--or2)", fontSize: "1.1rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px" }}>
+                  {language === "fr" ? "Membres Bienfaiteurs" : "Benefactor Members"}
+                </h4>
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+                {[
+                  { name: "M. Cédric ATANGANA", desc: language === "fr" ? "Président, AC Shining Stars (Irlande)" : "Chairman, AC Shining Stars (Ireland)" },
+                  { name: "M. William AROUNG", desc: "" },
+                  { name: "M. Lucien NANA YOMBA", desc: "" }
+                ].map((item, idx) => (
+                  <li key={idx} style={{ borderBottom: idx < 2 ? "1px solid rgba(255, 255, 255, 0.04)" : "none", paddingBottom: idx < 2 ? "0.8rem" : "0" }}>
+                    <p style={{ color: "white", fontWeight: 700, fontSize: "0.95rem", margin: 0 }}>{item.name}</p>
+                    {item.desc && <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.82rem", margin: "2px 0 0" }}>{item.desc}</p>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Membres d'Honneur */}
+            <div style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "24px", padding: "2.5rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "1.8rem" }}>
+                <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--vert2)" }} />
+                <h4 style={{ color: "var(--vert2)", fontSize: "1.1rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px" }}>
+                  {language === "fr" ? "Membres d'Honneur" : "Honorary Members"}
+                </h4>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }} className="membres-honneur-list">
+                {[
+                  { name: "M. Léon EPÉE LEON MARIE", title: language === "fr" ? "Ambassadeur Dignité & Excellence" : "Ambassador of Dignity & Excellence" },
+                  { name: "Mme Yvonne FOALEM FOTSO" },
+                  { name: "Mme Chandore FOTSO MBOBDA" },
+                  { name: "M. Gabriel Léopold KOUOKAM" },
+                  { name: "M. William TAGNE WAFO" },
+                  { name: "Mme Mireille Georgette TAGNE DJODOM" },
+                  { name: "M. Hugues Merlin KETCHIAMAIN" },
+                  { name: "Mme Julienne TAGNE" },
+                  { name: "M. Fulbert NGATSING TATSINKOU" },
+                  { name: "M. James Wilfrid NDJEHOYA" },
+                  { name: "M. Zacharie NGUETGNA" },
+                  { name: "M. Adolphe NDASSA" }
+                ].map((item, idx) => (
+                  <div key={idx} style={{ padding: "0.4rem 0" }}>
+                    <p style={{ color: "rgba(255, 255, 255, 0.95)", fontWeight: 600, fontSize: "0.88rem", margin: 0 }}>{item.name}</p>
+                    {"title" in item && <p style={{ color: "var(--or2)", fontSize: "0.75rem", margin: "2px 0 0", fontWeight: 700 }}>{item.title}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -457,6 +526,10 @@ export default function EquipeSection() {
           .visionnaire-line {
             margin: 0 auto 1.5rem auto;
           }
+          .membres-special-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+          }
         }
 
         @media (max-width: 768px) {
@@ -498,6 +571,9 @@ export default function EquipeSection() {
           }
           .president-name {
             font-size: 1.1rem;
+          }
+          .membres-honneur-list {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

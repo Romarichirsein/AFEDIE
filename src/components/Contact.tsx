@@ -1,11 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, subject, message } = formData;
+    const defaultSubject = t("contact.form.options")[0] || "Contact";
+    const finalSubject = subject || defaultSubject;
+    const whatsappMessage = encodeURIComponent(`Nouveau Message (Contact) 📩\n\n*Nom*: ${name}\n*Email*: ${email}\n*Sujet*: ${finalSubject}\n*Message*: ${message}`);
+    window.open(`https://wa.me/237677589201?text=${whatsappMessage}`, "_blank");
+  };
+
   const revealVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
@@ -75,12 +87,15 @@ export default function Contact() {
             }}
             className="contact-form-card"
           >
-            <form style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }} className="form-row">
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                   <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>{t("contact.form.name")}</label>
                   <input 
                     type="text" 
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                     placeholder={t("contact.form.placeholder_name")}
                     style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease" }}
                   />
@@ -89,6 +104,9 @@ export default function Contact() {
                   <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>{t("contact.form.email")}</label>
                   <input 
                     type="email" 
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     placeholder={t("contact.form.placeholder_email")}
                     style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease" }}
                   />
@@ -97,9 +115,13 @@ export default function Contact() {
               
               <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>{t("contact.form.subject")}</label>
-                <select style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none" }}>
+                <select 
+                  value={formData.subject}
+                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none" }}
+                >
                   {t("contact.form.options").map((opt: string) => (
-                    <option key={opt}>{opt}</option>
+                    <option key={opt} value={opt}>{opt}</option>
                   ))}
                 </select>
               </div>
@@ -108,6 +130,9 @@ export default function Contact() {
                 <label style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--marine)" }}>{t("contact.form.message")}</label>
                 <textarea 
                   rows={5}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   placeholder={t("contact.form.placeholder_message")}
                   style={{ padding: "1.2rem 1.5rem", borderRadius: "12px", border: "1px solid #eee", background: "#fcfcfc", fontSize: "0.95rem", outline: "none", transition: "all 0.3s ease", resize: "none" }}
                 />
@@ -139,10 +164,28 @@ export default function Contact() {
 
         {/* Partners Section */}
         <div style={{ textAlign: "center" }} className="partners-section">
-          <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "2rem" }}>{t("contact.partners")}</p>
-          <p style={{ fontSize: "1.1rem", color: "var(--marine)", fontWeight: 600, fontStyle: "italic", maxWidth: "600px", margin: "0 auto" }}>
-            "Plusieurs partenariats institutionnels sont en cours de signature et seront officialisés ultérieurement."
+          <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "#aaa", letterSpacing: "4px", textTransform: "uppercase", marginBottom: "3rem" }}>
+            {t("contact.partners")}
           </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
+            {[
+              { name: "MINPROFF", desc: language === "fr" ? "Ministère de la Promotion de la Femme et de la Famille" : "Ministry of Women's Empowerment and the Family", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
+              { name: "Mairie de Yaoundé III", desc: language === "fr" ? "Administration locale" : "Local municipality", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
+              { name: "Take Care", desc: language === "fr" ? "Partenaire social" : "Social partner", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
+              { name: "Établissements KBA", desc: language === "fr" ? "Opération de don du 6 juin 2026" : "Donation drive of June 6, 2026", status: language === "fr" ? "Partenaire actif" : "Active partner" },
+              { name: "DACAM (ICRAFON)", desc: language === "fr" ? "Opération de don du 6 juin 2026" : "Donation drive of June 6, 2026", status: language === "fr" ? "Partenaire actif" : "Active partner" },
+            ].map((p, idx) => (
+              <div key={idx} style={{ background: "var(--gris)", padding: "2rem 1.5rem", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.03)", transition: "all 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }} className="partner-card">
+                <div>
+                  <h4 style={{ fontWeight: 800, color: "var(--marine)", fontSize: "1.1rem", marginBottom: "0.5rem" }}>{p.name}</h4>
+                  <p style={{ fontSize: "0.82rem", color: "#666", lineHeight: 1.4, marginBottom: "1rem" }}>{p.desc}</p>
+                </div>
+                <span style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: p.status.includes("cours") || p.status.includes("pending") ? "var(--or)" : "var(--vert2)", background: p.status.includes("cours") || p.status.includes("pending") ? "rgba(184,134,11,0.08)" : "rgba(27,94,32,0.08)", padding: "4px 10px", borderRadius: "100px", display: "inline-block", width: "fit-content", margin: "0 auto", border: `1px solid ${p.status.includes("cours") || p.status.includes("pending") ? "rgba(184,134,11,0.2)" : "rgba(27,94,32,0.2)"}` }}>
+                  {p.status}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
