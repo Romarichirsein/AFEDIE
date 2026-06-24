@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const allImages = [
   // === Nouvelles photos – AGO & Activités Juin 2026 ===
+  "/images/gallery/WhatsApp Image 2026-06-22 at 12.36.38.jpeg",
+  "/images/gallery/WhatsApp Image 2026-06-22 at 12.36.38 (1).jpeg",
   "/images/gallery/WhatsApp Image 2026-06-17 at 10.39.44 (1).jpeg",
   "/images/gallery/WhatsApp Image 2026-06-17 at 10.39.44.jpeg",
   "/images/gallery/WhatsApp Image 2026-06-17 at 10.39.45.jpeg",
