@@ -96,6 +96,66 @@ const articles: Article[] = [
     desc_en: "Monthly meeting focused on putting into practice the resolutions adopted during the GA of May 29, 2026, and the operational deployment of the 2026 Action Plan.",
     texte_fr: "L'AFEDIE tiendra sa réunion mensuelle le dimanche 14 juin 2026, au siège de l'association. Cette rencontre sera l'occasion de prendre de nombreuses résolutions visant la mise en pratique des résolutions issues de l'Assemblée Générale Ordinaire du 29 mai 2026 et le déploiement du Plan d'Action 2026.",
     texte_en: "AFEDIE will hold its monthly meeting on Sunday, June 14, 2026, at the association's headquarters. This meeting will be the opportunity to adopt numerous resolutions aiming at the practical implementation of the resolutions from the Ordinary General Assembly of May 29, 2026, and the deployment of the 2026 Action Plan."
+  },
+  {
+    id: 6,
+    tag_fr: "Santé & Bien-être",
+    tag_en: "Health & Well-being",
+    date_fr: "30 juin 2026",
+    date_en: "June 30, 2026",
+    lieu_fr: "Association des Filles MEIJI, Yaoundé",
+    lieu_en: "MEIJI Girls Association, Yaoundé",
+    titre_fr: "Visite à l'Association des Filles MEIJI — Santé mentale des femmes",
+    titre_en: "Visit to MEIJI Girls Association — Women's Mental Health",
+    desc_fr: "L'AFEDIE a effectué une visite auprès de l'association des filles MEIJI, avec un entretien centré sur la santé mentale des femmes et un exposé présenté par les membres de l'AFEDIE.",
+    desc_en: "AFEDIE visited the MEIJI Girls Association, with a discussion focused on women's mental health and a presentation delivered by AFEDIE members.",
+    texte_fr: "Le 30 juin 2026, l'AFEDIE a effectué une visite auprès de l'Association des Filles MEIJI. Cette rencontre a permis d'engager un entretien approfondi sur la santé mentale des femmes, thématique essentielle à l'épanouissement global de la femme.\n\nL'exposé a été préparé et présenté par les femmes de l'AFEDIE elles-mêmes, démontrant la montée en compétence des membres et leur engagement dans la transmission du savoir.\n\nCette visite s'inscrit dans la dynamique de partenariat et de collaboration interassociative voulue par l'AFEDIE pour élargir son impact et tisser des liens durables avec d'autres structures œuvrant pour les femmes.",
+    texte_en: "On June 30, 2026, AFEDIE made a visit to the MEIJI Girls Association. This meeting provided an opportunity for an in-depth discussion on women's mental health, an essential theme for the overall well-being of women.\n\nThe presentation was prepared and delivered by the women of AFEDIE themselves, showcasing the growing expertise of the members and their commitment to knowledge sharing.\n\nThis visit is part of AFEDIE's inter-associative partnership and collaboration dynamic, aimed at broadening its impact and building lasting ties with other organizations working for women."
+  },
+  {
+    id: 7,
+    tag_fr: "Formation",
+    tag_en: "Training",
+    date_fr: "2 au 4 juillet 2026",
+    date_en: "July 2–4, 2026",
+    lieu_fr: "Siège de l'AFEDIE, Yaoundé",
+    lieu_en: "AFEDIE HQ, Yaoundé",
+    titre_fr: "Renforcement des Capacités — Leadership, Entrepreneuriat & IA",
+    titre_en: "Capacity Building — Leadership, Entrepreneurship & AI",
+    desc_fr: "L'AFEDIE a organisé 3 jours de formation intensive du 2 au 4 juillet 2026 sur les thèmes du leadership, de l'entrepreneuriat et de l'initiation à l'utilisation de l'Intelligence Artificielle.",
+    desc_en: "AFEDIE organized 3 days of intensive training from July 2 to 4, 2026, covering leadership, entrepreneurship, and an introduction to Artificial Intelligence.",
+    texte_fr: "Du 2 au 4 juillet 2026, l'AFEDIE a organisé une session intensive de renforcement des capacités de ses membres, articulée autour de trois thèmes majeurs :\n\n1. Leadership féminin : développement de la posture de leader, techniques de prise de parole en public, gestion d'équipe et prise de décision.\n\n2. Entrepreneuriat : identification des opportunités, modèles économiques, accès au financement et stratégies de développement d'activités.\n\n3. Initiation à l'utilisation de l'Intelligence Artificielle : présentation des outils d'IA accessibles, cas pratiques pour les femmes entrepreneures et sensibilisation aux enjeux du numérique.\n\nCette formation de trois jours a permis aux membres de l'AFEDIE de développer de nouvelles compétences concrètes et d'approfondir leur compréhension des défis et opportunités du monde contemporain.",
+    texte_en: "From July 2 to 4, 2026, AFEDIE organized an intensive capacity building session for its members, structured around three major themes:\n\n1. Female Leadership: developing a leadership stance, public speaking techniques, team management, and decision-making.\n\n2. Entrepreneurship: identifying opportunities, business models, access to financing, and business development strategies.\n\n3. Introduction to Artificial Intelligence: presentation of accessible AI tools, practical use cases for women entrepreneurs, and awareness of digital challenges.\n\nThis three-day training allowed AFEDIE members to develop new practical skills and deepen their understanding of the challenges and opportunities of the contemporary world."
+  },
+  {
+    id: 8,
+    tag_fr: "Vie Associative",
+    tag_en: "Community Life",
+    date_fr: "19 juillet 2026",
+    date_en: "July 19, 2026",
+    lieu_fr: "Bagneux, France",
+    lieu_en: "Bagneux, France",
+    titre_fr: "Cérémonie d'Intronisation — M. James Wilfrid NDJEHOYA, Membre d'Honneur",
+    titre_en: "Induction Ceremony — Mr. James Wilfrid NDJEHOYA, Honorary Member",
+    desc_fr: "L'AFEDIE a intronisé M. James Wilfrid NDJEHOYA, Adjoint au Maire de Bagneux, en qualité de Membre d'Honneur, en reconnaissance de son engagement à accompagner l'association.",
+    desc_en: "AFEDIE inducted Mr. James Wilfrid NDJEHOYA, Deputy Mayor of Bagneux, as an Honorary Member, in recognition of his commitment to supporting the association.",
+    texte_fr: "Le 19 juillet 2026, l'AFEDIE a organisé une cérémonie d'intronisation en l'honneur de M. James Wilfrid NDJEHOYA, Adjoint au Maire de Bagneux.\n\nM. NDJEHOYA a accepté d'accompagner l'AFEDIE dans sa mission d'autonomisation et de dignité des femmes. Son soutien institutionnel représente un appui précieux pour le rayonnement de l'association et le développement de ses actions, notamment au sein de la diaspora africaine en France.\n\nÀ travers cette intronisation, l'AFEDIE témoigne de sa reconnaissance envers les personnalités qui s'engagent concrètement à ses côtés, et réaffirme sa volonté de tisser des liens forts avec les acteurs institutionnels locaux.",
+    texte_en: "On July 19, 2026, AFEDIE organized an induction ceremony in honor of Mr. James Wilfrid NDJEHOYA, Deputy Mayor of Bagneux.\n\nMr. NDJEHOYA accepted to accompany AFEDIE in its mission of women's empowerment and dignity. His institutional support represents a valuable asset for the association's influence and the development of its actions, particularly within the African diaspora in France.\n\nThrough this induction, AFEDIE expresses its gratitude to personalities who concretely commit alongside it, and reaffirms its desire to build strong ties with local institutional stakeholders."
+  },
+  {
+    id: 9,
+    tag_fr: "Engagement International",
+    tag_en: "International Engagement",
+    date_fr: "30 juillet 2026",
+    date_en: "July 30, 2026",
+    lieu_fr: "Yaoundé, Cameroun",
+    lieu_en: "Yaoundé, Cameroon",
+    titre_fr: "Journée Internationale de la Femme Africaine — Participation Active de l'AFEDIE",
+    titre_en: "International Day of the African Woman — Active Participation by AFEDIE",
+    desc_fr: "L'AFEDIE a participé activement à la Journée Internationale de la Femme Africaine le 30 juillet 2026, affirmant son engagement pour la dignité et l'excellence de la femme africaine.",
+    desc_en: "AFEDIE actively participated in the International Day of the African Woman on July 30, 2026, affirming its commitment to the dignity and excellence of African women.",
+    texte_fr: "Le 30 juillet 2026, l'AFEDIE a participé activement à la Journée Internationale de la Femme Africaine, moment fort de célébration et de réflexion sur la condition, les droits et les aspirations des femmes africaines à travers le monde.\n\nCette participation s'inscrit pleinement dans la mission fondatrice de l'AFEDIE : promouvoir la dignité et l'excellence des femmes, renforcer leur autonomie, et contribuer activement au plaidoyer pour une meilleure reconnaissance de leur rôle dans nos sociétés.\n\nL'AFEDIE réaffirme ainsi son ancrage dans les grandes causes qui portent la voix des femmes africaines, tant au Cameroun que dans la diaspora.",
+    texte_en: "On July 30, 2026, AFEDIE actively participated in the International Day of the African Woman, a key moment for celebrating and reflecting on the condition, rights, and aspirations of African women around the world.\n\nThis participation fully aligns with AFEDIE's founding mission: to promote the dignity and excellence of women, strengthen their autonomy, and actively contribute to advocacy for greater recognition of their role in our societies.\n\nAFEDIE thus reaffirms its commitment to the great causes that carry the voice of African women, both in Cameroon and in the diaspora."
   }
 ];
 

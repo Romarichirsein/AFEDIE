@@ -4,6 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const allImages = [
+  // === Nouvelles photos – Août 2026 ===
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.28.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.28_1.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.29.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.29_1.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.30.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.30_1.jpeg",
+  "/images/gallery/WhatsApp_Image_2026-08-19_at_09.34.31.jpeg",
   // === Nouvelles photos – AGO & Activités Juin 2026 ===
   "/images/gallery/WhatsApp Image 2026-06-22 at 12.36.38.jpeg",
   "/images/gallery/WhatsApp Image 2026-06-22 at 12.36.38 (1).jpeg",

@@ -569,6 +569,14 @@ export default function RapportsContent() {
                 ext: "PPTX",
                 size: "308 KB",
                 color: "#B8860B"
+              },
+              {
+                title: language === "fr" ? "Journal L'Étendard N° 096" : "L'Étendard Journal N° 096",
+                desc: language === "fr" ? "Numéro 096 du journal L'Étendard, document de presse associatif couvrant les actualités et actions de l'AFEDIE." : "Issue 096 of the L'Étendard journal, an associative press document covering AFEDIE's news and actions.",
+                file: "/documents/LEtendard_N_096.pdf",
+                ext: "PDF",
+                size: "1.3 MB",
+                color: "#7C3AED"
               }
             ].map((doc, idx) => (
               <div key={idx} style={{ background: "rgba(255, 255, 255, 0.02)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: "24px", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%", transition: "all 0.3s ease" }} className="download-card">

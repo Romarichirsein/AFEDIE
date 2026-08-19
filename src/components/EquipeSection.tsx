@@ -16,8 +16,8 @@ const membres = [
     id: 1,
     name: "Ida Sandrine NGNOTUE FOTSO",
     image: "/images/responsables/responsable4.jpeg",
-    role_fr: "Présidente Fondatrice (mandat à vie)",
-    role_en: "Founding President (lifetime mandate)",
+    role_fr: "Présidente Fondatrice",
+    role_en: "Founding President",
     isPresident: true,
   },
   {
@@ -293,7 +293,7 @@ export default function EquipeSection() {
                   { name: "M. Hugues Merlin KETCHIAMAIN" },
                   { name: "Mme Julienne TAGNE" },
                   { name: "M. Fulbert NGATSING TATSINKOU" },
-                  { name: "M. James Wilfrid NDJEHOYA" },
+                  { name: "M. James Wilfrid NDJEHOYA", title: language === "fr" ? "Adjoint au Maire de Bagneux — Intronisé le 19 juillet 2026" : "Deputy Mayor of Bagneux — Inducted July 19, 2026" },
                   { name: "M. Zacharie NGUETGNA" },
                   { name: "M. Adolphe NDASSA" }
                 ].map((item, idx) => (
