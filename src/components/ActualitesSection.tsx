@@ -155,7 +155,22 @@ const articles: Article[] = [
     desc_fr: "L'AFEDIE a participé activement à la Journée Internationale de la Femme Africaine le 30 juillet 2026, affirmant son engagement pour la dignité et l'excellence de la femme africaine.",
     desc_en: "AFEDIE actively participated in the International Day of the African Woman on July 30, 2026, affirming its commitment to the dignity and excellence of African women.",
     texte_fr: "Le 30 juillet 2026, l'AFEDIE a participé activement à la Journée Internationale de la Femme Africaine, moment fort de célébration et de réflexion sur la condition, les droits et les aspirations des femmes africaines à travers le monde.\n\nCette participation s'inscrit pleinement dans la mission fondatrice de l'AFEDIE : promouvoir la dignité et l'excellence des femmes, renforcer leur autonomie, et contribuer activement au plaidoyer pour une meilleure reconnaissance de leur rôle dans nos sociétés.\n\nL'AFEDIE réaffirme ainsi son ancrage dans les grandes causes qui portent la voix des femmes africaines, tant au Cameroun que dans la diaspora.",
-    texte_en: "On July 30, 2026, AFEDIE actively participated in the International Day of the African Woman, a key moment for celebrating and reflecting on the condition, rights, and aspirations of African women around the world.\n\nThis participation fully aligns with AFEDIE's founding mission: to promote the dignity and excellence of women, strengthen their autonomy, and actively contribute to advocacy for greater recognition of their role in our societies.\n\nAFEDIE thus reaffirms its commitment to the great causes that carry the voice of African women, both in Cameroon and in the diaspora."
+    texte_en: "On July 30, 2026, AFEDIE actively participated in the International Day of the African Woman, a key moment for celebrating and reflecting on the condition, rights, and aspirations of African women around the world.\n\nThis participation fully aligns with AFEDIE's founding mission: to promote the dignity and excellence of women, strengthen their autonomy, and actively contribute to advocacy for greater recognition of their role in our societies.\n\nAFEDIE prospects thus reaffirm its commitment to the great causes that carry the voice of African women, both in Cameroon and in the diaspora."
+  },
+  {
+    id: 10,
+    tag_fr: "Humanitaire & Solidarité",
+    tag_en: "Humanitarian & Solidarity",
+    date_fr: "15 & 18 décembre 2026",
+    date_en: "December 15 & 18, 2026",
+    lieu_fr: "Orphelinats de Mfou & Oveng",
+    lieu_en: "Mfou & Oveng Orphanages",
+    titre_fr: "Caravane Humanitaire & Arbre de Noël aux orphelinats de Mfou et d'Oveng",
+    titre_en: "Humanitarian Caravan & Christmas Tree at Mfou and Oveng Orphanages",
+    desc_fr: "L'AFEDIE organise deux grandes cérémonies d'Arbre de Noël et de distribution de dons : le 15 décembre à Mfou et le 18 décembre à Oveng.",
+    desc_en: "AFEDIE is organizing two major Christmas Tree ceremonies and donation distributions: December 15 in Mfou and December 18 in Oveng.",
+    texte_fr: "Dans le cadre de son plan d'action social et humanitaire, l'AFEDIE organise deux grandes cérémonies d'Arbre de Noël combinées à la remise de dons importants en faveur des orphelins :\n\n• Le 15 décembre 2026 à l'Orphelinat International Œuvres Humanitaires de Mfou\n• Le 18 décembre 2026 à l'Orphelinat Sainte Famille d'Oveng\n\nÀ cette occasion, un grand Arbre de Noël sera organisé pour apporter de la joie, du réconfort et des festivités aux enfants. L'association remettra une collecte composée de vêtements, literie, chaussures, trousses sanitaires, 2 ordinateurs pour l'initiation digitale, denrées alimentaires, vélos, ballons de basket et de football, serviettes hygiéniques, brosses à dents, dentifrice et produits d'entretien.",
+    texte_en: "As part of its social and humanitarian action plan, AFEDIE is organizing two major Christmas Tree ceremonies combined with significant donation deliveries for orphans:\n\n• December 15, 2026 at the International Humanitarian Works Orphanage of Mfou\n• December 18, 2026 at the Holy Family Orphanage of Oveng\n\nOn this occasion, a grand Christmas Tree event will be held to bring joy, comfort, and festive celebration to the children. The association will deliver donations including clothing, bedding, shoes, sanitary kits, 2 computers for digital initiation, food items, bicycles, basketballs and soccer balls, sanitary napkins, toothbrushes, toothpaste, and cleaning products."
   }
 ];
 

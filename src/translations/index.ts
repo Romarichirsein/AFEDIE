@@ -81,7 +81,7 @@ export const translations = {
         { date: "Septembre 2026", title: "Rentrée Solidaire", desc: "Distribution de kits scolaires et bourses d'études pour les orphelins." },
         { date: "Octobre 2026", title: "Activités en cours de planification", desc: "Le programme détaillé pour ce mois sera communiqué prochainement." },
         { date: "Novembre 2026", title: "Activités en cours de planification", desc: "Le programme détaillé pour ce mois sera communiqué prochainement." },
-        { date: "Décembre 2026", title: "Caravane Humanitaire & Arbre de Noël", desc: "Grande campagne humanitaire autour de Yaoundé : distribution de dons, arbre de Noël pour les enfants (repas et cadeaux), et caravane de santé avec dépistage gratuit pour les personnes âgées." }
+        { date: "15 & 18 Décembre 2026", title: "Caravane Humanitaire & Arbre de Noël", desc: "Grandes cérémonies d'Arbre de Noël et remise de dons : le 15 décembre à l'Orphelinat International Œuvres Humanitaires de Mfou et le 18 décembre à l'Orphelinat Sainte Famille d'Oveng." }
       ]
     },
     contact: {
@@ -203,7 +203,7 @@ export const translations = {
         { date: "September 2026", title: "Solidarity Back-to-School", desc: "Distribution of school kits and scholarships for orphans." },
         { date: "October 2026", title: "Activities under planning", desc: "The detailed program for this month will be announced soon." },
         { date: "November 2026", title: "Activities under planning", desc: "The detailed program for this month will be announced soon." },
-        { date: "December 2026", title: "Humanitarian Caravan & Christmas Tree", desc: "Major humanitarian campaign around Yaoundé: donation distribution, Christmas tree for children (meal and gifts), and a health caravan with free screening for the elderly." }
+        { date: "December 15 & 18, 2026", title: "Humanitarian Caravan & Christmas Tree", desc: "Major Christmas Tree ceremonies and donation delivery: Dec 15 at International Humanitarian Works Orphanage of Mfou and Dec 18 at Holy Family Orphanage of Oveng." }
       ]
     },
     contact: {

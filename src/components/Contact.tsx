@@ -169,11 +169,14 @@ export default function Contact() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem", maxWidth: "1200px", margin: "0 auto" }}>
             {[
-              { name: "MINPROFF", desc: language === "fr" ? "Ministère de la Promotion de la Femme et de la Famille" : "Ministry of Women's Empowerment and the Family", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
-              { name: "Mairie de Yaoundé III", desc: language === "fr" ? "Administration locale" : "Local municipality", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
-              { name: "Take Care", desc: language === "fr" ? "Partenaire social" : "Social partner", status: language === "fr" ? "Partenariat en cours" : "Partnership pending" },
-              { name: "Établissements KBA", desc: language === "fr" ? "Opération de don du 6 juin 2026" : "Donation drive of June 6, 2026", status: language === "fr" ? "Partenaire actif" : "Active partner" },
-              { name: "DACAM (ICRAFON)", desc: language === "fr" ? "Opération de don du 6 juin 2026" : "Donation drive of June 6, 2026", status: language === "fr" ? "Partenaire actif" : "Active partner" },
+              { name: "MINPROFF", desc: language === "fr" ? "Ministère de la Promotion de la Femme et de la Famille" : "Ministry of Women's Empowerment and the Family", status: language === "fr" ? "Partenariat institutionnel" : "Institutional partnership" },
+              { name: "MINAS", desc: language === "fr" ? "Ministère des Affaires Sociales" : "Ministry of Social Affairs", status: language === "fr" ? "Partenariat institutionnel" : "Institutional partnership" },
+              { name: "Mairie de Yaoundé III", desc: language === "fr" ? "Administration locale" : "Local municipality", status: language === "fr" ? "Partenariat institutionnel" : "Institutional partnership" },
+              { name: "Cabinet BEF", desc: language === "fr" ? "Appui conseil & accompagnement" : "Consulting & Advisory", status: language === "fr" ? "Partenaire technique" : "Technical partner" },
+              { name: "Cabinet GECI", desc: language === "fr" ? "Expertise comptable" : "Chartered accounting", status: language === "fr" ? "Partenaire technique" : "Technical partner" },
+              { name: "Association UCTE", desc: language === "fr" ? "Partenaire associatif" : "Associative partner", status: language === "fr" ? "Partenaire actif" : "Active partner" },
+              { name: "Groupe Scolaire Les Petits Mozart", desc: language === "fr" ? "Partenaire éducatif" : "Educational partner", status: language === "fr" ? "Partenaire actif" : "Active partner" },
+              { name: "Sandra à Votre Service", desc: language === "fr" ? "Événementiel & organisation" : "Events & logistics", status: language === "fr" ? "Partenaire événementiel" : "Events partner" },
             ].map((p, idx) => (
               <div key={idx} style={{ background: "var(--gris)", padding: "2rem 1.5rem", borderRadius: "20px", border: "1px solid rgba(0,0,0,0.03)", transition: "all 0.3s ease", display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }} className="partner-card">
                 <div>

@@ -7,21 +7,26 @@ const WHATSAPP_NUMBER = "237677589201";
 const WHATSAPP_MESSAGE = encodeURIComponent(
 `Bonjour AFEDIE 👋,
 
-Je vous contacte suite à votre *Appel à Dons* pour la récompense des élèves méritants du Groupe Scolaire Bilingue Les Petits Mozart.
+Je vous contacte suite à votre *Appel à Dons* pour la Caravane Humanitaire et les Arbres de Noël de Décembre 2026.
 
-🎓 Cérémonie : 30 Mai 2026 à 8h30
+🎁 Cérémonies :
+• 15 Décembre 2026 : Orphelinat International Œuvres Humanitaires de Mfou
+• 18 Décembre 2026 : Orphelinat Sainte Famille d'Oveng
 
 Je souhaite contribuer à cette noble cause. Merci de m'indiquer comment procéder.
 
-✨ Investir dans l'éducation aujourd'hui, bâtir les leaders de demain !`
+✨ Votre générosité éclaire le sourire d'un enfant !`
 );
 
 const collectItems = [
-  { icon: "📚", label: "Fournitures scolaires" },
-  { icon: "🎒", label: "Sacs et cartables" },
-  { icon: "📖", label: "Livres éducatifs" },
-  { icon: "🏆", label: "Trophées / Médailles" },
-  { icon: "🎓", label: "Bourses scolaires (Bilingue, Francophone, Anglophone)" },
+  { icon: "👕", label: "Vêtements et chaussures" },
+  { icon: "🛏️", label: "Literie et draps" },
+  { icon: "🧼", label: "Trousses sanitaires, serviettes hygiéniques, brosses à dents & dentifrice" },
+  { icon: "💻", label: "2 Ordinateurs pour l'initiation digitale" },
+  { icon: "🌾", label: "Denrées alimentaires" },
+  { icon: "🚲", label: "Vélos" },
+  { icon: "⚽", label: "Ballons de basket et de football" },
+  { icon: "🧹", label: "Produits d'entretien" },
   { icon: "💰", label: "Dons financiers / Sponsoring" },
 ];
 
@@ -166,7 +171,7 @@ export default function CampaignPopup() {
                   marginBottom: "0.75rem",
                 }}>
                   <span style={{ fontSize: "0.65rem", background: "rgba(184,134,11,0.25)", border: "1px solid rgba(184,134,11,0.4)", color: "#daa520", padding: "3px 10px", borderRadius: "12px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase" }}>
-                    AFEDIE × Les Petits Mozart
+                    AFEDIE × Caravane Humanitaire 2026
                   </span>
                 </div>
                 <h2 style={{
@@ -177,7 +182,7 @@ export default function CampaignPopup() {
                   margin: 0,
                   fontFamily: "var(--font-poppins), sans-serif",
                 }}>
-                  🎗️ Appel à <span style={{ color: "#daa520" }}>Dons</span>
+                  🎄 Arbre de Noël & <span style={{ color: "#daa520" }}>Dons</span>
                 </h2>
                 <p style={{
                   color: "rgba(255,255,255,0.7)",
@@ -185,7 +190,7 @@ export default function CampaignPopup() {
                   marginTop: "0.4rem",
                   lineHeight: 1.4,
                 }}>
-                  Pour la récompense des élèves méritants
+                  Pour les orphelins de Mfou et d'Oveng
                 </p>
               </div>
 
@@ -200,15 +205,17 @@ export default function CampaignPopup() {
                   marginBottom: "1.25rem",
                 }}>
                   <h3 style={{ color: "#daa520", fontSize: "0.8rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", marginBottom: "0.6rem" }}>
-                    📅 Cérémonie de Remise des Diplômes
+                    🎄 Cérémonies de l'Arbre de Noël
                   </h3>
-                  <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "0.3rem 0.75rem", fontSize: "0.85rem" }}>
-                    <span style={{ color: "rgba(255,255,255,0.5)" }}>Date</span>
-                    <span style={{ color: "#fff", fontWeight: 600 }}>30 Mai 2026</span>
-                    <span style={{ color: "rgba(255,255,255,0.5)" }}>Heure</span>
-                    <span style={{ color: "#fff", fontWeight: 600 }}>8h30</span>
-                    <span style={{ color: "rgba(255,255,255,0.5)" }}>Lieu</span>
-                    <span style={{ color: "#fff", fontWeight: 600 }}>Groupe Scolaire Bilingue Les Petits Mozart</span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", fontSize: "0.85rem" }}>
+                    <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
+                      <span style={{ color: "#daa520", fontWeight: 700 }}>• 15 Déc. :</span>
+                      <span style={{ color: "#fff", fontWeight: 600 }}>Orphelinat International Œuvres Humanitaires de Mfou</span>
+                    </div>
+                    <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
+                      <span style={{ color: "#daa520", fontWeight: 700 }}>• 18 Déc. :</span>
+                      <span style={{ color: "#fff", fontWeight: 600 }}>Orphelinat Sainte Famille d'Oveng</span>
+                    </div>
                   </div>
                 </div>
 
@@ -258,10 +265,10 @@ export default function CampaignPopup() {
                     margin: 0,
                     lineHeight: 1.5,
                   }}>
-                    &ldquo;Votre contribution peut changer l&apos;avenir d&apos;un enfant !&rdquo; ❤️
+                    &ldquo;À ces cérémonies, un arbre de Noël est organisé pour apporter la joie et le réconfort aux enfants.&rdquo; ❤️
                   </p>
                   <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.72rem", marginTop: "0.3rem", marginBottom: 0 }}>
-                    Investir dans l&apos;éducation aujourd&apos;hui, bâtir les leaders de demain&nbsp;!
+                    Votre générosité éclaire le sourire d&apos;un enfant pour les fêtes&nbsp;!
                   </p>
                 </div>
 
